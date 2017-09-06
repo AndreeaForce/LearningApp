@@ -1,0 +1,254 @@
+/* 
+html5doctor.com Reset Stylesheet
+v1.6.1
+Last Updated: 2010-09-17
+Author: Richard Clark - http://richclarkdesign.com 
+Twitter: @rich_clark
+*/
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+body {
+    line-height:1;
+}
+
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section { 
+    display:block;
+}
+
+nav ul {
+    list-style:none;
+}
+
+blockquote, q {
+    quotes:none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content:'';
+    content:none;
+}
+
+a {
+    margin:0;
+    padding:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+/* change colours to suit your needs */
+ins {
+    background-color:#ff9;
+    color:#000;
+    text-decoration:none;
+}
+
+/* change colours to suit your needs */
+mark {
+    background-color:#ff9;
+    color:#000; 
+    font-style:italic;
+    font-weight:bold;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+    border-bottom:1px dotted;
+    cursor:help;
+}
+
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+
+/* change border colour to suit your needs */
+hr {
+    display:block;
+    height:1px;
+    border:0;   
+    border-top:1px solid #cccccc;
+    margin:1em 0;
+    padding:0;
+}
+
+input, select {
+    vertical-align:middle;
+}
+
+/*MY CODE*/
+
+.main-wrapper {
+    margin: 0 auto;
+    width: 1000px;
+    height: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    background-color: #ccc;
+}
+
+nav {
+    width: 100%;
+    height: 580px;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#0fd79c+0,28c2cd+50,40adff+100 */
+    background: #0fd79c; /* Old browsers */
+    background: -moz-linear-gradient(left,  #0fd79c 0%, #28c2cd 50%, #40adff 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left,  #0fd79c 0%,#28c2cd 50%,#40adff 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right,  #0fd79c 0%,#28c2cd 50%,#40adff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0fd79c', endColorstr='#40adff',GradientType=1 ); /* IE6-9 */
+
+}
+
+.navigation--ul {
+    float: left;
+}
+
+.navigation--li {
+    float: left;
+    list-style: none;
+    padding-right: 30px;
+}
+
+.vertical-line {
+    float: left;
+    content: '';
+    height: 14px;
+    position: relative;
+    border: 1px solid #FFF;
+    top: 10px;
+
+}
+
+.navigation--li a {
+    font-family: arial;
+    font-size: 14px;
+    color: #FFF;
+    line-height: 38px;
+}
+
+.navigation {
+    float: right;
+    padding-top: 15px;
+}
+
+.form--login input {
+    float: left;
+    width: 140px;
+    height: 38px;
+    padding: 0px 10px;
+    margin-right: 10px;
+    border-radius: 12px;
+    border: none;
+    background-color: #FFF;
+    font-family: arial;
+    font-size: 14px;
+    color: #111;
+    line-height: 30px;
+}
+
+.main-container {
+    padding-top: 40px;
+}
+
+.main-container h2 {
+    font-family: arial;
+    font-size: 40px;
+    color: #111;
+    line-height: 50px;
+    text-align: center;
+}
+
+/*signup.php*/
+
+.signup-form {
+    width: 400px;
+    margin: 0 auto;
+    padding-top: 30px;
+}
+
+.signup-form input {
+    width: 90%;
+    height: 40px;
+    padding: 0px 5%;
+    margin-bottom: 4px;
+    border: none;
+    background-color: #fff;
+    font-family: arial;
+    font-size: 16px;
+    color: #111;
+    line-height: 40px;
+}
+
+/* eu */
+.form--login {
+    display: none;
+    padding-left: 30px;
+    float: left;
+}
+.button {
+    display: block;
+    cursor: pointer;
+    height: 38px;
+    float: left;
+    margin-right: 10px;
+    padding: 13px 30px;
+    border: none;
+    border-radius: 12px;
+    color: #FFF;
+}
+.button__green {
+    background-color: #23c6c3;
+}
+.button__green a {
+    color: #FFF;
+}
+.button__white {
+    border: 1px solid #FFF;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0+0,0+100 */
+    background: -moz-linear-gradient(left,  rgba(255,255,255,0) 0%, rgba(255,255,255,0) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(255,255,255,0) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right,  rgba(255,255,255,0) 0%,rgba(255,255,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#00ffffff',GradientType=1 ); /* IE6-9 */
+
+}
+.button__trigger {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0+0,0+100 */
+    background: -moz-linear-gradient(left,  rgba(255,255,255,0) 0%, rgba(255,255,255,0) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(255,255,255,0) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right,  rgba(255,255,255,0) 0%,rgba(255,255,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#00ffffff',GradientType=1 ); /* IE6-9 */
+}
+.logout {
+    float: left;
+    padding-left: 30px;
+}
