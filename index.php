@@ -1,6 +1,6 @@
 <?php
 	session_start();
-    
+    //include dirname(__FILE__).'/includes/signup-form2.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -26,8 +26,7 @@
 					if (isset($_SESSION['u_id'])) {
 						echo '<form class="logout" action="includes/logout-form.php" method="POST">
 							<button type="submit" class="button button__green" name="submit">Logout</button>
-						</form>
-                        <img src="'.$_SESSION['avatar'].'">';
+						</form>';
 					} else {
 						echo '<button type="button" class="button button__trigger" id="login">Sign In</button>
                             <form class="form--login" action="includes/login-form.php" method="POST">
@@ -48,20 +47,32 @@
 <section class="main-container">
 	<div class="main-wrapper">
 		<h2>Home</h2>
-        <div>
-            <img src="<?php echo $_SESSION['avatar']; ?>" alt="picture"/>
-        </div>
+        
 		<?php
 			if (isset($_SESSION['u_id'])) {
+               echo '<form class="signup-form" action="/LearningApp/includes/saveimage.php" method="POST" enctype="multipart/form-data">
+                    <div class="avatar">Select your avatar: <input type="file" name="avatar" accept="image/*"></div> 
+                    <input type="submit" name="Upload Now" value="Upload">
+                </form>';
+                
 				echo "You are logged in! <br>";
                 echo "Welcome user: " . $_SESSION["u_uid"] . "<br>";
-                echo '<img src="'.$_SESSION['avatar'].'">';
+                
+                include_once '/includes/database.php';
+                
+                $sql = "select avatar from users where user_id=12";
+                $result = mysqli_query($conn,$sql);
+                $row = mysqli_fetch_array($result);
+                
+                $image = $row['avatar'];
+                $image_src = "images/".$image;    
 			}
 		?>
+        <img src='<?php echo $image_src;  ?>' >
+        
 	</div>
 </section>
-
+<script src="vendor/jquery/dist/jquery.min.js"></script>
 <script src="scripts/script.js"></script>
 </body>
 </html>
-    
