@@ -7,6 +7,7 @@
 <head>
 	<title></title>
 	<link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://use.fontawesome.com/67e697fef0.js"></script>
 </head>
 <body>
 
@@ -17,9 +18,13 @@
 			<div class="navigation">
                 <ul class="navigation--ul">
 				    <li class="navigation--li"><a href="index.php">Home</a></li>
-                    <li class="navigation--li"><a href="index.php">Courses</a></li>
-                    <li class="navigation--li"><a href="index.php">About Us</a></li>
                     <div class="vertical-line"></div>
+                    <?php
+			             if (isset($_SESSION['u_id'])) {
+                              echo '<li class="navigation--li navigation--li__no-margin-right"><a href="index.php">' . $_SESSION["u_uid"] . '</a></li>';
+                         }
+                    ?>
+                    
                     
 			    </ul>
 				<?php
@@ -46,19 +51,12 @@
 
 <section class="main-container">
 	<div class="main-wrapper">
-		<h2>Home</h2>
-        
+
 		<?php
 			if (isset($_SESSION['u_id'])) {
-               echo '<form class="signup-form" action="/LearningApp/includes/saveimage.php" method="post" enctype="multipart/form-data">
-                    <div class="avatar">Select your avatar: <input type="file" name="avatar" accept="image/*"></div> 
-                    <input type="submit" name="btnsave" value="Upload">
-                </form>';
-                
-				echo "You are logged in! <br>";
-                echo "Welcome user: " . $_SESSION["u_uid"] . "<br>";
-                
                 include_once '/includes/database.php'; 
+                
+                echo '<h2 class="profile-">Profile</h2>';
                 
                 $sql = "select avatar from users where user_id='" . $_SESSION['u_id'] . "'";
                 $result = mysqli_query($conn,$sql);
@@ -67,8 +65,16 @@
                 $image = $row['avatar'];
                 $image_src = "images/".$image;
         ?>
-        <img src='<?php echo $image_src;  ?>' >
+            <div class="profile-avatar">
+                <img class="profile-avatar__img" src='<?php echo $image_src;  ?>' >
         <?php
+                echo '<form class="form__avatar" action="/LearningApp/includes/saveimage.php" method="post" enctype="multipart/form-data">
+                    <input class="input__avatar" id="avatar" type="file" name="avatar" accept="image/*">
+                    <label for="avatar" id="input__avatar--label"><i class="fa fa-camera fa-lg" aria-hidden="true"></i></label>
+                    <input class="button button__avatar" type="submit" name="btnsave" value="Upload">
+                </form></div>';
+                echo '<div class="profile-user">' . $_SESSION['u_first'] .'  '. $_SESSION['u_last']. '</div> ';      
+       
 			}
 		?>
         

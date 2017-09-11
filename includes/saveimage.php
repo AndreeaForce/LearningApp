@@ -20,8 +20,6 @@ $imageFileType = pathinfo($target,PATHINFO_EXTENSION);
         //Insert  into the database
         $sql = "UPDATE users SET avatar = '$avatar' WHERE user_id = $id";
         
-         //$sql = "select avatar from users where user_id='" . $_SESSION['u_id'] . "'";
-        
         mysqli_query($conn, $sql);
         
         // Upload file
