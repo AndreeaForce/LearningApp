@@ -1,31 +1,42 @@
 <?php
+session_start();
 include_once 'database.php';
+$id = $_SESSION['u_id'];
 
-if(isset($_POST['upload'])){
- 
- $name = $_FILES['avatar']['name'];
- $target_dir = "images/";
- $target_file = $target_dir . basename($_FILES["avatar"]["name"]);
+if (isset($_POST['btnsave'])) {
 
+$avatar = $_FILES['avatar']['name'];
+    
+//This is the directory where images will be saved 
+$target_dir = "../images/"; 
+$target = $target_dir . basename($_FILES['avatar']['name']);
+    
  // Select file type
- $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-
- // Valid file extensions
- $extensions_arr = array("jpg","jpeg","png","gif");
-
- // Check extension
- if( in_array($imageFileType,$extensions_arr) ){
- 
-  // Insert record
-  $query = "insert into users(avatar) values('".$name."')";
-  mysqli_query($con,$query);
-  
-  // Upload file
-  move_uploaded_file($_FILES['avatar']['tmp_name'],$target_dir.$name);
-
- }
-    header("Location: /learningApp/index.php?signup=success");
+$imageFileType = pathinfo($target,PATHINFO_EXTENSION);
+        
+    // Allow certain file formats
+    if ($imageFileType = "jpg" && $imageFileType = "png" && $imageFileType = "jpeg" && $imageFileType = "gif" ) {
+       
+        //Insert  into the database
+        $sql = "UPDATE users SET avatar = '$avatar' WHERE user_id = $id";
+        
+         //$sql = "select avatar from users where user_id='" . $_SESSION['u_id'] . "'";
+        
+        mysqli_query($conn, $sql);
+        
+        // Upload file
+        move_uploaded_file($_FILES['avatar']['tmp_name'], $target); 
+        
+        header("Location: /learningApp/index.php?ok");
+        exit();
+    } else {
+        header("Location: /learningApp/index.php?avatar=wrong type");
+        exit();
+    }
+        
+ } else {
+    header("Location: /learningApp/index.php?avatar=something wrong");
     exit();
- 
 }
+    
 ?>

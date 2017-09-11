@@ -50,25 +50,28 @@
         
 		<?php
 			if (isset($_SESSION['u_id'])) {
-               echo '<form class="signup-form" action="/LearningApp/includes/saveimage.php" method="POST" enctype="multipart/form-data">
+               echo '<form class="signup-form" action="/LearningApp/includes/saveimage.php" method="post" enctype="multipart/form-data">
                     <div class="avatar">Select your avatar: <input type="file" name="avatar" accept="image/*"></div> 
-                    <input type="submit" name="Upload Now" value="Upload">
+                    <input type="submit" name="btnsave" value="Upload">
                 </form>';
                 
 				echo "You are logged in! <br>";
                 echo "Welcome user: " . $_SESSION["u_uid"] . "<br>";
                 
-                include_once '/includes/database.php';
+                include_once '/includes/database.php'; 
                 
-                $sql = "select avatar from users where user_id=12";
+                $sql = "select avatar from users where user_id='" . $_SESSION['u_id'] . "'";
                 $result = mysqli_query($conn,$sql);
                 $row = mysqli_fetch_array($result);
                 
                 $image = $row['avatar'];
-                $image_src = "images/".$image;    
+                $image_src = "images/".$image;
+        ?>
+        <img src='<?php echo $image_src;  ?>' >
+        <?php
 			}
 		?>
-        <img src='<?php echo $image_src;  ?>' >
+        
         
 	</div>
 </section>

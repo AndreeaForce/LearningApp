@@ -10,11 +10,11 @@ if (isset($_POST['submit'])) {
 	$email = mysqli_real_escape_string($conn, $_POST['email']);
 	$uid = mysqli_real_escape_string($conn, $_POST['uid']);
 	$pwd = mysqli_real_escape_string($conn, $_POST['pwd']);
-    $avatar = ($_FILES['avatar']['name']);
+    //$avatar = ($_FILES['avatar']['name']);
       
     //This is the directory where images will be saved 
-    $target = "../images/"; 
-    $target = $target . basename( $_FILES['avatar']['name']);
+    //$target = "../images/"; 
+    //$target = $target . basename( $_FILES['avatar']['name']);
 
 	//Error handlers
 	//Check for empty fields
@@ -45,7 +45,7 @@ if (isset($_POST['submit'])) {
 					exit();
                     
 				} else {
-                    move_uploaded_file($_FILES['avatar']['tmp_name'], $target);
+                    //move_uploaded_file($_FILES['avatar']['tmp_name'], $target);
                     
 					//Hashing the password
 					$hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
@@ -54,8 +54,6 @@ if (isset($_POST['submit'])) {
 					$sql = "INSERT INTO users (avatar, user_first, user_last, user_email, user_uid, user_pwd) VALUES ('$avatar', '$first', '$last', '$email', '$uid', '$hashedPwd');";
 					mysqli_query($conn, $sql);
                     
-                    if (move_uploaded_file($_FILES['avatar']['tmp_name'], $target)) {
-                        echo "The file ". basename( $_FILES['avatar']['name']). " has been uploaded, and your information has been added to the directory";
                     }
 					header("Location: /learningApp/signup.php?signup=success");
 					exit();
@@ -63,5 +61,3 @@ if (isset($_POST['submit'])) {
 			}
 		}
 	}
-
-}
