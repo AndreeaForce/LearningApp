@@ -1,12 +1,11 @@
 var loginButton = document.getElementById('login');
 var loginContainer = document.getElementsByClassName('form--login')[0];
 
-loginButton.addEventListener('click', functionDisplay);
-
-function functionDisplay() {
-    loginContainer.style.display = "block";
+loginButton.addEventListener('click', function(){
+     loginContainer.style.display = "block";
     loginButton.style.display = "none";
-}
+});
+
 
 // Form validation
 // Check if field is empty
@@ -30,6 +29,8 @@ var elUserName = document.getElementById('userName');
 elUserName.onkeyup = checkUser;
 var elPassword = document.getElementById('password');
 elPassword.onblur = checkEmpty;
+
+
 
 
 // Ajax request check username

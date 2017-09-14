@@ -28,7 +28,7 @@ include 'header.php';
                 </form></div>';
                 echo '<div class="profile-user">' . $_SESSION['u_first'] .'  '. $_SESSION['u_last']. '</div> ';  
             ?>
-                <a href="new-profile.php" class="create-profile">Add a profile</a>
+                
         <?php    
 			}
 		?>
