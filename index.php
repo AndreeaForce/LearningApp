@@ -30,7 +30,9 @@ include 'header.php';
             ?>
                 
         <?php    
-			}
+			} else {
+                 echo '<h2>Some welcome text</h2>';
+            }
 		?>
 	       </div>
     </div>

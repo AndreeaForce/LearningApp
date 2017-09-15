@@ -126,6 +126,14 @@ body {
     float: left;
     width: 16.66%;
 }
+.col__medium-4 {
+    float: left;
+    width: 33.33%
+}
+.col__medium-6 {
+    float: left;
+    width: 50%;
+}
 .col__medium-8 {
     float: left;
     width: 66.66%;
@@ -159,64 +167,50 @@ nav {
     float: left;
 }
 
-.navigation--li {
+.settings {
     float: left;
     list-style: none;
     padding-right: 30px;
     padding-left: 30px;
 }
-.navigation--li__no-margin-right {
-    padding-right: 0;
-}
+
 .vertical-line {
     float: left;
     content: '';
     height: 14px;
     position: relative;
     border: 1px solid #FFF;
-    top: 10px;
-
+    top: 0;
 }
-
-.navigation--li a {
-    font-family: arial;
-    font-size: 14px;
-    color: #FFF;
-    line-height: 38px;
-}
-
-.navigation {
-    float: right;
-    padding-top: 15px;
-}
-
-.form--login input {
+.nav--settings {
     float: left;
-    width: 140px;
-    height: 38px;
-    padding: 0px 10px;
-    margin-right: 10px;
-    border-radius: 12px;
-    border: none;
-    background-color: #FFF;
-    font-family: arial;
-    font-size: 14px;
-    color: #111;
-    line-height: 30px;
+    color: #FFF;
+    font-family: 'Montserrat', sans-serif;
+}
+.nav--settings a {
+    color: #FFF;
+    font-family: 'Montserrat', sans-serif;
+}
+.nav--logo {
+    float: right;
+    margin-top: 15px;
+}
+.nav--log {
+    float: right;
+}
+.navigation--left {
+    float: left;
+    padding-top: 28px;
+}
+.navigation--right {
+    padding-top: 15px;
 }
 
 .main-container {
     padding-top: 40px;
     width: 80%;
     margin: 0 auto;
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#0fd79c+0,28c2cd+50,40adff+100 */
-    background: #0fd79c; /* Old browsers */
-    background: -moz-linear-gradient(left,  #0fd79c 0%, #28c2cd 50%, #40adff 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(left,  #0fd79c 0%,#28c2cd 50%,#40adff 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to right,  #0fd79c 0%,#28c2cd 50%,#40adff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0fd79c', endColorstr='#40adff',GradientType=1 ); /* IE6-9 */
 }
-
 .main-container h2 {
     font-family: arial;
     font-size: 30px;
@@ -231,7 +225,7 @@ nav {
     display: block;
     cursor: pointer;
     height: 38px;
-    width: 216.73px;
+    width: 120px;
     float: left;
     padding: 13px 30px;
     border: none;
@@ -271,7 +265,20 @@ nav {
     padding-left: 30px;
     float: left;
 }
-
+.form--login input {
+    float: left;
+    width: 100px;
+    height: 38px;
+    padding: 0px 10px;
+    margin-right: 10px;
+    border-radius: 12px;
+    border: none;
+    background-color: #FFF;
+    font-family: arial;
+    font-size: 14px;
+    color: #111;
+    line-height: 30px;
+}
 .signup-form {
     width: 400px;
     margin: 0 auto;
@@ -298,10 +305,21 @@ nav {
     height: 40px;
     margin: 0 auto;
 }
-.profile-avatar__img {
+.nav-avatar__img {
     display: block;
     padding: 0 20px 0 20px;
     height: 40px;
+}
+.nav-avatar {
+    float: right;
+}
+.nav-id {
+    float: right;
+    margin-top: 12px;
+}
+.nav-id a {
+    font-family: 'Montserrat', sans-serif;
+    color: #FFF;
 }
 .profile-user {
     text-align: center;
@@ -381,9 +399,6 @@ nav {
     border-left: 4px solid #23c6c3;
     top: 0;
     cursor: pointer;
-}
-.settings__li--top-margin {
-    margin-top: 40px;
 }
 .settings--title {
     font-size: 1.8rem;

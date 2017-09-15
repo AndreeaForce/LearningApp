@@ -16,27 +16,32 @@
 	<nav>
 		<div class="main-wrapper">
 			
-			<div class="navigation">
-                <ul class="navigation--ul">
-				    <li class="navigation--li"><a href="index.php">Home</a></li>
-                    <div class="vertical-line"></div>
+			<div class="navigation--left col__medium-2">
+				<div class="nav--settings"><a href="settings.php"><i class="fa fa-sliders fa-lg" aria-hidden="true"></i></a>
+                </div>
+            </div>
+            <div class="navigation--center col__medium-4">
+                <a href="index.php"><img class="nav--logo" src="images/tour-text.png"></a>
+            </div>
+            <div class="navigation--right col__medium-6">
+                <div class="nav--log">
                     <?php
 			             if (isset($_SESSION['u_id'])) {
                               include_once '/includes/database.php'; 
-                              echo '<li class="navigation--li navigation--li__no-margin-right"><a href="settings.php">' . $_SESSION["u_uid"] . '</a></li>';
                               $sql = "select avatar from users where user_id='" . $_SESSION['u_id'] . "'";
                               $result = mysqli_query($conn,$sql);
                               $row = mysqli_fetch_array($result);
                             
                               $image = $row['avatar'];
                               $image_src = "images/".$image;
-                    ?>
-                            <img class="profile-avatar__img" src='<?php echo $image_src;  ?>' >
+                    ?><div class="nav-avatar">
+                        <img class="nav-avatar__img" src='<?php echo $image_src;  ?>' >
+                    </div>
                     <?php
+                        echo '<div class="nav-id"><a href="settings.php">' . $_SESSION["u_uid"] . '</a></div>';
                         }
                     ?>
                     
-			    </ul>
 				<?php
 					if (isset($_SESSION['u_id'])) {
 						echo '';
@@ -47,12 +52,13 @@
 							<input type="password" name="pwd" placeholder="password">
 							<button type="submit" class="button button__white" name="submit">Login</button>
 				        </form>
-						<button type="button" class="button button__green"><a href="signup.php">Get Started</a></button>';
+						<button type="button" class="button button__green"><a href="signup.php">Signup</a></button>';
 					}
 				?>
                 
-			</div>
-            
+			     </div>
+            </div>
+            <div class="clear-me"></div> 
 		</div>
 	</nav>
 </header>
