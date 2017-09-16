@@ -7,7 +7,7 @@ include 'header.php';
 
 		<?php
 			if (isset($_SESSION['u_id'])) {
-                include_once '/includes/database.php'; 
+                include_once 'includes/database.php';
                 
                 echo '<h2 class="profile-">Profile</h2>';
                 
@@ -21,7 +21,7 @@ include 'header.php';
             <div class="profile-avatar">
                 <img class="profile-avatar__img" src='<?php echo $image_src;  ?>' >
         <?php
-                echo '<form class="form__avatar" action="/LearningApp/includes/saveimage.php" method="post" enctype="multipart/form-data">
+                echo '<form class="form__avatar" action="/includes/saveimage.php" method="post" enctype="multipart/form-data">
                     <input class="input__avatar" id="avatar" type="file" name="avatar" accept="image/*">
                     <label for="avatar" id="input__avatar--label"><i class="fa fa-camera fa-lg" aria-hidden="true"></i></label>
                     <input class="button button__avatar" type="submit" name="btnsave" value="Upload">
