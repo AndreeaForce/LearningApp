@@ -54,16 +54,13 @@ include 'header.php';
             
             <div class="col__medium-8" id="profiles">
                 <div class="profiles-content">
-                    <form action="">
+                    <form div class="" action="/LearningApp/includes/profiles.php" method="POST">
                         <span>Name</span><input type="text" name="name"><br>
                         <span>Gender</span>
-                        <input type="radio" name="gender" value="male">Male
+                        <input type="radio" name="gender" checked="checked" value="male">Male
                         <input type="radio" name="gender" value="female">Female<br>
-                    </form>
-                    <form onsubmit="return false" oninput="document.getElementById('level').innerHTML = parseFloat(document.getElementById('age').value)">    
-                        <label for="age">Age</label>
-                        <input type="range" name="age" id="age" min="1" max="20" step="1" value="0">
-                        <output for="age" name="level" id="level">0</output>/20
+                        <span>Age:</span><input type="number" name="quantity" min="1" max="20"><br>
+                        <button type="submit">Save</button>
                     </form>
                 
                 </div><!-- profiles-content -->

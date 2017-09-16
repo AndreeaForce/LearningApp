@@ -16,11 +16,11 @@
 	<nav>
 		<div class="main-wrapper">
 			
-			<div class="navigation--left col__medium-2">
+			<div class="navigation--left col__medium-3">
 				<div class="nav--settings"><a href="settings.php"><i class="fa fa-sliders fa-lg" aria-hidden="true"></i></a>
                 </div>
             </div>
-            <div class="navigation--center col__medium-4">
+            <div class="navigation--center col__medium-3">
                 <a href="index.php"><img class="nav--logo" src="images/tour-text.png"></a>
             </div>
             <div class="navigation--right col__medium-6">
