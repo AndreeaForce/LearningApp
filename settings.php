@@ -22,7 +22,7 @@ include 'header.php';
             
             <div class="col__medium-10" id="account">
                 <div class="account--content">
-                    <form class="signup-form" action="/LearningApp/signup.php" method="POST">
+                    <form class="signup-form" action="signup.php" method="POST">
 			             <input type="text" name="first" id="firstName" placeholder="Firstname">
                             <div class="error"></div>
                             <br>
@@ -81,5 +81,3 @@ include 'header.php';
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   crossorigin="anonymous"></script>
 <script src="scripts/settings.js"></script>
-</body>
-</html>
