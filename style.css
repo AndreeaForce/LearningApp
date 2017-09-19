@@ -266,6 +266,11 @@ nav {
     border: none;
     background-color: #FFF;
 }
+.button--edit-profile {
+    border: none;
+    background-color: #ededed;
+    width: 60px;
+}
 
 /* form */
 .form--login {
@@ -456,4 +461,8 @@ nav {
     margin: 40px auto;
     width: 100px;
     display: block;
+}
+/* settings/profiles/table */
+.table-avatar {
+    width: 100%;
 }
