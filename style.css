@@ -29,6 +29,7 @@ time, mark, audio, video {
 
 body {
     line-height:1;
+    background-color: rgb(204, 204, 204) !important;
 }
 
 article,aside,details,figcaption,figure,
@@ -116,9 +117,6 @@ a {
     text-decoration: none;
 }
 
-body {
-    background-color: #ccc;
-}
 .row {
    
 }
@@ -314,14 +312,14 @@ nav {
 /* Profile */
 .profile-avatar {
     position: relative;
-    width: 40px;
-    height: 40px;
+    width: 100%;
     margin: 0 auto;
 }
 .nav-avatar__img {
     display: block;
     padding: 0 20px 0 20px;
     height: 40px;
+    margin: 0 auto;
 }
 .nav-avatar {
     float: right;
@@ -407,7 +405,14 @@ nav {
 .settings__li:hover {
     color: #23c6c3;
     content: '';
-    height: 15.55px;
+    position: relative;
+    border-left: 4px solid #23c6c3;
+    top: 0;
+    cursor: pointer;
+}
+.settings__li--active {
+    color: #23c6c3;
+    content: '';
     position: relative;
     border-left: 4px solid #23c6c3;
     top: 0;
@@ -448,20 +453,22 @@ nav {
 #profiles, #profiles-min, #about {
     display: none;
 }
-.settings__li--active {
-    color: #23c6c3;
-    content: '';
-    height: 15.55px;
-    position: relative;
-    border-left: 4px solid #23c6c3;
-    top: 0;
-    cursor: pointer;
-}
+
 .profiles-min__img {
     margin: 40px auto;
     width: 100px;
     display: block;
 }
+
+/* td */
+td {
+    display: block;
+    width: 99.9%;
+    clear: both;
+    text-align: center;
+}
+
+
 /* settings/profiles/table */
 .table-avatar {
     width: 100%;

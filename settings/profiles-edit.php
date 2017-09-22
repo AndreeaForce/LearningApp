@@ -1,6 +1,6 @@
 <?php
 
-if (isset($_POST['form_name']) && $_POST['form_name'] === 'edit_user') {
+if (isset($_POST['formName']) && $_POST['formName'] === 'edit_user') {
     $msg = [];
     include '../includes/database.php';
     
