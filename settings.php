@@ -1,6 +1,18 @@
 <?php
 include 'header.php';
-//include dirname(__FILE__).'/settings/profiles.php';
+include dirname(__FILE__).'/settings/profiles.php';
+
+if (isset($_POST['edit'])) {
+    $id = $_POST['edit'];
+    
+    $sql = mysqli_query($conn, "SELECT * FROM profile WHERE user_id= $id");
+    $result = mysqli_query($conn, $sql);
+    $name = $result['profile_name'];
+    $gender = $result['profile_gender'];
+    $address = $result['profile_age'];
+    $id = $result['profile_id'];
+}
+
 ?>
 <div class="page-section" id="settings">
     <div class="main-wrapper">
@@ -46,7 +58,9 @@ include 'header.php';
             
             <div class="col__medium-2" id="profiles-min">
                 <div class="profiles-min-content">
-                    
+                    <div class="profiles-add">
+                        <button type="button" name="add-profile" id="add-profile" class="button button-add">Add</button>
+                    </div>
                     <div class="avatar-table">
                         <table class="table table-avatar">
                             <tbody id="userData">
@@ -63,17 +77,19 @@ include 'header.php';
                                         $image_src = "images/".$image;
                             ?>
                             <tr>
-                                <td colspan="2">
-                                    <img class="profile-avatar__img" src='<?php echo $image_src;  ?>' >
-                                </td>
-                        
-                                <td colspan="2">
-                                    <?php echo $row["profile_name"]; ?>
-                                </td>
-                        
                                 <td>
-                                    <button type="button" name="edit-profile" value="edit" id="<?php echo $row['profile_id'] ?>" class="button button--edit-profile"><i class="fa fa-pencil" aria-hidden="true"></i>
-                                    </button>
+                                    <div class="profile-avatar">
+                                        <img class="profile-avatar__img" src='<?php echo $image_src;  ?>' >
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><?php echo $row["profile_name"]; ?></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="/LearningApp/settings.php?edit=<?php echo $row['profile_id'] ?>" id="<?php echo $row['profile_id'] ?>" class="button button--edit-profile"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                  
                                 </td>
                                 <td>
                                     <button type="button" name="delete-profile" value="delete" id="<?php echo $row['profile_id'] ?>" class="button button--edit-profile"><i class="fa fa-trash-o" aria-hidden="true"></i>
@@ -97,29 +113,26 @@ include 'header.php';
                     <div class="profiles-header" id="profiles-header">
                         <h4 class="">Profile</h4>
                     </div><br>
-                    
-                    <form id="insert-profile" class="insertProfile" action="/LearningApp/settings/profiles.php" method="POST">
+                    <form id="insert-profile" class="insertProfile">
+                        <input type="hidden" id="profileId" name="profileId" value="<?php echo $id ?>">
                         
-                        <input type="hidden" id="profileId" name="profileId" value="">
+                        <label for="profile-name">Name</label><br>
+                        <input type="text" name="profileName" id="profile-name" value="<?php echo $name ?>"><br><br>
                         
-                        <label for="profileName">Name</label><br>
-                        <input type="text" name="profileName" id="profileName" class=""><br><br>
-                        
-                        <label for="profileGender">Select Gender</label><br>
-                        <select name="profileGender" id="profileGender" class="">
+                        <label for="profile-gender">Select Gender</label><br>
+                        <select name="profileGender" id="profile-gender" value="<?php echo $gender ?>">
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
                         </select><br><br>
                         
                         <label> Select Age</label><br>
-                        <input type="number" name="profileAge" id="profileAge" class="" min="1" max="20"><br><br>
-                        <input  id="avatar" type="file" name="avatar" accept="image/*"><br><br>
+                        <input type="number" name="profileAge" id="profile-age" min="1" max="20" value="<?php echo $age ?>"><br><br>
+                        <input  id="avatar" type="file" name="avatar" accept="image/*" value="<?php echo $avatar ?>"><br><br>
                         
-                        <input type="hidden" id="formName" name="formName" value="add_user">
+                        <input type="hidden" id="form_name" name="form_name" value="add_user">
                         
-                        <button type="submit" id="saveProfile" name="saveProfile" class="button" valus="Save"></button>
-                    </form><br>
-                    
+                        <button type="submit" id="save-profile" name="save-profile" class="button">Save</button>
+                    </form>
                     <p id="result"></p>
                 
                 </div><!-- profiles-content -->

@@ -21,10 +21,10 @@ $("#insert-profile").submit(function(e){
 });
 
 $(document).on('click', '.button--edit-profile', function(ev){
-    ev.preventDefault();
-    var  btn_button = $(this);
-    $("#formName").val("update_user");
-  
+
+    $("#form_name").val("update_user");
+   console.log(this);
+   
 });
 
 
