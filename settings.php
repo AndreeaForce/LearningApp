@@ -2,15 +2,28 @@
 include 'header.php';
 include dirname(__FILE__).'/settings/profiles.php';
 
-if (isset($_POST['edit'])) {
-    $id = $_POST['edit'];
-    
-    $sql = mysqli_query($conn, "SELECT * FROM profile WHERE user_id= $id");
-    $result = mysqli_query($conn, $sql);
-    $name = $result['profile_name'];
-    $gender = $result['profile_gender'];
-    $address = $result['profile_age'];
-    $id = $result['profile_id'];
+$updateType ="add_user";
+if (isset($_GET['edit'])) {
+    $id = $_GET['edit'];
+    if(!is_numeric($id)) {
+        exit();
+    }
+    $sql = mysqli_query($conn, "SELECT * FROM profile WHERE profile_id= $id LIMIT 1");
+    if($sql === false) {
+        echo "Error description: ". mysqli_error($conn);
+    }
+    /*if($da = mysqli_num_rows($sql)) {
+       print_r($da);
+    }*/
+
+    while ($result = mysqli_fetch_assoc($sql)) {
+        $name = $result['profile_name'];
+        $gender = $result['profile_gender'];
+        $age = $result['profile_age'];
+        $id = $result['profile_id'];
+        $updateType ="edit_user";
+    }
+    echo $result;
 }
 
 ?>
@@ -89,11 +102,9 @@ if (isset($_POST['edit'])) {
                             <tr>
                                 <td>
                                     <a href="/LearningApp/settings.php?edit=<?php echo $row['profile_id'] ?>" id="<?php echo $row['profile_id'] ?>" class="button button--edit-profile"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                                  
-                                </td>
-                                <td>
-                                    <button type="button" name="delete-profile" value="delete" id="<?php echo $row['profile_id'] ?>" class="button button--edit-profile"><i class="fa fa-trash-o" aria-hidden="true"></i>
-                                    </button>
+                    
+                                    <a href="/LearningApp/settings.php?edit=<?php echo $row['profile_id'] ?>" id="<?php echo $row['profile_id'] ?>" class="button button--edit-profile"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                    
                                 </td>
                             </tr>
                             
@@ -120,16 +131,16 @@ if (isset($_POST['edit'])) {
                         <input type="text" name="profileName" id="profile-name" value="<?php echo $name ?>"><br><br>
                         
                         <label for="profile-gender">Select Gender</label><br>
-                        <select name="profileGender" id="profile-gender" value="<?php echo $gender ?>">
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
+                        <select name="profileGender" id="profile-gender">
+                            <option  <?=($gender == "Male") ? 'selected="selected"' : "" ?> value="Male">Male</option>
+                            <option <?=($gender == "Female") ? 'selected="selected"' : "" ?> value="Female">Female</option>
                         </select><br><br>
                         
                         <label> Select Age</label><br>
                         <input type="number" name="profileAge" id="profile-age" min="1" max="20" value="<?php echo $age ?>"><br><br>
                         <input  id="avatar" type="file" name="avatar" accept="image/*" value="<?php echo $avatar ?>"><br><br>
                         
-                        <input type="hidden" id="form_name" name="form_name" value="add_user">
+                        <input type="hidden" id="form_name" name="form_name" value="<?=$updateType; ?>">
                         
                         <button type="submit" id="save-profile" name="save-profile" class="button">Save</button>
                     </form>
