@@ -9,7 +9,7 @@ $msg = [];
     $edit = false;
 
 if (isset($_POST['form_name']) && $_POST['form_name'] === 'add_user') {
-    
+    session_start();
     include '../includes/database.php';
     
     $name = mysqli_real_escape_string($conn, $_POST["profileName"]);
@@ -25,24 +25,27 @@ if (isset($_POST['form_name']) && $_POST['form_name'] === 'add_user') {
     
     move_uploaded_file($_FILES['avatar']['tmp_name'], $target); 
     
-    $sql = " INSERT INTO `profile` (`profile_name`, `profile_age`, `profile_gender`, `profile_avatar`)  
-        VALUES('$name', '$age', '$gender', '$avatar'); ";
+    $sql = " INSERT INTO `profile` (`profile_name`, `profile_age`, `profile_gender`, `profile_avatar`, `user_id`)  
+        VALUES('$name', '$age', '$gender', '$avatar', '{$_SESSION['u_id']}') 
+        ";
     
     $result = mysqli_query($conn, $sql);
     //Error check query
     if(!$result) {
          echo("Error description: " . mysqli_error($conn));
     }
-    
-        $msg['success'] = 1;
+}
+    /*
+    $msg['success'] = 1;
         
     } else {
     
         $msg['error'] = 0;
     }
     echo json_encode($msg);
-
-if (isset($_POST['form_name']) && $_POST['form_name'] === 'update_user') {
+    */
+    
+if (isset($_POST['form_name']) && $_POST['form_name'] === 'edit_user') {
     
     include '../includes/database.php';
 
@@ -61,10 +64,26 @@ if (isset($_POST['form_name']) && $_POST['form_name'] === 'update_user') {
     move_uploaded_file($_FILES['avatar']['tmp_name'], $target); 
     
     $sql = "UPDATE profile ". 
-            "SET profile_name = $name, profile_gender = $gender, profile_age = $age, profile_avatar = $avatar ".
-            "WHERE user_id = $id";
+            "SET profile_name = '$name', profile_gender = '$gender', profile_age = '$age', profile_avatar = '$avatar' ".
+            "WHERE profile_id = $id";
+    
+    $result = mysqli_query($conn, $sql);
+    
+    //Error check query
+    if(!$result) {
+         echo("Error description: " . mysqli_error($conn));
+    }
 }
+    /*
+    $msg['success'] = 1;
+        
+    } else {
+    
+        $msg['error'] = 0;
+    }
+    echo json_encode($msg);
+    */
 
 
-$result = mysqli_query($conn, $sql);
+
 ?>
