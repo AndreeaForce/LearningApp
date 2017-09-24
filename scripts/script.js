@@ -43,7 +43,7 @@ function checkUser() {
                 document.getElementsByClassName("error")[3].innerHTML = this.responseText;
             }
         };
-        xmlhttp.open("GET", "/LearningApp/includes/check-user.php?uid=" + elUserName.value, true);
+        xmlhttp.open("GET", "/includes/check-user.php?uid=" + elUserName.value, true);
         xmlhttp.send();
     }
 }
@@ -60,7 +60,7 @@ function checkEmail() {
                 document.getElementsByClassName("error")[2].innerHTML = this.responseText;
             }
         };
-        xmlhttp.open("GET", "/LearningApp/includes/check-email.php?email=" + elEmail.value, true);
+        xmlhttp.open("GET", "/includes/check-email.php?email=" + elEmail.value, true);
         xmlhttp.send();
     }
 }

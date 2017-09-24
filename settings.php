@@ -49,7 +49,7 @@ if (isset($_GET['edit'])) {
             
             <div class="col__medium-10" id="account">
                 <div class="account--content">
-                    <form class="signup-form" action="/LearningApp/signup.php" method="POST">
+                    <form class="signup-form" action="/signup.php" method="POST">
 			             <input type="text" name="first" id="firstName" placeholder="Firstname">
                             <div class="error"></div>
                             <br>

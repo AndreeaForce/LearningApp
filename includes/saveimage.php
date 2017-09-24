@@ -25,15 +25,15 @@ $imageFileType = pathinfo($target,PATHINFO_EXTENSION);
         // Upload file
         move_uploaded_file($_FILES['avatar']['tmp_name'], $target); 
         
-        header("Location: /learningApp/index.php?ok");
+        header("Location: /index.php?ok");
         exit();
     } else {
-        header("Location: /learningApp/index.php?avatar=wrong type");
+        header("Location: /index.php?avatar=wrong type");
         exit();
     }
         
  } else {
-    header("Location: /learningApp/index.php?avatar=something wrong");
+    header("Location: /index.php?avatar=something wrong");
     exit();
 }
     

@@ -7,7 +7,7 @@ $("#insert-profile").submit(function(e){
             data: formData,
             processData: false,
             contentType:false,
-			url:"/LearningApp/settings/profiles.php",
+			url:"/settings/profiles.php",
 			success: function(result) {	
                 console.log(result);
                 if(result.success == 1) {

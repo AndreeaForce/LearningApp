@@ -9,7 +9,7 @@ include 'header.php';
 <section class="main-container">
 	<div class="main-wrapper">
 		<h2>Signup</h2>
-		<form class="signup-form" action="/LearningApp/signup.php" method="POST">
+		<form class="signup-form" action="/signup.php" method="POST">
 			<input type="text" name="first" id="firstName" placeholder="Firstname">
             <div class="error"></div>
             <br>

@@ -26,7 +26,7 @@ if (isset($_POST['submit'])) {
 		//Check if input characters are valid
 		if (!preg_match("/^[a-zA-Z]*$/", $first) || !preg_match("/^[a-zA-Z]*$/", $last)) {
             $firstErr = $lastErr = "valid characters";
-			header("Location: /learningApp/signup.php?signup=invalid");
+			header("Location: /signup.php?signup=invalid");
 			exit();
             
 		} else {
@@ -41,7 +41,7 @@ if (isset($_POST['submit'])) {
 				$resultCheck = mysqli_num_rows($result);
 
 				if ($resultCheck > 0) {
-					header("Location: /learningApp/signup.php?signup=usertaken");
+					header("Location: /signup.php?signup=usertaken");
 					exit();
                     
 				} else {
@@ -55,7 +55,7 @@ if (isset($_POST['submit'])) {
 					mysqli_query($conn, $sql);
                     
                     }
-					header("Location: /learningApp/signup.php?signup=success");
+					header("Location: /signup.php?signup=success");
 					exit();
 				} 
 			}
