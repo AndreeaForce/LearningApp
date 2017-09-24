@@ -26,6 +26,7 @@ if (isset($_GET['edit'])) {
     echo $result;
 }
 
+
 ?>
 <div class="page-section" id="settings">
     <div class="main-wrapper">
@@ -101,10 +102,12 @@ if (isset($_GET['edit'])) {
                             </tr>
                             <tr>
                                 <td>
-                                    <a href="/LearningApp/settings.php?edit=<?php echo $row['profile_id'] ?>" id="<?php echo $row['profile_id'] ?>" class="button button--edit-profile"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    
-                                    <a href="/LearningApp/settings.php?edit=<?php echo $row['profile_id'] ?>" id="<?php echo $row['profile_id'] ?>" class="button button--edit-profile"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                                    
+                                    <a href="/settings.php?edit=<?php echo $row['profile_id'] ?>" id="<?php echo $row['profile_id'] ?>" class="button button--edit-profile"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                  
+                                </td>
+                                <td>
+                                    <button type="button" name="delete-profile" value="delete" id="<?php echo $row['profile_id'] ?>" class="button button--edit-profile"><i class="fa fa-trash-o" aria-hidden="true"></i>
+                                    </button>
                                 </td>
                             </tr>
                             
@@ -131,16 +134,16 @@ if (isset($_GET['edit'])) {
                         <input type="text" name="profileName" id="profile-name" value="<?php echo $name ?>"><br><br>
                         
                         <label for="profile-gender">Select Gender</label><br>
-                        <select name="profileGender" id="profile-gender">
-                            <option  <?=($gender == "Male") ? 'selected="selected"' : "" ?> value="Male">Male</option>
-                            <option <?=($gender == "Female") ? 'selected="selected"' : "" ?> value="Female">Female</option>
+                        <select name="profileGender" id="profile-gender" value="<?php echo $gender ?>">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
                         </select><br><br>
                         
                         <label> Select Age</label><br>
                         <input type="number" name="profileAge" id="profile-age" min="1" max="20" value="<?php echo $age ?>"><br><br>
                         <input  id="avatar" type="file" name="avatar" accept="image/*" value="<?php echo $avatar ?>"><br><br>
                         
-                        <input type="hidden" id="form_name" name="form_name" value="<?=$updateType; ?>">
+                        <input type="hidden" id="form_name" name="form_name" value="add_user">
                         
                         <button type="submit" id="save-profile" name="save-profile" class="button">Save</button>
                     </form>

@@ -42,7 +42,7 @@ if (isset($_POST['form_name']) && $_POST['form_name'] === 'add_user') {
     }
     echo json_encode($msg);
 
-if (isset($_POST['form_name']) && $_POST['form_name'] === 'edit_user') {
+if (isset($_POST['form_name']) && $_POST['form_name'] === 'update_user') {
     
     include '../includes/database.php';
 
