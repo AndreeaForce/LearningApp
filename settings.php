@@ -1,8 +1,8 @@
 <?php
 include 'header.php';
 include dirname(__FILE__).'/settings/profiles.php';
-//include dirname(__FILE__).'/settings/profiles-edit.php';
 
+// when user click edit link->form_name value changes
 $updateType ="add_user";
 if (isset($_GET['edit'])) {
     $id = $_GET['edit'];
@@ -17,8 +17,14 @@ if (isset($_GET['edit'])) {
         $name = $result['profile_name'];
         $gender = $result['profile_gender'];
         $age = $result['profile_age'];
+        $strong = $result['profile_strong'];
+        $weak = $result['profile_weak'];
+        $likes = $result['profile_likes'];
+        $dislikes = $result['profile_dislikes'];
         $id = $result['profile_id'];
-        $updateType ="edit_user";
+        $avatar = $result['profile_avatar'];
+        $image_src = "images/".$avatar;
+        $updateType ="edit_user"; //form_name value changes
     }
     echo $result;
 }
@@ -70,11 +76,11 @@ if (isset($_GET['edit'])) {
             <div class="col__medium-2" id="profiles-min">
                 <div class="profiles-min-content">
                     <div class="profiles-add">
-                        <button type="button" name="add-profile" id="add-profile" class="button button-add">Add</button>
+                        <a href="/settings.php" name="add-profile" id="add-profile" class="button-add"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
                     </div>
                     <div class="avatar-table">
                         <table class="table table-avatar">
-                            <tbody id="userData">
+                            
                             <?php
 			                    if (isset($_SESSION['u_id'])) {
                                  
@@ -87,10 +93,11 @@ if (isset($_GET['edit'])) {
                                         $image = $row['profile_avatar'];
                                         $image_src = "images/".$image;
                             ?>
+                            <tbody id="userData">
                             <tr>
                                 <td>
                                     <div class="profile-avatar">
-                                        <img class="profile-avatar__img" src='<?php echo $image_src;  ?>' >
+                                        <img class="profiles-min__img" src='<?php echo $image_src;  ?>' >
                                     </div>
                                 </td>
                             </tr>
@@ -100,11 +107,9 @@ if (isset($_GET['edit'])) {
                             <tr>
                                 <td>
                                     <a href="/settings.php?edit=<?php echo $row['profile_id'] ?>" id="<?php echo $row['profile_id'] ?>" class="button button--edit-profile"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                    
+                                     <a href="/settings.php?delete=<?php echo $row['profile_id'] ?>" id="<?php echo $row['profile_id'] ?>" class="button button--delete-profile"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                   
-                                </td>
-                                <td>
-                                    <button type="button" name="delete-profile" value="delete" id="<?php echo $row['profile_id'] ?>" class="button button--edit-profile"><i class="fa fa-trash-o" aria-hidden="true"></i>
-                                    </button>
                                 </td>
                             </tr>
                             
@@ -123,22 +128,60 @@ if (isset($_GET['edit'])) {
                 <div class="profiles-content">
                     <div class="profiles-header" id="profiles-header">
                         <h4 class="">Profile</h4>
-                    </div><br>
+                    </div>
                     <form id="insert-profile" class="insertProfile">
                         <input type="hidden" id="profileId" name="profileId" value="<?php echo $id ?>">
                         
-                        <label for="profile-name">Name</label><br>
-                        <input type="text" name="profileName" id="profile-name" value="<?php echo $name ?>"><br><br>
+                        <div class="profile-avatar">
+                            <img class="profile-content__img" src='<?php echo $image_src;  ?>' >
+                            <label for="avatar" id="profile-avatar__label"><i class="fa fa-camera fa-lg"></i></label>
+                            <input class="profile-input" id="avatar" type="file" name="avatar" accept="image/*" value="<?php echo $avatar ?>"><br><br>
+                        </div>
+                         
                         
-                        <label for="profile-gender">Select Gender</label><br>
-                        <select name="profileGender" id="profile-gender">
+                        <label for="profile-name">Name</label><br>
+                        <input type="text" class="profile-input" name="profileName" id="profile-name" value="<?php echo $name ?>"><br><br>
+                        
+                        <label for="profile-gender">Gender</label><br>
+                        <select class="profile-input" name="profileGender" id="profile-gender">
                             <option  <?=($gender == "Male") ? 'selected="selected"' : "" ?> value="Male">Male</option>
                             <option  <?=($gender == "Female") ? 'selected="selected"' : "" ?> value="Female">Female</option>
                         </select><br><br>
                         
-                        <label> Select Age</label><br>
-                        <input type="number" name="profileAge" id="profile-age" min="1" max="20" value="<?php echo $age ?>"><br><br>
-                        <input  id="avatar" type="file" name="avatar" accept="image/*" value="<?php echo $avatar ?>"><br><br>
+                        <label for="profile-age">Age</label><br>
+                        <input class="profile-input" type="number" name="profileAge" id="profile-age" min="1" max="20" value="<?php echo $age ?>"><br><br>
+                        
+                        <label for="profile-strong">Strong Points</label><br>
+                        <select class="profile-input" name="profileStrong" id="profile-strong">
+                            <option  <?=($strong == "StrongPoint1") ? 'selected="selected"' : "" ?> value="StrongPoint1">Strong Point 1</option>
+                            <option  <?=($strong == "StrongPoint2") ? 'selected="selected"' : "" ?> value="StrongPoint2">Strong Point 2</option>
+                            <option  <?=($strong == "StrongPoint3") ? 'selected="selected"' : "" ?> value="StrongPoint3">Strong Point 3</option>
+                            <option  <?=($strong == "StrongPoint4") ? 'selected="selected"' : "" ?> value="StrongPoint4">Strong Point 4</option>
+                        </select><br><br>
+                        
+                        <label for="profile-weak">Weak Points</label><br>
+                        <select class="profile-input" name="profileWeak" id="profile-weak">
+                            <option  <?=($weak == "WeakPoint1") ? 'selected="selected"' : "" ?> value="WeakPoint1">Weak Point 1</option>
+                            <option  <?=($weak == "WeakPoint2") ? 'selected="selected"' : "" ?> value="WeakPoint2">Weak Point 2</option>
+                            <option  <?=($weak == "WeakPoint3") ? 'selected="selected"' : "" ?> value="WeakPoint3">Weak Point 3</option>
+                            <option  <?=($weak == "WeakPoint4") ? 'selected="selected"' : "" ?> value="WeakPoint4">Weak Point 4</option>
+                        </select><br>
+                        
+                        <label for="profile-likes">Likes</label><br>
+                        <select class="profile-input" name="profileLikes" id="profile-likes">
+                            <option  <?=($likes == "Likes1") ? 'selected="selected"' : "" ?> value="Likes1">Likes 1</option>
+                            <option  <?=($likes == "Likes2") ? 'selected="selected"' : "" ?> value="Likes2">Likes 2</option>
+                            <option  <?=($likes == "Likes3") ? 'selected="selected"' : "" ?> value="Likes3">Likes 3</option>
+                            <option  <?=($likes == "Likes4") ? 'selected="selected"' : "" ?> value="Likes4">Likes 4</option>
+                        </select><br><br>
+                        
+                        <label for="profile-dislikes">Dislikes</label><br>
+                        <select class="profile-input" name="profileDislikes" id="profile-dislikes">
+                            <option  <?=($dislikes == "Dislikes1") ? 'selected="selected"' : "" ?> value="Dislikes1">Dislikes 1</option>
+                            <option  <?=($dislikes == "Dislikes2") ? 'selected="selected"' : "" ?> value="Dislikes2">Dislikes 2</option>
+                            <option  <?=($dislikes == "Dislikes3") ? 'selected="selected"' : "" ?> value="Dislikes3">Dislikes 3</option>
+                            <option  <?=($dislikes == "Dislikes4") ? 'selected="selected"' : "" ?> value="Dislikes4">Dislikes 4</option>
+                        </select><br><br>
                         
                         <input type="hidden" id="form_name" name="form_name" value="<?=$updateType; ?>">
                         
