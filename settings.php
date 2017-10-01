@@ -31,6 +31,13 @@ if (isset($_GET['edit'])) {
 
 
 ?>
+
+<?php
+
+if (isset($_SESSION['u_id']) && isset( $_SESSION['u_email']) && isset($_SESSION['u_uid']) && isset($_SESSION['u_last']) && isset($_SESSION['u_first'])) {
+    include_once 'includes/database.php';
+}
+?>
 <div class="page-section" id="settings">
     <div class="main-wrapper">
         <div class="row"> 
@@ -52,31 +59,46 @@ if (isset($_GET['edit'])) {
             
             <div class="col__medium-10" id="account">
                 <div class="account--content">
-                    <form class="signup-form" action="/signup.php" method="POST">
-			             <input type="text" name="first" id="firstName" placeholder="Firstname">
-                            <div class="error"></div>
-                            <br>
-			             <input type="text" name="last" id="lastName" placeholder="Lastname">
-                            <div class="error"></div>
-                            <br>
-			             <input type="text" name="email" id="email" placeholder="E-mail">
-                            <div class="error"></div>
-                            <br>
-			             <input type="text" name="uid" id="userName" placeholder="Username">
-                            <div class="error"></div>
-                            <br>
-			             <input type="password" name="pwd" id="password" placeholder="Password">
-                            <div class="error"></div>
-                            <br>
-			             <button type="submit" name="submit" value="register">Sign up</button>
-		          </form>
+                    <form class="signup-form" action="/settings/account-settings.php" method="POST">
+                        <input type="text" name="first" id="firstName" placeholder="First name" value="<?php echo $_SESSION['u_first']?>" disabled>
+                        <div class="error"></div>
+                        <br>
+                        <input type="text" name="last" id="lastName" placeholder="Last name" value="<?php echo $_SESSION['u_last']?>" disabled>
+                        <div class="error"></div>
+                        <br>
+                        <input type="text" name="email" id="email" placeholder="E-mail" value="<?php echo $_SESSION['u_email']?>" disabled>
+                        <div class="error"></div>
+                        <br>
+                        <input type="text" name="uid" id="userName" placeholder="Username" value="<?php echo $_SESSION['u_uid']?>" disabled>
+                        <div class="error"></div>
+                        <br>
+                        <br>
+
+                        <button type="submit" name="submit" value="register"></button>
+                        <br>
+                        <br>
+                        <br>
+                        <form class="account--delete" action="includes/delete-account.php" method="post">
+                            <input type="submit" name="uid" id="uid">
+                        </form>
+                    </form>
+                    <form action="includes/change-password.php" method="POST">
+                        <input type="text" name="pwd" id="password" placeholder="Old Password" value="">
+                        <div class="error"></div>
+                        <input type="text" name="npwd" id="password" placeholder="New Password">
+                        <div class="error"></div>
+                        <input type="text" name="cpwd" id="password" placeholder="Confirm Password">
+                        <input type="password" name="uid" value="<?php echo $_SESSION['u_uid']?>" hidden>
+                        <div class="error"></div>
+                        <input type="submit" id="change-password-btn">
+                    </form>
                 </div>
             </div><!-- col__medium-10 -->
             
             <div class="col__medium-2" id="profiles-min">
                 <div class="profiles-min-content">
                     <div class="profiles-add">
-                        <a href="/settings.php" name="add-profile" id="add-profile" class="button-add"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+                        <a href="settings.php" name="add-profile" id="add-profile" class="button-add"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
                     </div>
                     <div class="avatar-table">
                         <table class="table table-avatar">
@@ -106,9 +128,9 @@ if (isset($_GET['edit'])) {
                             </tr>
                             <tr>
                                 <td>
-                                    <a href="/settings.php?edit=<?php echo $row['profile_id'] ?>" id="<?php echo $row['profile_id'] ?>" class="button button--edit-profile"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                    <a href="settings.php?edit=<?php echo $row['profile_id'] ?>" id="<?php echo $row['profile_id'] ?>" class="button button--edit-profile"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                                     
-                                     <a href="/settings.php?delete=<?php echo $row['profile_id'] ?>" id="<?php echo $row['profile_id'] ?>" class="button button--delete-profile"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                     <a href="settings.php?delete=<?php echo $row['profile_id'] ?>" id="<?php echo $row['profile_id'] ?>" class="button button--delete-profile"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                   
                                 </td>
                             </tr>

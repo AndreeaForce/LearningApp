@@ -2,49 +2,41 @@
 include 'header.php';
 ?>
 
-<section class="main-container">
-	<div class="main-wrapper">
+    <section class="main-container">
+        <div class="main-wrapper">
 
-		<?php
-	    if (isset($_SESSION['u_id'])) {
-               
-              $sql = "select * from profile where user_id='" . $_SESSION['u_id'] . "'";
-              $result = mysqli_query($conn,$sql);
-              
-              if (mysqli_num_rows($result) > 0) {
-                  //output data of each row
-                  while($row = mysqli_fetch_array($result)) {
-                      $image = $row['profile_avatar'];
-                      $image_src = "images/".$image;
-          ?>
-          <tbody id="userData">
-          <tr>
-              <td>
-                  <div class="profile-avatar">
-                      <img class="profiles-min__img" src='<?php echo $image_src;  ?>' >
-                  </div>
-              </td>
-          </tr>
-          <tr>
-              <td><?php echo $row["profile_name"]; ?></td>
-          </tr>
-          <tr>
-              <td>
-                  <a href="/settings.php?edit=<?php echo $row['profile_id'] ?>" id="<?php echo $row['profile_id'] ?>" class=" button--edit-profile"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                  
-                
-              </td>
-          </tr>
-          </tbody>
-          
-          <?php
-                  }
-              }                                                                          
-          }
-          ?>
-	
-    </div>
-</section>
+            <?php
+            if (isset($_SESSION['u_id'])) {
+            include_once 'includes/database.php';
+
+            echo '<h2 class="profile-">Profile</h2>';
+
+            $sql = "select avatar from users where user_id='" . $_SESSION['u_id'] . "'";
+            $result = mysqli_query($conn,$sql);
+            $row = mysqli_fetch_array($result);
+
+            $image = $row['avatar'];
+            $image_src = "images/".$image;
+            ?>
+            <div class="profile-avatar">
+                <img class="profile-avatar__img" src='<?php echo $image_src;  ?>' >
+                <?php
+                echo '<form class="form__avatar" action="includes/saveimage.php" method="post" enctype="multipart/form-data">
+                    <input class="input__avatar" id="avatar" type="file" name="avatar" accept="image/*">
+                    <label for="avatar" id="input__avatar--label"><i class="fa fa-camera fa-lg" aria-hidden="true"></i></label>
+                    <input class="button button__avatar" type="submit" name="btnsave" value="Upload">
+                </form></div>';
+                echo '<div class="profile-user">' . $_SESSION['u_first'] .'  '. $_SESSION['u_last']. '</div> ';
+                ?>
+
+                <?php
+                } else {
+                    echo '<h2>Some welcome text</h2>';
+                }
+                ?>
+            </div>
+        </div>
+    </section>
 <?php
 include 'footer.php';
 ?>
