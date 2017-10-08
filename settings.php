@@ -109,9 +109,7 @@ if (isset($_SESSION['u_id']) && isset( $_SESSION['u_email']) && isset($_SESSION[
             <div id="profiles-min">
                 <div class="slide-viewer">
                     <div class="profiles-min-content slide-group">
-                        <div class="profiles-add slide">
-                            <a ><i class="flaticon-cross" aria-hidden="true"></i></a>
-                        </div>
+                     
                 
                         <?php 
                         echo $table;
@@ -217,7 +215,9 @@ if (isset($_SESSION['u_id']) && isset( $_SESSION['u_email']) && isset($_SESSION[
        </div><!-- row -->
     </div><!-- main-wrapper -->
 </div><!-- page-settings -->
-            <div class="clear-me"></div>
+            <div class="clear-me"></div>  
+
+
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="

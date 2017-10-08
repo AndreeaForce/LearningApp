@@ -10,8 +10,11 @@ if (isset($_POST['profileId'])) {
         echo "Error description: ". mysqli_error($conn);
     }
     $result = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_array($result);
-    $msg['success'] = 1;
+    $msg['success'] = 0;
+    if(mysqli_affected_rows($conn) > 0) {
+        $msg['success'] = 1;
+    } 
+    
 }
-echo json_encode($row);
+echo json_encode( $msg);
 

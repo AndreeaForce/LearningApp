@@ -22,18 +22,17 @@ $(".settings__form").submit(function(e){
                 } else {
                     $("#result").html('<i class="flaticon-shape" aria-hidden="true"></i>');
                 }
+                
                 var userId = $('.profile-save-btn').attr("value");
                 console.log(userId);
+                
                 $.ajax({
                     url: "/settings/select-profiles-min.php",
                     method: "POST",
                     data:{userId:userId},
                     dataType: "json",
                     success: function(data) {
-                    console.log(data)
-                        $('.profile-name__td--absolute').val(data.profile_name);
-                        //$('#profileId').val(data.profile_id);
-                        $('profiles-min__img').attr('src', 'images/' + data.profile_avatar);
+                        $(".profiles-min-content").html(data.data);
                     }
                 });
 			},
@@ -43,7 +42,7 @@ $(".settings__form").submit(function(e){
 });
 
 // Edit profile
-$(".button--edit-profile").on('click', function(){
+$(".slide-viewer").on('click', ".button--edit-profile", function(){
     var profileId = $(this).attr("id");
 
     $.ajax({
@@ -52,7 +51,7 @@ $(".button--edit-profile").on('click', function(){
         data:{profileId:profileId},
         dataType: "json",
         success:function(result) {
-        console.log(result);
+            console.log(result);
             $('#profile-name').val(result.profile_name);
             $('#profile-gender').val(result.profile_gender);
             $('#profile-age').val(result.profile_age);
@@ -68,19 +67,23 @@ $(".button--edit-profile").on('click', function(){
 
 
 // Delete profile
-$(".button--delete-profile").on('click', function(){  
+$(".slide-viewer").on('click', '.button--delete-profile', function(){  
     var profileId = $(this).attr("id");
     var table = $('.table-avatar');
-    console.log(this);
+    $('[data-id='+profileId+']').hide();
     $.ajax({
         url: "/settings/delete-profiles.php",
         method: "POST",
         data:{profileId:profileId},
         dataType: "json"
         
-    }).done(function(){
-        table.remove();
-        window.location.reload();
+    }).always(function(data){
+        console.log(data);
+        if(data.success == 1) {
+            $('[data-id='+profileId+']').remove();
+            return;
+        } 
+        $('[data-id='+profileId+']').show();
     });
 });
 
@@ -106,9 +109,9 @@ $(document).on('click', '.button--edit-profile', function(ev){
 });
 
 // Reload page and go to a specific div #
-$('.profiles-add').on('click', function(){
-   window.location.reload();
-    window.location = "/settings.php#kids";
+$(".slide-viewer").on('click', '.profiles-add', function(){
+    $('.settings__form').trigger('reset');
+
     console.log(this);
 
     

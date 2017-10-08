@@ -494,9 +494,25 @@ label {
     margin: 0 auto;
     display: block;
 }
-.table-avatar:hover .profile-name__td--absolute, .table-avatar:hover .profile-edit__td--absolute {
+.profile-avatar .action-btns {
+    display:none;
+}
+.profile-avatar:hover .action-btns {
     display: block;
-} 
+    z-index: 3;
+}
+.profile-avatar:hover:after {
+    content: "";
+    background: rgba(80, 193, 199, 0.6);
+    position: absolute;
+    width: 100%;
+    top: 0;
+    height: 100%;
+    left: 0;
+    z-index: 2;
+    border-radius: 40%;
+    
+}
 .table-avatar:hover .overlay {
     opacity: 0.8;
     
@@ -515,6 +531,27 @@ label {
 .settings__form label {
     font-family: 'Montserrat', sans-serif;
     color: #50c1c7;
+}
+.table-avatar .profile-name {
+    display:none;
+}
+.profile-avatar:hover .profile-name {
+    display:block;
+    position:absolute;
+    text-align:center;
+    width:100%;
+    bottom:15px;
+    z-index:4;
+    color:#fff;
+}
+.table-avatar .action-btns {
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    line-height: 116px;
+    position: absolute;
 }
 #settings__form--password {
     margin-top: 2px;

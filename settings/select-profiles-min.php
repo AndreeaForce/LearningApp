@@ -15,7 +15,9 @@ if (isset($_SESSION['u_id'])) {
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     } 
-    $table = "";
+    $table = '<div class="profiles-add slide">
+                            <a ><i class="flaticon-cross" aria-hidden="true"></i></a>
+                        </div>';
     $msg = [];
     
     $sql = "select * from profile where user_id='" . $_SESSION['u_id'] . "'";
@@ -29,39 +31,29 @@ if (isset($_SESSION['u_id'])) {
             $profileId = $row['profile_id'];
             $profileName = $row["profile_name"];
             $table .='
-                <table class="table table-avatar slide">
-                        <tbody id="userData">
-                            <tr>
-                           
-                                <td>
-                                    <div class="profile-avatar">
-                                        <img class="profiles-min__img" src="'. $image_src .'" >
-                                        <div class="overlay"></div>
-                                    </div>
-                                </td>
-                         
-                                <td class="profile-name__td--absolute">'. $profileName .'</td>
-                     
-                                <td class="profile-edit__td--absolute">
-                                    <a id="'. $profileId .'" class=" button--edit-profile"><img src="images/002-pencil-hand-drawn-tool-outline.png" class="" aria-hidden="true"></a>
-                                    
-                                     <a id="'. $profileId .'" class="button--delete-profile"><img src="images/001-symbol.png" class="" aria-hidden="true"></a>
-                                  
-                                </td>
-                           </tr>
-                        </tbody>
-                    </table>    
+                <div data-id="'.$profileId.'" class="table table-avatar slide">
+                        <div class="profile-avatar">
+                            <img class="profiles-min__img" src="'. $image_src .'" >
+                            <span class="profile-name">'.$profileName .'</span>
+                            <div class="action-btns">
+                                <a id="'. $profileId .'" class=" button--edit-profile"><img src="images/002-pencil-hand-drawn-tool-outline.png" class="" aria-hidden="true"></a>
+                                <a id="'. $profileId .'" class="button--delete-profile"><img src="images/001-symbol.png" class="" aria-hidden="true"></a>
+                             </div>
+                        </div>     
+                    </div>    
             ';   
-            json_encode($row);
+            
         }
     }
  
     $msg['success'] = 1;
+    $msg['data'] = $table;
     
 } else {
     $msg['error'] = 0;
 }
-
-echo json_encode($msg);
+if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+    echo json_encode($msg);
+}
 
 ?>
