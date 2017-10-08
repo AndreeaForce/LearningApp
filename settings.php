@@ -1,204 +1,226 @@
 <?php
 include 'header.php';
 include dirname(__FILE__).'/settings/profiles.php';
-
-// when user click edit link->form_name value changes
-$updateType ="add_user";
-if (isset($_GET['edit'])) {
-    $id = $_GET['edit'];
-    if(!is_numeric($id)) {
-        exit();
-    }
-    $sql = mysqli_query($conn, "SELECT * FROM profile WHERE profile_id= $id LIMIT 1");
-    if($sql === false) {
-        echo "Error description: ". mysqli_error($conn);
-    }
-    while ($result = mysqli_fetch_assoc($sql)) {
-        $name = $result['profile_name'];
-        $gender = $result['profile_gender'];
-        $age = $result['profile_age'];
-        $strong = $result['profile_strong'];
-        $weak = $result['profile_weak'];
-        $likes = $result['profile_likes'];
-        $dislikes = $result['profile_dislikes'];
-        $id = $result['profile_id'];
-        $avatar = $result['profile_avatar'];
-        $image_src = "images/".$avatar;
-        $updateType ="edit_user"; //form_name value changes
-    }
-    echo $result;
-}
-
-
+include dirname(__FILE__).'/settings/select-profiles.php';
+include dirname(__FILE__).'/settings/delete-profiles.php';
+include dirname(__FILE__).'/settings/select-profiles-min.php';
+include dirname(__FILE__).'/settings/change-password.php';
 ?>
-<div class="page-section" id="settings">
+
+
+<?php
+
+if (isset($_SESSION['u_id']) && isset( $_SESSION['u_email']) && isset($_SESSION['u_uid']) && isset($_SESSION['u_last']) && isset($_SESSION['u_first'])) {
+    include_once '/includes/database.php';
+}
+?>
+
+
+
+<div class="page-section" id="account-profile">
     <div class="main-wrapper">
         <div class="row"> 
-            
-            <div class="col__medium-2">
-                <ul class="settings__ul">
-                    <span class="settings--title">SETTINGS</span>
-                    <li class="settings__li settings__li--top-margin" id="settings__li1">Account</li>
-                        <div class="horizontal-line"></div>
-                    <li class="settings__li" id="settings__li2">Profiles</li>
-                        <div class="horizontal-line"></div>
-                    <li class="settings__li" id="settings__li3">About</li>
-                        <div class="horizontal-line"></div>
-                    <form class="logout" action="includes/logout-form.php" method="POST">
-                        <button type="submit" class="settings__li button--no-btn" name="submit">Logout</button>
-                    </form>
-                </ul><!-- settings-ul -->
-            </div><!-- col__medium-2 -->
-            
-            <div class="col__medium-10" id="account">
-                <div class="account--content">
-                    <form class="signup-form" action="/signup.php" method="POST">
-			             <input type="text" name="first" id="firstName" placeholder="Firstname">
-                            <div class="error"></div>
-                            <br>
-			             <input type="text" name="last" id="lastName" placeholder="Lastname">
-                            <div class="error"></div>
-                            <br>
-			             <input type="text" name="email" id="email" placeholder="E-mail">
-                            <div class="error"></div>
-                            <br>
-			             <input type="text" name="uid" id="userName" placeholder="Username">
-                            <div class="error"></div>
-                            <br>
-			             <input type="password" name="pwd" id="password" placeholder="Password">
-                            <div class="error"></div>
-                            <br>
-			             <button type="submit" name="submit" value="register">Sign up</button>
-		          </form>
-                </div>
-            </div><!-- col__medium-10 -->
-            
-            <div class="col__medium-2" id="profiles-min">
-                <div class="profiles-min-content">
-                    <div class="profiles-add">
-                        <a href="/settings.php" name="add-profile" id="add-profile" class="button-add"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
-                    </div>
-                    <div class="avatar-table">
-                        <table class="table table-avatar">
-                            
-                            <?php
-			                    if (isset($_SESSION['u_id'])) {
-                                 
-                                $sql = "select * from profile where user_id='" . $_SESSION['u_id'] . "'";
-                                $result = mysqli_query($conn,$sql);
-                                
-                                if (mysqli_num_rows($result) > 0) {
-                                    //output data of each row
-                                    while($row = mysqli_fetch_array($result)) {
-                                        $image = $row['profile_avatar'];
-                                        $image_src = "images/".$image;
-                            ?>
-                            <tbody id="userData">
-                            <tr>
-                                <td>
-                                    <div class="profile-avatar">
-                                        <img class="profiles-min__img" src='<?php echo $image_src;  ?>' >
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><?php echo $row["profile_name"]; ?></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <a href="/settings.php?edit=<?php echo $row['profile_id'] ?>" id="<?php echo $row['profile_id'] ?>" class="button button--edit-profile"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                                    
-                                     <a href="/settings.php?delete=<?php echo $row['profile_id'] ?>" id="<?php echo $row['profile_id'] ?>" class="button button--delete-profile"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                                  
-                                </td>
-                            </tr>
-                            
-                            <?php
-                                    }
-                                }                                                                          
-                            }
-                            ?>
-                            </tbody>
-                        </table>
-                    </div><!-- avatar-table -->
-                </div><!-- profiles-min-content -->
-            </div><!-- col__medium-2 -->
-            
-            <div class="col__medium-8" id="profiles">
-                <div class="profiles-content">
-                    <div class="profiles-header" id="profiles-header">
-                        <h4 class="">Profile</h4>
-                    </div>
-                    <form id="insert-profile" class="insertProfile">
-                        <input type="hidden" id="profileId" name="profileId" value="<?php echo $id ?>">
-                        
-                        <div class="profile-avatar">
-                            <img class="profile-content__img" src='<?php echo $image_src;  ?>' >
-                            <label for="avatar" id="profile-avatar__label"><i class="fa fa-camera fa-lg"></i></label>
-                            <input class="profile-input" id="avatar" type="file" name="avatar" accept="image/*" value="<?php echo $avatar ?>"><br><br>
-                        </div>
-                         
-                        
-                        <label for="profile-name">Name</label><br>
-                        <input type="text" class="profile-input" name="profileName" id="profile-name" value="<?php echo $name ?>"><br><br>
-                        
-                        <label for="profile-gender">Gender</label><br>
-                        <select class="profile-input" name="profileGender" id="profile-gender">
-                            <option  <?=($gender == "Male") ? 'selected="selected"' : "" ?> value="Male">Male</option>
-                            <option  <?=($gender == "Female") ? 'selected="selected"' : "" ?> value="Female">Female</option>
-                        </select><br><br>
-                        
-                        <label for="profile-age">Age</label><br>
-                        <input class="profile-input" type="number" name="profileAge" id="profile-age" min="1" max="20" value="<?php echo $age ?>"><br><br>
-                        
-                        <label for="profile-strong">Strong Points</label><br>
-                        <select class="profile-input" name="profileStrong" id="profile-strong">
-                            <option  <?=($strong == "StrongPoint1") ? 'selected="selected"' : "" ?> value="StrongPoint1">Strong Point 1</option>
-                            <option  <?=($strong == "StrongPoint2") ? 'selected="selected"' : "" ?> value="StrongPoint2">Strong Point 2</option>
-                            <option  <?=($strong == "StrongPoint3") ? 'selected="selected"' : "" ?> value="StrongPoint3">Strong Point 3</option>
-                            <option  <?=($strong == "StrongPoint4") ? 'selected="selected"' : "" ?> value="StrongPoint4">Strong Point 4</option>
-                        </select><br><br>
-                        
-                        <label for="profile-weak">Weak Points</label><br>
-                        <select class="profile-input" name="profileWeak" id="profile-weak">
-                            <option  <?=($weak == "WeakPoint1") ? 'selected="selected"' : "" ?> value="WeakPoint1">Weak Point 1</option>
-                            <option  <?=($weak == "WeakPoint2") ? 'selected="selected"' : "" ?> value="WeakPoint2">Weak Point 2</option>
-                            <option  <?=($weak == "WeakPoint3") ? 'selected="selected"' : "" ?> value="WeakPoint3">Weak Point 3</option>
-                            <option  <?=($weak == "WeakPoint4") ? 'selected="selected"' : "" ?> value="WeakPoint4">Weak Point 4</option>
-                        </select><br>
-                        
-                        <label for="profile-likes">Likes</label><br>
-                        <select class="profile-input" name="profileLikes" id="profile-likes">
-                            <option  <?=($likes == "Likes1") ? 'selected="selected"' : "" ?> value="Likes1">Likes 1</option>
-                            <option  <?=($likes == "Likes2") ? 'selected="selected"' : "" ?> value="Likes2">Likes 2</option>
-                            <option  <?=($likes == "Likes3") ? 'selected="selected"' : "" ?> value="Likes3">Likes 3</option>
-                            <option  <?=($likes == "Likes4") ? 'selected="selected"' : "" ?> value="Likes4">Likes 4</option>
-                        </select><br><br>
-                        
-                        <label for="profile-dislikes">Dislikes</label><br>
-                        <select class="profile-input" name="profileDislikes" id="profile-dislikes">
-                            <option  <?=($dislikes == "Dislikes1") ? 'selected="selected"' : "" ?> value="Dislikes1">Dislikes 1</option>
-                            <option  <?=($dislikes == "Dislikes2") ? 'selected="selected"' : "" ?> value="Dislikes2">Dislikes 2</option>
-                            <option  <?=($dislikes == "Dislikes3") ? 'selected="selected"' : "" ?> value="Dislikes3">Dislikes 3</option>
-                            <option  <?=($dislikes == "Dislikes4") ? 'selected="selected"' : "" ?> value="Dislikes4">Dislikes 4</option>
-                        </select><br><br>
-                        
-                        <input type="hidden" id="form_name" name="form_name" value="<?=$updateType; ?>">
-                        
-                        <button type="submit" id="save-profile" name="save-profile" class="button">Save</button>
-                    </form>
-                    <p id="result"></p>
-                
-                </div><!-- profiles-content -->
-            </div><!-- col__medium-8 -->
-            
-            <div class="col__medium-10" id="about">
-                <div>about</div>
+            <div class="section-title--wrapper">
+                <h3 class="section-title__h3">Account Profile</h3>  
+                <i class="fa fa-sort-asc fa-2x" id="account-arrow--up" aria-hidden="true"></i>
+                <i class="fa fa-sort-desc fa-2x" id="account-arrow--down" aria-hidden="true"></i>
             </div>
-            <div class="clear-me"></div>
+            
+            <div class="section__header">  
+                <?php
+			      if (isset($_SESSION['u_id'])) {
+                       include_once '/includes/database.php'; 
+                       $sql = "select avatar from users where user_id='" . $_SESSION['u_id'] . "'";
+                       $result = mysqli_query($conn,$sql);
+                       $row = mysqli_fetch_array($result);
+                     
+                       $imagee = $row['avatar'];
+                       $imagee_src = "images/".$imagee;
+                    ?>
+   
+                    <div class="account-avatar">
+                        <img class="account-avatar__img" src='<?php echo $imagee_src;  ?>' >
+                    </div>
+          
+                    <div class="account-username">
+                        <h3 class="account-username__h3"><?php echo $_SESSION["u_uid"] ?></h3>
+                    </div>
+
+                <?php
+                } 
+                ?>
+                <form class="logout" action="includes/logout-form.php" method="POST">
+                    <button type="submit" class="account__logout" name="submit">Logout</button>
+                </form>
+            </div><!-- col__medium-2 -->
+
+                <div class="account--content">
+                    <form class="settings__form" action="/settings/account-settings.php" method="POST">
+                        <div class="settings__form--wrapper">
+                            <input type="text" name="first" id="firstName" class="settings__input" placeholder="First name" value="<?php echo $_SESSION['u_first']?>" disabled>
+                            <div class="error"></div>
+                            <br>
+                            <input type="text" name="last" id="lastName" class="settings__input" placeholder="Last name" value="<?php echo $_SESSION['u_last']?>" disabled>
+                            <div class="error"></div>
+                            <br>
+                            <input type="text" name="email" id="email" class="settings__input" placeholder="E-mail" value="<?php echo $_SESSION['u_email']?>" disabled>
+                            <div class="error"></div>
+                            <br>
+                            <input type="text" name="uid" id="userName" class="settings__input" placeholder="Username" value="<?php echo $_SESSION['u_uid']?>" disabled>
+                            <div class="error"></div>
+                            <br>
+                            <br>
+                            <!-----------------------------------------------
+                            <button type="submit" name="submit" value="register">Update</button>
+                            <br>
+                            <br>
+                            <br>
+                            <form class="account--delete" action="includes/delete-account.php" method="post">
+                                <input type="submit" name="uid" id="uid">
+                            </form>
+                            ------------------------------------------------>
+                        </div>
+                    </form>
+                    <form class="settings__form" id="settings__form--password" action="/settings/change-password.php" method="POST">
+                        <div class="settings__form--wrapper">
+                            <input type="text" name="pwd" id="password" class="settings__input" placeholder="Old Password" value="">
+                            <div class="error"></div>
+                            <input type="text" name="npwd" id="password" class="settings__input" placeholder="New Password">
+                            <div class="error"></div>
+                            <input type="text" name="cpwd" id="password" class="settings__input" placeholder="Confirm Password">
+                            <input type="hidden" id="uid" name="uid" value="<?php echo $_SESSION['u_uid']?>">
+                            
+                            <div class="error"></div>
+                        </div>
+                        <input class="button--width" type="submit" id="change-password-btn" value="Update Password">
+                    </form>
+                </div>
         </div><!-- row -->
     </div><!-- main-wrapper -->
 </div><!-- page-settings -->
+            
+            
+<div class="page-section" id="kids">
+    <div class="main-wrapper">
+        <div class="row">             
+            <div class="section-title--wrapper">
+                <h3 class="section-title__h3">Kids</h3>  
+                <i class="fa fa-sort-asc fa-2x" id="kids-arrow--up" aria-hidden="true"></i>
+                <i class="fa fa-sort-desc fa-2x" id="kids-arrow--down" aria-hidden="true"></i>
+            </div>
+            <div id="profiles-min">
+                <div class="slide-viewer">
+                    <div class="profiles-min-content slide-group">
+                        <div class="profiles-add slide">
+                            <a ><i class="fa fa-plus fa-lg" aria-hidden="true"></i></a>
+                        </div>
+                
+                        <?php 
+                        echo $table;
+                        ?>
+                              
+                    </div><!-- profiles-min-content -->
+                </div><!-- profiles-min -->
+                <div class="slide-arrow slide-arrow--left"><i class="fa fa-chevron-left" aria-hidden="true"></i></div>
+                    <div class="slide-arrow slide-arrow--right"><i class="fa fa-chevron-right" aria-hidden="true"></i></div>
+            </div>
+            <div class="" id="profiles">
+                <div class="profiles--content">
+                    <form class="settings__form" class="insertProfile">
+                        <div class="settings__form--wrapper">
+                            <input type="hidden" id="profileId" name="profileId" value="<?php echo $id ?>">
+                            
+                            <div class="profile-avatar-change">
+                                <img class="profile-content__img" id="profileImg" src='<?php echo $avatar_src; ?>' >
+                                <label for="avatar" id="profile-avatar__label"><i class="fa fa-camera fa-lg"></i></label>
+                                <input class="settings__input" id="avatar" type="file" name="avatar" accept="image/*" value="<?php echo $avatar ?>"><br><br>
+                            </div>
+                             
+                            <div class="just-space"></div>
+                            <label for="profile-name">Name</label><br>
+                            <input type="text" class="settings__input" name="profileName" id="profile-name" value="<?php echo $name ?>">
+                            <div id="error-name"></div>
+                            <br><br><br><br>
+                            
+                            <div class="profile__input--50">
+                                <label for="profile-gender">Gender</label><br>
+                                <select class="settings__input" name="profileGender" id="profile-gender">
+                                    <option  <?=($gender == "Male") ? 'selected="selected"' : "" ?> value="Male">Male</option>
+                                    <option  <?=($gender == "Female") ? 'selected="selected"' : "" ?> value="Female">Female</option>
+                                </select>
+                                <div id="error-gender"></div>
+                                <br><br>
+                            </div>
+                            <div class="profile__input--50">
+                                <label for="profile-age">Age</label><br>
+                                <input class="settings__input" type="number" name="profileAge" id="profile-age" min="1" max="20" value="<?php echo $age ?>">
+                                <div id="error-age"></div>
+                                <br><br>
+                            </div>
+                            
+                            <label for="profile-strong">Strong Points</label><br>
+                            <select class="settings__input" name="profileStrong" id="profile-strong">
+                                <option  <?=($strong == "StrongPoint1") ? 'selected="selected"' : "" ?> value="StrongPoint1">StrongPoint1</option>
+                                <option  <?=($strong == "StrongPoint2") ? 'selected="selected"' : "" ?> value="StrongPoint2">StrongPoint2</option>
+                                <option  <?=($strong == "StrongPoint3") ? 'selected="selected"' : "" ?> value="StrongPoint3">StrongPoint3</option>
+                                <option  <?=($strong == "StrongPoint4") ? 'selected="selected"' : "" ?> value="StrongPoint4">StrongPoint4</option>
+                            </select>
+                            <div id="error-strong"></div>
+                            <br><br>
+                            
+                            <label for="profile-weak">Weak Points</label><br>
+                            <select class="settings__input" name="profileWeak" id="profile-weak">
+                                <option  <?=($weak == "WeakPoint1") ? 'selected="selected"' : "" ?> value="WeakPoint1">WeakPoint1</option>
+                                <option  <?=($weak == "WeakPoint2") ? 'selected="selected"' : "" ?> value="WeakPoint2">WeakPoint2</option>
+                                <option  <?=($weak == "WeakPoint3") ? 'selected="selected"' : "" ?> value="WeakPoint3">WeakPoint3</option>
+                                <option  <?=($weak == "WeakPoint4") ? 'selected="selected"' : "" ?> value="WeakPoint4">WeakPoint4</option>
+                            </select>
+                            <div id="error-weak"></div>
+                            <br><br>
+                            
+                            <label for="profile-likes">Likes</label><br>
+                            <select class="settings__input" name="profileLikes" id="profile-likes">
+                                <option  <?=($likes == "Likes1") ? 'selected="selected"' : "" ?> value="Likes1">Likes1</option>
+                                <option  <?=($likes == "Likes2") ? 'selected="selected"' : "" ?> value="Likes2">Likes2</option>
+                                <option  <?=($likes == "Likes3") ? 'selected="selected"' : "" ?> value="Likes3">Likes3</option>
+                                <option  <?=($likes == "Likes4") ? 'selected="selected"' : "" ?> value="Likes4">Likes4</option>
+                            </select>
+                            <div id="error-likes"></div>
+                            <br><br>
+                            
+                            <label for="profile-dislikes">Dislikes</label><br>
+                            <select class="settings__input" name="profileDislikes" id="profile-dislikes">
+                                <option  <?=($dislikes == "Dislikes1") ? 'selected="selected"' : "" ?> value="Dislikes1">Dislikes1</option>
+                                <option  <?=($dislikes == "Dislikes2") ? 'selected="selected"' : "" ?> value="Dislikes2">Dislikes2</option>
+                                <option  <?=($dislikes == "Dislikes3") ? 'selected="selected"' : "" ?> value="Dislikes3">Dislikes3</option>
+                                <option  <?=($dislikes == "Dislikes4") ? 'selected="selected"' : "" ?> value="Dislikes4">Dislikes4</option>
+                            </select>
+                            <div id="error-dislikes"></div>
+                            <br><br>
+                            <p id="result"></p>
+                            
+                            <input type="hidden" id="form_name" name="form_name" value="add_user">
+                            </div>
+                            <button class="button--width profile-save-btn" type="submit" id="save-profile" name="save-profile" class="button" value="<?php echo $_SESSION["u_id"] ?>">Save</button> 
+                    </form>
+                
+                </div><!-- profiles-content -->
+            </div><!-- col__medium-8 -->
+       </div><!-- row -->
+    </div><!-- main-wrapper -->
+</div><!-- page-settings -->
+<div class="page-section" id="settings">
+    <div class="main-wrapper">
+        <div class="row"> 
+            <h3 class="section-title__h3">About</h3>
+            <div class="col__medium-10" id="about">
+                <div>about</div>
+            </div>
+       </div><!-- row -->
+    </div><!-- main-wrapper -->
+</div><!-- page-settings -->
+            <div class="clear-me"></div>
+
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   crossorigin="anonymous"></script>

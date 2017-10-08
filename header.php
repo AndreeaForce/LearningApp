@@ -9,6 +9,8 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://use.fontawesome.com/67e697fef0.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700" rel="stylesheet">
     
 </head>
 <body>
@@ -18,7 +20,7 @@
 		<div class="main-wrapper">
 			
 			<div class="navigation--left col__medium-3">
-				<div class="nav--settings"><a href="settings.php"><i class="fa fa-sliders fa-lg" aria-hidden="true"></i></a>
+				<div class="nav--settings"><a href="settings.php"><i class="fa fa-bars" aria-hidden="true"></i></a>
                 </div>
             </div>
             <div class="navigation--center col__medium-3">

@@ -29,7 +29,7 @@ time, mark, audio, video {
 
 body {
     line-height:1;
-    background-color: rgb(204, 204, 204) !important;
+    background: #f16b69;   
 }
 
 article,aside,details,figcaption,figure,
@@ -100,14 +100,19 @@ hr {
 
 input, select {
     vertical-align:middle;
+    font-family: 'Montserrat', sans-serif;
 }
+input:-webkit-autofill, select:-webkit-autofill {
+    border-bottom: 1px solid #50c1c7 !important;
+    -webkit-box-shadow:0 0 0 50px white inset; /* Change the color to your own background color */
 
+}
 /*MY CODE*/
 
 .main-wrapper {
     padding-left: 18px;
     padding-right: 18px;
-    max-width: 1236px;
+    max-width: 800px;
     margin-left: auto;
     margin-right: auto;
     overflow: hidden;
@@ -148,6 +153,10 @@ a {
     float: left;
     width: 83.32%;
 }
+.col__medium-12 {
+    float: left;
+    width: 100%;
+}
 .clear-me {
     clear: both;
 }
@@ -160,13 +169,7 @@ a {
 }
 nav {
     height: 70px;
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#0fd79c+0,28c2cd+50,40adff+100 */
-    background: #0fd79c; /* Old browsers */
-    background: -moz-linear-gradient(left,  #0fd79c 0%, #28c2cd 50%, #40adff 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(left,  #0fd79c 0%,#28c2cd 50%,#40adff 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to right,  #0fd79c 0%,#28c2cd 50%,#40adff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0fd79c', endColorstr='#40adff',GradientType=1 ); /* IE6-9 */
-
+    background: #50c1c7;
 }
 
 .navigation--ul {
@@ -233,13 +236,13 @@ nav {
     height: 38px;
     width: 120px;
     float: left;
-    padding: 13px 30px;
+    padding: 25px;
     border: none;
     border-radius: 5px;
     color: #FFF;
 }
 .button__green {
-    background-color: #23c6c3;
+    background-color: #50c1c7;
 }
 .button__green a {
     color: #FFF;
@@ -260,18 +263,29 @@ nav {
     background: linear-gradient(to right,  rgba(255,255,255,0) 0%,rgba(255,255,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#00ffffff',GradientType=1 ); /* IE6-9 */
 }
-.button--no-btn {
+.button--width {
+    display: block;
+    cursor: pointer;
+    padding: 0;
+    height: 100px;
+    width: 800px;
     border: none;
+    margin-top: 2px;
     background-color: #FFF;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 1.6rem;
+    color: #50c1c7;
+    border-radius: 5px;
 }
 .button--edit-profile, .button--delete-profile {
     border: none;
-    width: 40px;
-    color: #545454;
+    width: 20px;
+    color: #fff;
+    padding: 8px;
 }
 
 .button--edit-profile:hover, .button--delete-profile:hover {
-    color: #23c6c3;    
+    color: #545454;    
 }
 /* form */
 .form--login {
@@ -293,32 +307,26 @@ nav {
     color: #111;
     line-height: 30px;
 }
-.signup-form {
-    width: 400px;
-    margin:  auto;
-    padding-top: 30px;
+label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    color: #50c1c7;
 }
-.signup-form input {
-    width: 90%;
-    height: 40px;
-    padding: 0px 5%;
-    margin-bottom: 4px;
-    border: none;
-    background-color: #fff;
-    font-family: arial;
-    font-size: 16px;
-    color: #111;
-    line-height: 40px;
-}
-
 
 /* Profile */
 .profile-avatar {
     position: relative;
-    width: 100%;
-    margin: 20px auto;
-    height: 120px;
+    width: 100px;
 }
+.profile-avatar-change {
+    width: 120px;
+    height: 129px;
+    margin-right: 40px;
+    display: block;
+    float: left;
+    position: relative;
+}
+
 .nav-avatar__img {
     display: block;
     padding: 0 20px 0 20px;
@@ -380,93 +388,79 @@ nav {
     top: 5px;
 }
 
+#profile-name {
+    width: 70%;
+}
+#profile-gender {
+    width: 80%;
+}
+.profile__input--50 {
+    float: left;
+    width: 50%;
+}
 /* Settings */
 .page-section {
     padding: 1.5rem 0;
 }
 @media (min-width: 800px) {
     .page-section {
-        padding: 4.5rem 0;
+        padding: 2rem 0;
     }
 }
-#settings {
+#kids {
     padding-top: 0;
 }
-.settings__ul {
-    background-color: #FFF;
-    padding-top: 40px;
-    margin-left: 30px;
-    height: 600px;
-}
-.settings__li {
+
+.account__logout {
     padding: 40px 20px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
-    font-size: 1rem;
-    color: #545454;
+        font-family: 'Permanent Marker', cursive;
+    font-size: 1.4rem;
+    color: #50c1c7;
+    text-align: center;
+    background-color: #fff;
+    border: none;
+    height: 140px;
+    width: 140px;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
-.settings__li:hover {
-    color: #23c6c3;
-    content: '';
-    position: relative;
-    border-left: 4px solid #23c6c3;
-    top: 0;
-    cursor: pointer;
-}
-.settings__li--active {
-    color: #23c6c3;
-    content: '';
-    position: relative;
-    border-left: 4px solid #23c6c3;
-    top: 0;
-    cursor: pointer;
-}
-.settings--title {
-    font-size: 1.8rem;
-    margin-left: -30px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 900;
-    letter-spacing: 0.3rem;
-}
 .account--content {
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#0fd79c+0,28c2cd+50,40adff+100 */
-    background: #0fd79c; /* Old browsers */
-    background: -moz-linear-gradient(left,  #0fd79c 0%, #28c2cd 50%, #40adff 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(left,  #0fd79c 0%,#28c2cd 50%,#40adff 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to right,  #0fd79c 0%,#28c2cd 50%,#40adff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0fd79c', endColorstr='#40adff',GradientType=1 ); /* IE6-9 */
-    margin-top: 110px;
-    height: 400px;
 }
 .profiles-content {
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#0fd79c+0,28c2cd+50,40adff+100 */
-    background: #0fd79c; /* Old browsers */
-    background: -moz-linear-gradient(left,  #0fd79c 0%, #28c2cd 50%, #40adff 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(left,  #0fd79c 0%,#28c2cd 50%,#40adff 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to right,  #0fd79c 0%,#28c2cd 50%,#40adff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0fd79c', endColorstr='#40adff',GradientType=1 ); /* IE6-9 */
-    margin-top: 110px;
-    height: 1000px;
+   
 }
 .profiles-min-content {
-     background-color: #ededed;
-    padding-top: 40px;
-    height: 600px;
+       
 }
 #profiles, #profiles-min, #about {
-    display: none;
+    margin-top: 2px;
 }
+#profiles-min {
+    position: relative;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
 .profiles-add {
-    border: none;
     background-color: #ededed;
-    color: #545454;
     text-align: center;
-    font-size: 28px;
-    margin: 0 0 20px 0;
+    font-size: 1.2rem;
+    float: left;
+    display: inline-block;
+    height: 100px;
+    width: 100px;
+    border-radius: 40%;
+    margin: 0 10px;
+    cursor: pointer;
+}
+.profiles-add:hover {
+    opacity: 0.5;
+    font-size: 1.6rem;
 }
 .profiles-add a {
-    color: #545454;
+    color: #50c1c7;
+    line-height: 100px;
 }
 #avatar {
     width: 0.1px;
@@ -476,49 +470,79 @@ nav {
     position: absolute;
     z-index: -1;
 }
-.profiles-min__img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    padding: 10px;
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+ border-radius: 40%;    
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #50c1c7;
 }
-.profile-content__img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
+.profiles-min__img {
+    width: 100px;
+    height: 100px;
+    border-radius: 40%;
     margin: 0 auto;
     display: block;
 }
-#insert-profile {
-    width: 400px;
+.table-avatar:hover .profile-name__td--absolute, .table-avatar:hover .profile-edit__td--absolute {
+    display: block;
+} 
+.table-avatar:hover .overlay {
+    opacity: 0.8;
+    
+}
+
+.profile-content__img {
+    width: 120px;
+    height: 120px;
+    border-radius: 40%;
+    display: block;
+}
+.settings__form {
+    width: 100%;
     margin: 0 auto;
 }
-#insert-profile label {
+.settings__form label {
     font-family: 'Montserrat', sans-serif;
-    color: #FFF;
+    color: #50c1c7;
+}
+#settings__form--password {
+    margin-top: 2px;
 }
 #profile-avatar__label {
     position: absolute;
-    top: 50%;
-    left: 25%;
+    top: 42%;
+    left: 35%;
+    font-size: 1.5rem;
+    opacity: 0.7;
+    cursor: pointer;
 }
-.profile-input {
-    width: 90%;
+#profile-avatar__label:hover {
+    top: 40%;
+    left: 31%;
+    opacity: 0.4;
+    font-size: 2rem;
+}
+.settings__input {
+    width: 100%;
     height: 40px;
-    padding: 0px 5%;
-    margin-bottom: 4px;
-    margin-top: 10px;
-    border: none;
-    border-radius: 3px;
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0.29+0,0.3+100 */
-    background: -moz-linear-gradient(top,  rgba(255,255,255,0.29) 0%, rgba(255,255,255,0.3) 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(top,  rgba(255,255,255,0.29) 0%,rgba(255,255,255,0.3) 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to bottom,  rgba(255,255,255,0.29) 0%,rgba(255,255,255,0.3) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4affffff', endColorstr='#4dffffff',GradientType=0 ); /* IE6-9 */
-    font-family: arial;
+    margin: 5px 0;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-family: 'Montserrat', sans-serif;
+    border-bottom: 1px solid #ededed;
+    background-color: #fff;
     font-size: 16px;
-    color: #111;
+    color: #545454;
     line-height: 40px;
+    font-size: 1rem;
 }
 .profiles-header {
     font-family: 'Montserrat', sans-serif;
@@ -529,11 +553,27 @@ nav {
 }
 
 /* td */
+.profile-edit__td--absolute {
+    position: absolute;
+    top: 30px;
+    left: 18px;
+    display: none;
+}
+.profile-name__td--absolute {
+    position: absolute;
+    top: 70px;
+    left: 25px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 600;
+    font-size: 1.2rem;
+    display: none;
+    color: #fff;
+}
 td {
-    display: block;
-    width: 99.9%;
     clear: both;
-    text-align: center;
+}
+tr {
+    position: relative;
 }
 #userData {
     font-family: 'Montserrat', sans-serif;
@@ -543,5 +583,173 @@ td {
 
 /* settings/profiles/table */
 .table-avatar {
-    width: 100%;
+    position: relative;
+    width: 100px;
+    float: left;
+    height: 100px;
+    margin: 0 10px;
+    cursor: pointer;
+}
+.page--title {
+    text-align: center;
+    font-size: 1.8rem;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    letter-spacing: 0.3rem;
+}
+
+.account-info {
+    float: left;
+    height: 100px;
+    width: 658px;
+    margin-right: 2px;
+
+}
+
+.account-avatar {
+    float: left;
+    background: #fff;
+    width: 140px;
+    height: 140px;
+    margin-right: 2px;
+    border-radius: 5px;
+}
+
+.account-username {
+    float: left;
+    background: #fff;
+    width: 516px;
+    height: 140px;
+    border-radius: 5px;
+    position: relative;
+    margin-right: 2px;
+}
+.account-username__h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 1.2rem;
+    line-height: 140px;
+    padding-left: 40px;
+    color: #50c1c7;
+    display: inline;
+}
+
+.section__header {
+    margin-bottom: 2px;
+    height: 140px;
+}
+
+#account-arrow--down {
+    position: absolute;
+    top: 30%;
+    left: 160px;
+    color: #fff;
+    cursor: pointer;
+    display: none;
+}
+#account-arrow--up {
+    position: absolute;
+    top: 55%;
+    left: 160px;
+    color: #fff;
+    cursor: pointer;
+}
+#kids-arrow--down {
+    position: absolute;
+    top: 30%;
+    left: 60px;
+    color: #fff;
+    cursor: pointer;
+    display: none;
+}
+#kids-arrow--up {
+    position: absolute;
+    top: 55%;
+    left: 60px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.section-title__h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 1.2rem;
+    line-height: 1.4rem;
+    color: #fff;
+    padding: 40px 0 20px 0;
+    display: inline-block;
+}
+
+.account-avatar__img {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50%;
+    margin: 0 auto;
+    display: block;
+}
+
+.settings__form--wrapper {
+    background: #fff;
+    padding: 50px 100px;
+    border-radius: 5px;    
+}
+.just-space {
+    height: 40px;
+}
+#error-name {
+    color: #f16b69;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 1.2rem;
+}
+#result {
+    color: #febf30;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 1.2rem;
+}
+/* Slider */
+.slide-viewer {
+    position: relative; 
+    overflow: hidden; 
+    height: 100px;
+    padding: 20px 0;
+    margin: 0 auto;
+    width: 600px;
+    border-radius: 5px; 
+}
+.slide-group {
+    width: 1400px ; 
+    height: 100% ; 
+    position: relative;
+}
+
+.slide-arrow {
+    display: inline-block;
+    position: absolute;
+    top: 45%;
+    color: #50c1c7;
+    cursor: pointer;
+}
+
+.slide-arrow--left {
+    left: 30px;
+}
+.slide-arrow--right {
+    right: 30px;
+}
+.slide-arrow--left:hover, .slide-arrow--right:hover {
+    font-size: 1.3rem;
+}
+.section-title--wrapper {
+    position: relative;
+}
+
+.logout {
+    width: 140px;
+    height: 140px;
+    display: inline-block;
+    float: left;
 }

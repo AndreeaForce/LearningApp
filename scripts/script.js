@@ -31,6 +31,10 @@ var elPassword = document.getElementById('password');
 elPassword.onblur = checkEmpty;
 
 
+
+
+
+
 // Ajax request check username
 function checkUser() {
     if (elUserName.value == 0) {

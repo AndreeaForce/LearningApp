@@ -1,12 +1,17 @@
 <?php
 
 $msg = [];
-    $name = "";
-    $gender = "";
-    $age = "";
-    $avatar = "";
-    $id = 0;
-    $edit = false;
+$name = "";
+$gender = "";
+$age = "";
+$strong = "";
+$weak = "";
+$likes = "";
+$dislikes = "";
+$avatar_src = "/images/profiledefault.jpg";
+$avatar = "";
+$id = 0;
+$edit = false;
 
 if (isset($_POST['form_name']) && $_POST['form_name'] === 'add_user') {
     session_start();
@@ -38,18 +43,10 @@ if (isset($_POST['form_name']) && $_POST['form_name'] === 'add_user') {
     if(!$result) {
          echo("Error description: " . mysqli_error($conn));
     }
-}
-    /*
     $msg['success'] = 1;
         
-    } else {
-    
-        $msg['error'] = 0;
-    }
-    echo json_encode($msg);
-    */
-    
-if (isset($_POST['form_name']) && $_POST['form_name'] === 'edit_user') {
+    } 
+    else if (isset($_POST['form_name']) && $_POST['form_name'] === 'edit_user') {
     
     include '../includes/database.php';
 
@@ -81,17 +78,16 @@ if (isset($_POST['form_name']) && $_POST['form_name'] === 'edit_user') {
     if(!$result) {
          echo("Error description: " . mysqli_error($conn));
     }
-}
-    /*
+
+    
     $msg['success'] = 1;
         
     } else {
-    
-        $msg['error'] = 0;
+        echo $msg['error'] = 0;
     }
     echo json_encode($msg);
-    */
 
+           
 
 
 ?>
