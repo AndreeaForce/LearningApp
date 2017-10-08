@@ -15,15 +15,13 @@ if (isset($_SESSION['u_id']) && isset( $_SESSION['u_email']) && isset($_SESSION[
 }
 ?>
 
-
-
 <div class="page-section" id="account-profile">
     <div class="main-wrapper">
         <div class="row"> 
             <div class="section-title--wrapper">
                 <h3 class="section-title__h3">Account Profile</h3>  
-                <i class="fa fa-sort-asc fa-2x" id="account-arrow--up" aria-hidden="true"></i>
-                <i class="fa fa-sort-desc fa-2x" id="account-arrow--down" aria-hidden="true"></i>
+                <div class="flaticon-arrows-4" id="account-arrow--up" aria-hidden="true"></div>
+                <div class="flaticon-arrows-5" id="account-arrow--down" aria-hidden="true"></div>
             </div>
             
             <div class="section__header">  
@@ -105,14 +103,14 @@ if (isset($_SESSION['u_id']) && isset( $_SESSION['u_email']) && isset($_SESSION[
         <div class="row">             
             <div class="section-title--wrapper">
                 <h3 class="section-title__h3">Kids</h3>  
-                <i class="fa fa-sort-asc fa-2x" id="kids-arrow--up" aria-hidden="true"></i>
-                <i class="fa fa-sort-desc fa-2x" id="kids-arrow--down" aria-hidden="true"></i>
+                <div class="flaticon-arrows-4" id="kids-arrow--up" aria-hidden="true"></div>
+                <div class="flaticon-arrows-5" id="kids-arrow--down" aria-hidden="true"></div>
             </div>
             <div id="profiles-min">
                 <div class="slide-viewer">
                     <div class="profiles-min-content slide-group">
                         <div class="profiles-add slide">
-                            <a ><i class="fa fa-plus fa-lg" aria-hidden="true"></i></a>
+                            <a ><i class="flaticon-cross" aria-hidden="true"></i></a>
                         </div>
                 
                         <?php 
@@ -121,8 +119,8 @@ if (isset($_SESSION['u_id']) && isset( $_SESSION['u_email']) && isset($_SESSION[
                               
                     </div><!-- profiles-min-content -->
                 </div><!-- profiles-min -->
-                <div class="slide-arrow slide-arrow--left"><i class="fa fa-chevron-left" aria-hidden="true"></i></div>
-                    <div class="slide-arrow slide-arrow--right"><i class="fa fa-chevron-right" aria-hidden="true"></i></div>
+                <div class="slide-arrow slide-arrow--left"><i class="flaticon-arrows-2" aria-hidden="true"></i></div>
+                    <div class="slide-arrow slide-arrow--right"><i class="flaticon-arrows" aria-hidden="true"></i></div>
             </div>
             <div class="" id="profiles">
                 <div class="profiles--content">
@@ -132,7 +130,7 @@ if (isset($_SESSION['u_id']) && isset( $_SESSION['u_email']) && isset($_SESSION[
                             
                             <div class="profile-avatar-change">
                                 <img class="profile-content__img" id="profileImg" src='<?php echo $avatar_src; ?>' >
-                                <label for="avatar" id="profile-avatar__label"><i class="fa fa-camera fa-lg"></i></label>
+                                <label for="avatar" id="profile-avatar__label"><img src="images/002-app-1.png" class="fa fa-camera fa-lg"></label>
                                 <input class="settings__input" id="avatar" type="file" name="avatar" accept="image/*" value="<?php echo $avatar ?>"><br><br>
                             </div>
                              

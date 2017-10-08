@@ -107,6 +107,9 @@ input:-webkit-autofill, select:-webkit-autofill {
     -webkit-box-shadow:0 0 0 50px white inset; /* Change the color to your own background color */
 
 }
+
+
+
 /*MY CODE*/
 
 .main-wrapper {
@@ -458,9 +461,10 @@ label {
     opacity: 0.5;
     font-size: 1.6rem;
 }
-.profiles-add a {
+.profiles-add i {
     color: #50c1c7;
     line-height: 100px;
+    margin-right: 20px;
 }
 #avatar {
     width: 0.1px;
@@ -524,8 +528,8 @@ label {
     cursor: pointer;
 }
 #profile-avatar__label:hover {
-    top: 40%;
-    left: 31%;
+    top: 42%;
+    left: 35%;
     opacity: 0.4;
     font-size: 2rem;
 }
@@ -642,7 +646,7 @@ tr {
 
 #account-arrow--down {
     position: absolute;
-    top: 30%;
+    top: 50%;
     left: 160px;
     color: #fff;
     cursor: pointer;
@@ -650,14 +654,14 @@ tr {
 }
 #account-arrow--up {
     position: absolute;
-    top: 55%;
+    top: 50%;
     left: 160px;
     color: #fff;
     cursor: pointer;
 }
 #kids-arrow--down {
     position: absolute;
-    top: 30%;
+    top: 50%;
     left: 60px;
     color: #fff;
     cursor: pointer;
@@ -665,7 +669,7 @@ tr {
 }
 #kids-arrow--up {
     position: absolute;
-    top: 55%;
+    top: 50%;
     left: 60px;
     color: #fff;
     cursor: pointer;
@@ -674,7 +678,7 @@ tr {
 .section-title__h3 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     line-height: 1.4rem;
     color: #fff;
     padding: 40px 0 20px 0;
@@ -740,8 +744,11 @@ tr {
 .slide-arrow--right {
     right: 30px;
 }
-.slide-arrow--left:hover, .slide-arrow--right:hover {
-    font-size: 1.3rem;
+.slide-arrow--left:hover {
+    left: 28px;
+}
+.slide-arrow--right:hover {
+    right: 28px;
 }
 .section-title--wrapper {
     position: relative;

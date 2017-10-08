@@ -1,3 +1,5 @@
+$("form").attr('autocomplete', 'off'); // Switching form autocomplete attribute to off
+
 var loginButton = document.getElementById('login');
 var loginContainer = document.getElementsByClassName('form--login')[0];
 
@@ -14,7 +16,7 @@ function checkEmpty() {
     if (this.value <= 0) {
         this.nextElementSibling.textContent = "Please fill up this field.";
         console.log(this.nextElementSibling);
-     } else {
+     }  else {
          this.nextElementSibling.textContent= "";
     }
     
@@ -38,8 +40,17 @@ elPassword.onblur = checkEmpty;
 // Ajax request check username
 function checkUser() {
     if (elUserName.value == 0) {
-        elUserName.nextElementSibling.textContent= "";
+        elUserName.nextElementSibling.textContent= "Please chose your User Name. Choose wisely, as it can't be changed later.";
         return;
+    } if (elUserName.value === "Wisely" || elUserName.value === "wisely") {
+        elUserName.nextElementSibling.textContent= "Ha-ha. Verry funny.";
+        return;  
+    } if (elUserName.value === "Changed Later" || elUserName.value === "changed later") {
+        elUserName.nextElementSibling.textContent= "It can't be chenged later, please type another name.";
+        return;  
+    } if (elUserName.value === "Another Name" || elUserName.value === "another name") {
+        elUserName.nextElementSibling.textContent= "I'm getting sick of you.";
+        return;  
     } else {
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {

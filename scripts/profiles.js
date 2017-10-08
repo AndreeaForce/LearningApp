@@ -18,9 +18,9 @@ $(".settings__form").submit(function(e){
 			success: function(result) {	  // A function to be called if request succeeds
                 console.log(result);
                 if(result.success == 1) {
-                    $("#result").html('<i class="fa fa-check" aria-hidden="true"></i>' + " Succes");
+                    $("#result").html('<i class="flaticon-mark" aria-hidden="true"></i>' + " Succes");
                 } else {
-                    $("#result").html('<i class="fa fa-times" aria-hidden="true"></i>');
+                    $("#result").html('<i class="flaticon-shape" aria-hidden="true"></i>');
                 }
                 var userId = $('.profile-save-btn').attr("value");
                 console.log(userId);
@@ -31,13 +31,13 @@ $(".settings__form").submit(function(e){
                     dataType: "json",
                     success: function(data) {
                     console.log(data)
-                        $('#profile-name').val(data.profile_name);
-                        $('#profileId').val(data.profile_id);
-                        $('#profileImg').attr('src', data.profile_avatar);
+                        $('.profile-name__td--absolute').val(data.profile_name);
+                        //$('#profileId').val(data.profile_id);
+                        $('profiles-min__img').attr('src', 'images/' + data.profile_avatar);
                     }
                 });
 			},
-			dataType: 'json',
+			dataType: 'json', // data type received
 		  });  
     }
 });

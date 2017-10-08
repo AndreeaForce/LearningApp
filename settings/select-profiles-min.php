@@ -43,9 +43,9 @@ if (isset($_SESSION['u_id'])) {
                                 <td class="profile-name__td--absolute">'. $profileName .'</td>
                      
                                 <td class="profile-edit__td--absolute">
-                                    <a id="'. $profileId .'" class=" button--edit-profile"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                    <a id="'. $profileId .'" class=" button--edit-profile"><img src="images/002-pencil-hand-drawn-tool-outline.png" class="" aria-hidden="true"></a>
                                     
-                                     <a id="'. $profileId .'" class="button--delete-profile"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                     <a id="'. $profileId .'" class="button--delete-profile"><img src="images/001-symbol.png" class="" aria-hidden="true"></a>
                                   
                                 </td>
                            </tr>
