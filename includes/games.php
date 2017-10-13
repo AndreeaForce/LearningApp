@@ -30,19 +30,19 @@ if ( $profileStrong === "StrongPoint1" && $profileWeak === "WeakPoint1" && $prof
     <a href='game1/game2.html'><img class='games__img' src='img/Apps-Corebird-icon.png'></a>";
 } elseif ( $profileStrong === "StrongPoint2" && $profileWeak === "WeakPoint2" && $profileLikes === "Likes2" && $profileDislikes === "Dislikes2" )  {
     $table = "
-    <h1>This is all option 2</h1>
-    <a href='game1.html'><p>Game 1</p></a>
-    <a href='game2.html'><p>Game 2</p></a>";
+    <h1 class='games__h1'>This is all option 2</h1>
+    <a href='game1/game1.html'><img class='games__img' src='img/Apps-Comix-icon.png'></a>
+    <a href='game1/game3.html'><img class='games__img' src='img/Apps-Ide-Web-icon.png'></a>";
 } elseif ( $profileStrong === "StrongPoint3" && $profileWeak === "WeakPoint3" && $profileLikes === "Likes3" && $profileDislikes === "Dislikes3" )  {
     $table = "
-    <h1>This is all option 3</h1>
-    <a href='game1.html'><p>Game 1</p></a>
-    <a href='game2.html'><p>Game 3</p></a>";
+    <h1 class='games__h1'>This is all option 3</h1>
+    <a href='game1/game1.html'><img class='games__img' src='img/Apps-Comix-icon.png'></a>
+    <a href='game1/game3.html'><img class='games__img' src='img/Apps-Google-Play-Games-B-icon.png'></a>";
 } elseif ( $profileStrong === "StrongPoint4" && $profileWeak === "WeakPoint4" && $profileLikes === "Likes4" && $profileDislikes === "Dislikes4" )  {
     $table = "
-    <h1>This is all option 4</h1>
-    <a href='game1.html'><p>Game 1</p></a>
-    <a href='game2.html'><p>Game 4</p></a>";
+    <h1 class='games__h1'>This is all option 4</h1>
+    <a href='game1/game1.html'><img class='games__img' src='img/Apps-Comix-icon.png'></a>
+    <a href='game1/game4.html'><img class='games__img' src='img/Apps-Stopwatch-icon.png'></a>";
 }
 json_encode($table);    
 }
