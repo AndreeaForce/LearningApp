@@ -1,9 +1,51 @@
 $("form").attr('autocomplete', 'off'); // Switching form autocomplete attribute to off
 
+// Show/hide password protection
+var settingsBtn = document.getElementsByClassName('nav--settings')[0];
+var passCont = document.getElementsByClassName('settings__form--password')[0];
+
+settingsBtn.addEventListener('click', function(){
+    console.log(this);
+    passCont.style.display = "block";
+});
+
+// Verify password
+$(".settings__form--password").submit(function(e){
+    e.preventDefault(); //prevent default submit
+    var formData = new FormData(this); //data to send
+    
+    
+    //if($('.verify-pass').val() == "") {
+        //$("#error-name").html('<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>' + " Password is required");
+        //$(".verify-pass").css({"border-bottom": "1px solid red"});
+        
+    //} else {
+    
+     $.ajax({
+			type:"POST", 
+            data: formData, 
+            processData: false, 
+            contentType:false, 
+			url: "/includes/check-password.php", 
+			success: function(result) {	 
+                console.log(result);
+                if(result.success == 1) {
+                    $("#result").html('<i class="flaticon-mark" aria-hidden="true"></i>' + " Succes");
+                } else {
+                    $("#result").html('<i class="flaticon-shape" aria-hidden="true"></i>');
+                }       
+			},
+			dataType: 'json',
+		  });  
+   // }
+});
+
+// Show/ hide login/signup btn
 var loginButton = document.getElementById('login');
 var loginContainer = document.getElementsByClassName('form--login')[0];
 
 loginButton.addEventListener('click', function(){
+    console.log(this);
      loginContainer.style.display = "block";
     loginButton.style.display = "none";
 });
@@ -31,11 +73,6 @@ var elUserName = document.getElementById('userName');
 elUserName.onkeyup = checkUser;
 var elPassword = document.getElementById('password');
 elPassword.onblur = checkEmpty;
-
-
-
-
-
 
 // Ajax request check username
 function checkUser() {
@@ -80,3 +117,9 @@ function checkEmail() {
     }
 }
 //form-data --> sent img ajax
+
+$(".navigation--left").on("click", ".nav--settings", function() {
+    console.log(this);
+    $('.settings__form--password').css("display", "block");
+});
+

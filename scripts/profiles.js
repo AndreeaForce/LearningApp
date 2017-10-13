@@ -33,6 +33,7 @@ $(".settings__form").submit(function(e){
                     dataType: "json",
                     success: function(data) {
                         $(".profiles-min-content").html(data.data);
+                        slideAction();
                     }
                 });
 			},
@@ -48,7 +49,9 @@ $(".slide-viewer").on('click', ".button--edit-profile", function(){
     $.ajax({
         url: "/settings/select-profiles.php",
         method: "POST",
-        data:{profileId:profileId},
+        data:{
+            profileId:profileId
+        },
         dataType: "json",
         success:function(result) {
             console.log(result);
@@ -110,14 +113,14 @@ $(document).on('click', '.button--edit-profile', function(ev){
 
 // Reload page and go to a specific div #
 $(".slide-viewer").on('click', '.profiles-add', function(){
-    $('.settings__form').trigger('reset');
-
-    console.log(this);
-
-    
+    //$('.settings__form').trigger('reset');
+    window.location.reload();
+    window.location = "/settings.php#kids";
+    console.log(this);   
 });
 
 // Slider profiles
+function slideAction () {
 var leftArrow = document.getElementsByClassName('slide-arrow--left')[0];
 var rightArrow = document.getElementsByClassName('slide-arrow--right')[0];
 var arrowCont = document.getElementsByClassName('slide-arrow');
@@ -163,3 +166,5 @@ if (imageNumber <= 5) {
         arrowCont[i].style.color = '#ededed';
     }
 }
+}
+slideAction();

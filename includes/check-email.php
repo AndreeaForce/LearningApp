@@ -8,11 +8,11 @@ $email = mysqli_real_escape_string($conn, $_GET["email"]);
 mysqli_select_db($conn,"script");
 $sql = "SELECT * FROM users WHERE user_email='".$email."'";
 $result = mysqli_query($conn, $sql);
-$resultCheck = mysqli_num_rows($result);
+$row = mysqli_fetch_assoc($result);
 
 if (empty($email)) {
     echo "Please provide an email adress";
-} elseif ($resultCheck > 0) {
+} elseif ($row > 0) {
     echo "Email taken";
 } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     echo "Invalid email";

@@ -197,7 +197,7 @@ if (isset($_SESSION['u_id']) && isset( $_SESSION['u_email']) && isset($_SESSION[
                             
                             <input type="hidden" id="form_name" name="form_name" value="add_user">
                             </div>
-                            <button class="button--width profile-save-btn" type="submit" id="save-profile" name="save-profile" class="button" value="<?php echo $_SESSION["u_id"] ?>">Save</button> 
+                            <button class="button--width profile-save-btn" type="submit" id="save-profile" name="save-profile" value="<?php echo $_SESSION["u_id"] ?>">Save</button> 
                     </form>
                 
                 </div><!-- profiles-content -->

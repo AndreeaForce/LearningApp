@@ -1,0 +1,162 @@
+
+#numbersA a {
+    cursor: pointer;
+}
+.newHelpA:after {
+    font-family: FontAwesome;
+    content: "\f1e3";
+    content:url(001-animals.png);
+}
+#numbersB {
+    cursor: pointer;
+}
+
+.plus {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.egal {
+    margin-top: 20px;
+}
+
+.nr1 {
+    font-family: 'Montserrat', sans-serif;
+    color: #d37b93;
+    border: none;
+    font-size: 38px;
+    width: 60px;
+    height: 60px;
+    margin-right: 10px;
+    border: 2px solid #d37b93;
+    background-color: white;
+    border-radius: 40px;
+}
+.nr1:hover {
+    color: white;
+    background-color: #d37b93;
+}
+.nr2 {
+    font-family: 'Montserrat', sans-serif;
+    color: #d37b93;
+    border: none;
+    font-size: 38px;
+    width: 60px;
+    height: 60px;
+    margin-right: 10px;
+    border: 2px solid #d37b93;
+    background-color: white;
+    border-radius: 40px;
+}
+.nr2:hover {
+    color: white;
+    background-color: #d37b93;
+}
+
+#signButton {
+    font-family: 'Montserrat', sans-serif;
+    background-image: url(002-plus.png);
+    display: block;
+    background-color: white;
+    border: none;
+    width: 64px;
+    height: 64px;
+    margin: 0 auto;
+}
+
+.col-lg-12 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+#signContainer {
+    content: url(002-plus.png);
+    display: none;
+    width: 64px;
+    height: 64px;
+    padding: 0;
+    margin: 20px auto;
+}
+
+.totalMingi {
+    font-family: 'Montserrat', sans-serif;
+    background-image: url(001-equal.png);
+    display: block;
+    background-color: white;
+    border: none;
+    width: 64px;
+    height: 64px;
+    margin: auto;
+}
+
+#numbersA, #numbersB {
+    margin: auto;
+    width: 744px;
+}
+
+#ballTotalInt {
+    font-family: 'Montserrat', sans-serif;
+    color: #d37b93;
+    font-size: 58px;
+    text-align: center;
+}
+
+#ballContainer1 {
+    text-align: center;
+}
+
+#ballContainer2 {
+    text-align: center;
+}
+
+#ballTotal {
+    text-align: center;
+}
+
+.titlu {
+    font-family: 'Montserrat', sans-serif;
+    color: #b6b6b6;
+    text-align: center;
+    margin: 60px 0;
+}
+
+#signMinusButton {
+    font-family: 'Montserrat', sans-serif;
+    background-image: url(line.png);
+    display: block;
+    background-color: white;
+    border: none;
+    width: 64px;
+    height: 64px;
+    margin: 0 auto;
+}
+
+.resetAll {
+    font-family: 'Montserrat', sans-serif;
+    background-image: url(001-equal.png);
+    display: block;
+    background-color: white;
+    border: none;
+    width: 64px;
+    height: 64px;
+    margin: auto;
+}
+
+#signContainer2 {
+    content: url(line.png);
+    display: none;
+    width: 64px;
+    height: 64px;
+    padding: 0;
+    margin: 20px auto;
+}
+
+#signRefreshButton {
+    font-family: 'Montserrat', sans-serif;
+    background-image: url(repeat.png);
+    display: block;
+    background-color: white;
+    border: none;
+    width: 64px;
+    height: 64px;
+    margin: 0 auto
+}

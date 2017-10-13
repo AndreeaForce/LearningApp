@@ -1,6 +1,6 @@
 <?php
 	session_start();
-    //include dirname(__FILE__).'/includes/signup-form2.php';
+    include_once '/includes/check-password.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -19,10 +19,24 @@
 <header>
 	<nav>
 		<div class="main-wrapper">
-			
+		       
 			<div class="navigation--left col__medium-3">
-				<div class="nav--settings"><a href="settings.php"><i class="fa fa-bars" aria-hidden="true"></i></a>
+				<div class="nav--settings"><a href="/settings.php"><i class="fa fa-bars" aria-hidden="true"></i></a>
                 </div>
+        <!-----------        
+        <?php
+            if (isset($_SESSION['u_id'])) {	
+        ?> 
+                <form class="settings__form--password" action="includes/check-password.php" method="POST">
+                    <input class="verify-pass" type="password" name="pwd" placeholder="password">
+                    <input type="hidden" id="uid" name="uid" value="<?php echo $_SESSION['u_id']?>">
+                    <button class="header--check-pwd" type="submit" id="check-pwd" name="submit" value="<?php echo $_SESSION["u_id"] ?>">Check</button>
+                    <div id="error-name"></div>
+                </form>
+        <?php
+            }
+        ?> 
+        ------------->
             </div>
             <div class="navigation--center col__medium-3">
                 <a href="index.php"><img class="nav--logo" src="images/tour-text.png"></a>

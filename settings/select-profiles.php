@@ -9,10 +9,10 @@ if (isset($_POST['profileId'])) {
         echo "Error description: ". mysqli_error($conn);
     }
     $result = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_array($result);
+    $row = mysqli_fetch_assoc($result); // {profile_id: "105", profile_name: "Piscot", .....
     $image = $row['profile_avatar'];
     $image_src = "images/".$image;
+    
+    echo json_encode($row); // Întoarce un șir JSON pentru valoarea (value) dată.
     }
-    echo json_encode($row);
-
 ?>

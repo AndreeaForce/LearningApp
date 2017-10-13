@@ -73,21 +73,18 @@ if (isset($_POST['form_name']) && $_POST['form_name'] === 'add_user') {
             "WHERE profile_id = $id";
     
     $result = mysqli_query($conn, $sql);
+        
     
     //Error check query
     if(!$result) {
          echo("Error description: " . mysqli_error($conn));
     }
-
-    
+        
     $msg['success'] = 1;
         
     } else {
-        echo $msg['error'] = 0;
+        $msg['error'] = 0;
     }
     echo json_encode($msg);
-
-           
-
 
 ?>
