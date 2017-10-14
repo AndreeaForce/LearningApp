@@ -14,7 +14,7 @@ if (isset($_POST['profileId'])) {
     if(mysqli_affected_rows($conn) > 0) {
         $msg['success'] = 1;
     } 
-    
+ echo json_encode( $msg);   
 }
-echo json_encode( $msg);
+
 

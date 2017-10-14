@@ -12,32 +12,30 @@ settingsBtn.addEventListener('click', function(){
 // Verify password
 $(".settings__form--password").submit(function(e){
     e.preventDefault(); //prevent default submit
-    var formData = new FormData(this); //data to send
-    
-    
-    //if($('.verify-pass').val() == "") {
-        //$("#error-name").html('<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>' + " Password is required");
-        //$(".verify-pass").css({"border-bottom": "1px solid red"});
+       
+    if($('.verify-pass').val() === "") {
+        $("#error-name").html('<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>' + " Password is required");
+        $(".verify-pass").css({"border-bottom": "1px solid red"});
         
-    //} else {
+    } else {
+        var checkpwd = $('input[name="checkpwd"]').val(); //data to send
+        console.log(checkpwd);
     
      $.ajax({
 			type:"POST", 
-            data: formData, 
-            processData: false, 
-            contentType:false, 
+            data: {checkpwd: checkpwd},  
 			url: "/includes/check-password.php", 
-			success: function(result) {	 
-                console.log(result);
-                if(result.success == 1) {
-                    $("#result").html('<i class="flaticon-mark" aria-hidden="true"></i>' + " Succes");
+            dataType: 'json',
+			
+		  }).always(function(data) {	 
+                console.log(data);
+                if(data.success == 1) {
+                    $("#error-name").html('<i class="flaticon-mark" aria-hidden="true"></i>' + " Succes");
                 } else {
-                    $("#result").html('<i class="flaticon-shape" aria-hidden="true"></i>');
-                }       
-			},
-			dataType: 'json',
-		  });  
-   // }
+                    $("#error-name").html('<i class="flaticon-shape" aria-hidden="true"></i>');
+                }
+                });
+    }
 });
 
 // Show/ hide login/signup btn

@@ -18,20 +18,19 @@ include 'header.php';
                       $image_src = "images/".$image;
           ?>
         
-        <div data-id="<?php echo $row["profile_id"]; ?>" class="index-avatar" name="profileId" value="<?php echo $row["profile_id"]; ?>">
+        <div class="index-avatar">
             <div class="index-avatar-outer">
                <a href="games-page.php?id=<?php echo $row["profile_id"]; ?>"><img data-id="<?php echo $row["profile_id"]; ?>" class="profiles-min__img" src="<?php echo $image_src;  ?>" ></a>
-                 <input type="hidden" id="kidId" name="kidId" value="<?php echo $row["profile_id"]; ?>">
                 <div class="index-profile-name"><?php echo $row["profile_name"]; ?></div>
             </div>     
         </div>
      
-          <?php
-                  }
-              }                                                                          
-          }
+        <?php
+                }
+            }                                                                          
+        }
  
-          ?>
+        ?>
 	
     </div>
 </section>

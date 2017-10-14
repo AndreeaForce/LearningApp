@@ -14,6 +14,13 @@ if (isset($_SESSION['u_id']) && isset( $_SESSION['u_email']) && isset($_SESSION[
     include_once '/includes/database.php';
 }
 ?>
+<div class="header-wrapper">
+    <div class="links__fixed">
+        <a class="user--a__fixed" href="/settings.php#account-profile"><img src="img/005-people.png"></a>
+        <a class="kids--a__fixed" href="/settings.php#kids"><img src="img/003-boy-hand-drawn-face.png"></a>
+        <a class="about--a__fixed" href="/settings.php#about"><img src="img/001-question-mark-outline-in-a-circle-hand-drawn-button.png"></a>
+    </div>
+
 
 <div class="page-section" id="account-profile">
     <div class="main-wrapper">
@@ -205,19 +212,30 @@ if (isset($_SESSION['u_id']) && isset( $_SESSION['u_email']) && isset($_SESSION[
        </div><!-- row -->
     </div><!-- main-wrapper -->
 </div><!-- page-settings -->
-<div class="page-section" id="settings">
+<div class="page-section" id="about">
     <div class="main-wrapper">
         <div class="row"> 
-            <h3 class="section-title__h3">About</h3>
-            <div class="col__medium-10" id="about">
-                <div>about</div>
+            <div class="section-title--wrapper">
+                <h3 class="section-title__h3">About</h3>
+                <div class="flaticon-arrows-4" id="about-arrow--up" aria-hidden="true"></div>
+                <div class="flaticon-arrows-5" id="about-arrow--down" aria-hidden="true"></div>
             </div>
+            <div class="section__header">
+                <div class="about-content--min">
+                    <h2 class="about-content--min__h2">Something</h2>
+                    <h3 class="about-content--min__h3">about the persons behind this page</h3>
+                </div>
+            </div>
+            <div class="about--content">
+                
+            </div>
+    
        </div><!-- row -->
     </div><!-- main-wrapper -->
 </div><!-- page-settings -->
             <div class="clear-me"></div>  
 
-
+</div>
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
