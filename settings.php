@@ -13,8 +13,10 @@ include dirname(__FILE__).'/settings/change-password.php';
 if (isset($_SESSION['u_id']) && isset( $_SESSION['u_email']) && isset($_SESSION['u_uid']) && isset($_SESSION['u_last']) && isset($_SESSION['u_first'])) {
     include_once '/includes/database.php';
 }
+
+//if (isset($_POST['checkuIfPass']) && $_POST['checkuIfPass'] = 'no-pass') {
 ?>
-<div class="header-wrapper">
+<div class="settings-wrapper">
     <div class="links__fixed">
         <a class="user--a__fixed" href="/settings.php#account-profile"><img src="img/005-people.png"></a>
         <a class="kids--a__fixed" href="/settings.php#kids"><img src="img/003-boy-hand-drawn-face.png"></a>
@@ -220,10 +222,10 @@ if (isset($_SESSION['u_id']) && isset( $_SESSION['u_email']) && isset($_SESSION[
                 <div class="flaticon-arrows-4" id="about-arrow--up" aria-hidden="true"></div>
                 <div class="flaticon-arrows-5" id="about-arrow--down" aria-hidden="true"></div>
             </div>
-            <div class="section__header">
+            <div class="section__header-about">
                 <div class="about-content--min">
                     <h2 class="about-content--min__h2">Something</h2>
-                    <h3 class="about-content--min__h3">about the persons behind this page</h3>
+                    <h3 class="about-content--min__h3">about the persons behind this website</h3>
                 </div>
             </div>
             <div class="about--content">
@@ -236,7 +238,9 @@ if (isset($_SESSION['u_id']) && isset( $_SESSION['u_email']) && isset($_SESSION[
             <div class="clear-me"></div>  
 
 </div>
-
+<?php
+//}
+?>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   crossorigin="anonymous"></script>

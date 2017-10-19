@@ -1,63 +1,38 @@
 //settings tab
-var arrowUp = document.getElementById('account-arrow--up');
-var arrowDown = document.getElementById('account-arrow--down');
-var settingsCont = document.getElementsByClassName('account--content');
-
-var arrowUp2 = document.getElementById('kids-arrow--up');
-var arrowDown2 = document.getElementById('kids-arrow--down');
-var settingsCont2 = document.getElementsByClassName('profiles--content');
-
-var arrowUp3 = document.getElementById('about-arrow--up');
-var arrowDown3 = document.getElementById('about-arrow--down');
-var settingsCont3 = document.getElementsByClassName('about--content');
 
 //Account click event
-arrowUp.addEventListener('click', function() {
-    console.log(this);
-    settingsCont[0].style.display="none";
-    arrowDown.style.display="block";
-    arrowUp.style.display="none";
-
+$("#account-arrow--up").click(function(){
+    $(".account--content").slideUp("slow");
+    $("#account-arrow--up").hide("slow");
+    $("#account-arrow--down").show("slow");
 });
-
-arrowDown.addEventListener('click', function() {
-    console.log(this);
-    settingsCont[0].style.display="block";
-    arrowDown.style.display="none";
-    arrowUp.style.display="block";
-
+$("#account-arrow--down").click(function(){
+    $(".account--content").slideDown("slow");
+    $("#account-arrow--up").show("slow");
+    $("#account-arrow--down").hide("slow");
 });
 
 //Kids click event
-arrowUp2.addEventListener('click', function() {
-    console.log(this);
-    settingsCont2[0].style.display="none";
-    arrowDown2.style.display="block";
-    arrowUp2.style.display="none";
-
+$("#kids-arrow--up").click(function(){
+    $(".profiles--content").slideUp("slow");
+    $("#kids-arrow--up").hide("slow");
+    $("#kids-arrow--down").show("slow");
+});
+$("#kids-arrow--down").click(function(){
+    $(".profiles--content").slideDown("slow");
+    $("#kids-arrow--up").show("slow");
+    $("#kids-arrow--down").hide("slow");
 });
 
-arrowDown2.addEventListener('click', function() {
-    console.log(this);
-    settingsCont2[0].style.display="block";
-    arrowDown2.style.display="none";
-    arrowUp2.style.display="block";
-
-});
 
 //About click event
-arrowUp3.addEventListener('click', function() {
-    console.log(this);
-    settingsCont3[0].style.display="none";
-    arrowDown3.style.display="block";
-    arrowUp3.style.display="none";
-
+$("#about-arrow--up").click(function(){
+    $(".about--content").slideUp("slow");
+    $("#about-arrow--up").hide("slow");
+    $("#about-arrow--down").show("slow");
 });
-
-arrowDown3.addEventListener('click', function() {
-    console.log(this);
-    settingsCont3[0].style.display="block";
-    arrowDown3.style.display="none";
-    arrowUp3.style.display="block";
-
+$("#about-arrow--down").click(function(){
+    $(".about--content").slideDown("slow");
+    $("#about-arrow--up").show("slow");
+    $("#about-arrow--down").hide("slow");
 });

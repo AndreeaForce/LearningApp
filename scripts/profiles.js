@@ -1,4 +1,4 @@
-$(".settings__form").submit(function(e){
+$(".settings__form--password").submit(function(e){
     e.preventDefault(); //prevent default submit
     var formData = new FormData(this); //data to send
     
@@ -120,51 +120,47 @@ $(".slide-viewer").on('click', '.profiles-add', function(){
 });
 
 // Slider profiles
-function slideAction () {
-var leftArrow = document.getElementsByClassName('slide-arrow--left')[0];
-var rightArrow = document.getElementsByClassName('slide-arrow--right')[0];
-var arrowCont = document.getElementsByClassName('slide-arrow');
-
-var slide = document.querySelectorAll('.slide');
-var imageNumber = slide.length;
-var currentImage = 0
-var lastImage = currentImage + 5;
-
-function slideLeft() {
-    slide[currentImage].style.display='none';
-    currentImage ++;
-    console.log(currentImage);
-    return currentImage;
-}
-function slideRight() {
-       slide[currentImage - 1].style.display='block';
-       currentImage --;
-       console.log(currentImage);
-       return currentImage;    
-}
-
-rightArrow.addEventListener('click', function(){
-    console.log(this);
-    if (currentImage + 5 > imageNumber) {
-        console.log("Try another arrow! :D");
-    } else {
-        slideLeft();
-    } 
-});
-
-leftArrow.addEventListener('click', function(){
-    console.log(this);
-    if (currentImage == 0) {
-        console.log("Try another arrow! :D");
-    } else {
-        slideRight();
+function slideAction() {
+    
+    var imageNumber = $(".slide");
+    var currentImage = 0
+    var lastImage = currentImage + 5; 
+    
+    function slideLeft() {
+        var tmp = document.getElementsByClassName("slide")[currentImage];
+        $(tmp).hide("slow");
+        currentImage++;
+        console.log(currentImage);
+        return currentImage;
     }
-});
-
-if (imageNumber <= 5) {
-    for (var i = 0; i < arrowCont.length; i++) {
-        arrowCont[i].style.color = '#ededed';
+    function slideRight() {
+        var tmp = document.getElementsByClassName("slide")[currentImage - 1];
+        $(tmp).show("slow");
+        currentImage--;
+        console.log(currentImage);
+        return currentImage;
     }
-}
+    $(document).on("click", ".slide-arrow--right", function(){
+        console.log(this);
+        if (currentImage + 5 > imageNumber.length) {
+            console.log("Try another arrow! :D");
+        } else {
+            slideLeft();
+        }
+    });
+    $(document).on("click", ".slide-arrow--left", function(){
+        console.log(this);
+        if (currentImage == 0) {
+            console.log("Try another arrow! :D");
+        } else {
+            slideRight();
+        }
+    });
+    
+    if (imageNumber.length <= 5) {
+        for (var i = 0; i < 2; i++) {
+            $(".slide-arrow").css("color", "#ededed");
+        }
+    }
 }
 slideAction();

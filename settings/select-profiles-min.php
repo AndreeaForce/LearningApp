@@ -33,12 +33,16 @@ if (isset($_SESSION['u_id'])) {
             $table .='
                 <div data-id="'.$profileId.'" class="table table-avatar slide">
                         <div class="profile-avatar">
-                            <img class="profiles-min__img" src="'. $image_src .'" >
+                            
                             <span class="profile-name">'.$profileName .'</span>
                             <div class="action-btns">
-                                <a id="'. $profileId .'" class=" button--edit-profile"><img src="images/002-pencil-hand-drawn-tool-outline.png" class="" aria-hidden="true"></a>
-                                <a id="'. $profileId .'" class="button--delete-profile"><img src="images/001-symbol.png" class="" aria-hidden="true"></a>
+                                <a id="'. $profileId .'" class=" button--edit-profile"><img src="img/edit1.png" class="" aria-hidden="true"></a>
+     
+                                <a id="'. $profileId .'" class="button--delete-profile"><img src="img/delete1.png" class="" aria-hidden="true"></a>
+     
                              </div>
+                             <div class="overlay"></div>
+                             <img class="profiles-min__img" src="'. $image_src .'" >
                         </div>     
                     </div>    
             ';   

@@ -1,6 +1,6 @@
 <?php
 	session_start();
-    include_once '/includes/check-password.php';
+    //include dirname(__FILE__).'/includes/check-password.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -30,7 +30,8 @@
                 <form class="settings__form--password">
                     <input class="verify-pass" type="password" name="checkpwd" placeholder="password">
                     <input type="hidden" id="uid" name="checkuid" value="<?php echo $_SESSION['u_id']?>">
-                    <button class="header--check-pwd" type="submit" id="check-pwd" name="checksubmit" value="<?php echo $_SESSION["u_id"] ?>">Check</button>
+                    <input type="hidden" id="checkPass" name="checkuIfPass" value="no-pass">
+                    <button class="header--check-pwd" type="submit" id="checksubmit" name="submit" value="check-pwd">Check</button>
                     <div id="error-name"></div>
                 </form>
         <?php

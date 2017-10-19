@@ -129,6 +129,15 @@ input:-webkit-autofill, select:-webkit-autofill {
     margin-left: auto;
     margin-right: auto;
     overflow: hidden;
+    height: 120px;
+}
+.settings-wrapper {
+    padding-left: 18px;
+    padding-right: 18px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
 }
 
 a {
@@ -136,52 +145,17 @@ a {
 }
 
 .row {
-   
+   width: 100%;
+    clear: both;
+    margin: 0 10px;
 }
-.col__medium-2 {
-    float: left;
-    width: 16.66%;
-}
-.col__medium-3 {
-    float: left;
-    width: 24.99%;
-}
-.col__medium-4 {
-    float: left;
-    width: 33.33%
-}
-.col__medium-5 {
-    float: left;
-    width: 41.66%;
-}
-.col__medium-6 {
-    float: left;
-    width: 50%;
-}
-.col__medium-8 {
-    float: left;
-    width: 66.66%;
-}
-.col__medium-10 {
-    float: left;
-    width: 83.32%;
-}
-.col__medium-12 {
-    float: left;
-    width: 100%;
-}
+
 .clear-me {
     clear: both;
 }
-.horizontal-line {
-    content: '';
-    width: 144px;
-    position: relative;
-    border: 0.5px solid #F6F6F6;
-    margin-left: 20px;
-}
+
 nav {
-    height: 70px;
+    height: 100px;
     background: #f16b69;
 }
 
@@ -196,14 +170,6 @@ nav {
     padding-left: 30px;
 }
 
-.vertical-line {
-    float: left;
-    content: '';
-    height: 14px;
-    position: relative;
-    border: 1px solid #FFF;
-    top: 0;
-}
 .nav--settings {
     float: left;
     color: #FFF;
@@ -324,7 +290,8 @@ nav {
 }
 label {
     font-family: 'Montserrat', sans-serif;
-    font-size: 1.2rem;
+    font-size: 1rem;
+    font-weight: 600;
     color: #50c1c7;
 }
 
@@ -415,13 +382,9 @@ label {
 }
 /* Settings */
 .page-section {
-    padding: 1.5rem 0;
+    padding: 0;
 }
-@media (min-width: 800px) {
-    .page-section {
-        padding: 2rem 0;
-    }
-}
+
 #kids {
     padding-top: 0;
 }
@@ -441,6 +404,7 @@ label {
 }
 
 .account--content {
+    
 }
 .profiles-content {
    
@@ -468,10 +432,21 @@ label {
     border-radius: 40%;
     margin: 0 10px;
     cursor: pointer;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    opacity: 1;
+
 }
 .profiles-add:hover {
-    opacity: 0.5;
     font-size: 1.6rem;
+    -webkit-opacity: 0.25;
+    -moz-opacity: 0.25;
+    opacity: 0.25;
+    -webkit-transition: all 3s ease;
+    -moz-transition: all 3s ease;
+    -ms-transition: all 3s ease;
+    -o-transition: all 3s ease;
+    transition: all 3s ease;
 }
 .profiles-add i {
     color: #50c1c7;
@@ -494,7 +469,7 @@ label {
   right: 0;
   height: 100%;
   width: 100%;
- border-radius: 40%;    
+  border-radius: 40%;    
   opacity: 0;
   transition: .5s ease;
   background-color: #50c1c7;
@@ -506,28 +481,14 @@ label {
     margin: 0 auto;
     display: block;
 }
-.profile-avatar .action-btns {
-    display:none;
+.profile-avatar:hover .profiles-min__img {
+    opacity: 0.2;
+    transition: .5s ease;;
 }
-.profile-avatar:hover .action-btns {
-    display: block;
-    z-index: 3;
-}
-.profile-avatar:hover:after {
-    content: "";
-    background: rgba(80, 193, 199, 0.6);
-    position: absolute;
-    width: 100%;
-    top: 0;
-    height: 100%;
-    left: 0;
-    z-index: 2;
-    border-radius: 40%;
-    
-}
+
 .table-avatar:hover .overlay {
     opacity: 0.8;
-    
+    transition: .5s ease;
 }
 
 .profile-content__img {
@@ -535,6 +496,7 @@ label {
     height: 120px;
     border-radius: 40%;
     display: block;
+    opacity: 1;
 }
 .settings__form {
     width: 100%;
@@ -547,6 +509,11 @@ label {
 .table-avatar .profile-name {
     display:none;
 }
+.profile-avatar:hover .action-btns {
+    opacity: 1;
+    transition: .5s ease;
+    z-index: 3;
+}
 .profile-avatar:hover .profile-name {
     display:block;
     position:absolute;
@@ -556,14 +523,16 @@ label {
     z-index:4;
     color:#fff;
 }
-.table-avatar .action-btns {
+.profile-avatar .action-btns {
+    opacity: 0;
     top: 0;
     bottom: 0;
     width: 100%;
     margin: auto;
     text-align: center;
-    line-height: 116px;
+    line-height: 90px;
     position: absolute;
+    z-index: 3;
 }
 #settings__form--password {
     margin-top: 2px;
@@ -577,9 +546,10 @@ label {
     cursor: pointer;
 }
 #profile-avatar__label:hover {
-    top: 42%;
-    left: 35%;
+    top: 39%;
+    left: 32%;
     opacity: 0.4;
+    transition: .6s ease;
     font-size: 2rem;
 }
 .settings__input {
@@ -595,7 +565,7 @@ label {
     font-size: 16px;
     color: #545454;
     line-height: 40px;
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 .profiles-header {
     font-family: 'Montserrat', sans-serif;
@@ -997,6 +967,7 @@ tr {
     width: 100%;
     height: 400px;
     background-color: #fff;
+    border-radius: 5px;
 }
 /* fixed links */
 
@@ -1025,7 +996,133 @@ tr {
 .user--a__fixed:hover, .kids--a__fixed:hover, .about--a__fixed:hover {
     background-color: #e06261;
     border-radius: 18px;
+    opacity: 1;
+    transition: .6s ease;
 }
 
 
 
+
+.section__header-about {
+    margin-bottom: 2px;
+
+}
+
+.container-col-12 {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.col-7-sm {
+    width: 57.5%;
+    float: left;
+}
+
+.col-5-sm {
+    width: 42.5%;
+    float: left;
+}
+@media screen and (max-width: 1225px) {
+    .col-7-sm {
+        width: 50%;
+    }
+    .col-5-sm {
+    width: 50%;
+    float: left;
+}
+}
+.col__height {
+    height: 498px;
+}
+
+.logo-center img {
+    margin: 0 auto;
+}
+
+#left-img {
+    width: 250px;
+    height: 250px;
+    display: block;
+    float: left;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0 31.7px 0 63.3px;
+}
+
+#left-text {
+    width: 250px;
+    height: 250px;
+    display: block;
+    float: left;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0 63.3px 0 31.7px;
+}
+#left-text h1 {
+    margin: 40px 0 20px 0;
+    color: #fff;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 1.6rem;
+}
+#left-text p {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 400;
+    color: #fff;
+    font-size: 1rem;
+    line-height: 1.2rem;
+}
+.right-signup {
+    width: 400px;
+    display: block;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 50px 0;
+}
+
+.signup-form {
+    max-width: 300px;
+    margin: 0 auto;
+    
+}
+.signup-form input {
+    width: 100%;
+    height: 30px;
+    padding-left: 5%;
+    margin-bottom: 4px;
+    border: none;
+    background-color: #fff;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 400;
+}
+
+.signup-form__h2 {
+    text-align: center;
+    padding:  0 0 40px 0;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.button2 {
+    
+}
+
+.signup-form--button {
+    display: block;
+    cursor: pointer;
+    height: 38px;
+    width: 120px;
+    border: none;
+    border-radius: 5px;
+    color: #FFF;
+    margin: 20px auto 0;
+}
+.error {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 400;
+    font-size: 0.8rem;
+    color: red;
+    line-height: 1.2rem;
+}

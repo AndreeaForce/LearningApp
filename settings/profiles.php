@@ -1,6 +1,5 @@
 <?php
 
-$msg = [];
 $name = "";
 $gender = "";
 $age = "";
@@ -16,7 +15,7 @@ $edit = false;
 if (isset($_POST['form_name']) && $_POST['form_name'] === 'add_user') {
     session_start();
     include '../includes/database.php';
-    
+    $msg = [];
     $name = mysqli_real_escape_string($conn, $_POST["profileName"]);
     $gender = mysqli_real_escape_string($conn, $_POST["profileGender"]);
     $age = mysqli_real_escape_string($conn, $_POST["profileAge"]);
@@ -44,7 +43,7 @@ if (isset($_POST['form_name']) && $_POST['form_name'] === 'add_user') {
          echo("Error description: " . mysqli_error($conn));
     }
     $msg['success'] = 1;
-        
+     echo json_encode($msg);   
     } 
     else if (isset($_POST['form_name']) && $_POST['form_name'] === 'edit_user') {
     
@@ -81,10 +80,10 @@ if (isset($_POST['form_name']) && $_POST['form_name'] === 'add_user') {
     }
         
     $msg['success'] = 1;
-        
+     echo json_encode($msg);   
     } else {
-        $msg['error'] = 0;
+        
     }
-    echo json_encode($msg);
+    
 
 ?>

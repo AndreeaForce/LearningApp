@@ -9,34 +9,42 @@ settingsBtn.addEventListener('click', function(){
     passCont.style.display = "block";
 });
 
-// Verify password
+//Verify password
 $(".settings__form--password").submit(function(e){
     e.preventDefault(); //prevent default submit
-       
-    if($('.verify-pass').val() === "") {
+    var formData = new FormData(this); //data to send
+    
+    
+    if($('.verify-pass').val() == "") {
         $("#error-name").html('<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>' + " Password is required");
         $(".verify-pass").css({"border-bottom": "1px solid red"});
         
     } else {
-        var checkpwd = $('input[name="checkpwd"]').val(); //data to send
-        console.log(checkpwd);
     
      $.ajax({
 			type:"POST", 
-            data: {checkpwd: checkpwd},  
+            data: formData, 
+            processData: false, 
+            contentType:false, 
 			url: "/includes/check-password.php", 
-            dataType: 'json',
-			
-		  }).always(function(data) {	 
-                console.log(data);
-                if(data.success == 1) {
+			success: function(result) {	 
+                console.log(result);
+                if(result.success == 1) {
+                    $("#checkPass").val("pass");
                     $("#error-name").html('<i class="flaticon-mark" aria-hidden="true"></i>' + " Succes");
+                    window.location = "/settings.php";
+                    
                 } else {
                     $("#error-name").html('<i class="flaticon-shape" aria-hidden="true"></i>');
-                }
-                });
-    }
+                }       
+			},
+			dataType: 'json',
+		  });  
+   }
 });
+
+// Show/ hide login/signup btn
+
 
 // Show/ hide login/signup btn
 var loginButton = document.getElementById('login');
@@ -68,7 +76,7 @@ elLastName.onblur = checkEmpty;
 var elEmail = document.getElementById('email');
 elEmail.onblur = checkEmail;
 var elUserName = document.getElementById('userName');
-elUserName.onkeyup = checkUser;
+elUserName.onblur = checkUser;
 var elPassword = document.getElementById('password');
 elPassword.onblur = checkEmpty;
 
