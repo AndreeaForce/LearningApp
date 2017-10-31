@@ -1,7 +1,8 @@
 
 <?php
 
-include '/includes/database.php';     
+include 'database.php';
+
 if($_GET['id']) {
 
 $id = $_GET['id']; 
@@ -27,17 +28,17 @@ if ( $profileStrong === "StrongPoint1" && $profileWeak === "WeakPoint1" && $prof
     $table = "
     <h1 class='games__h1'>This is all option 1</h1>
     <a href='game1/game1.html'><img class='games__img' src='img/Apps-Comix-icon.png'></a>
-    <a href='game1/game2.html'><img class='games__img' src='img/Apps-Corebird-icon.png'></a>";
+    <a href='game2.html'><img class='games__img' src='img/Apps-Corebird-icon.png'></a>";
 } elseif ( $profileStrong === "StrongPoint2" && $profileWeak === "WeakPoint2" && $profileLikes === "Likes2" && $profileDislikes === "Dislikes2" )  {
     $table = "
     <h1 class='games__h1'>This is all option 2</h1>
     <a href='game1/game1.html'><img class='games__img' src='img/Apps-Comix-icon.png'></a>
-    <a href='game1/game3.html'><img class='games__img' src='img/Apps-Ide-Web-icon.png'></a>";
+    <a href='game3.html'><img class='games__img' src='img/Apps-Ide-Web-icon.png'></a>";
 } elseif ( $profileStrong === "StrongPoint3" && $profileWeak === "WeakPoint3" && $profileLikes === "Likes3" && $profileDislikes === "Dislikes3" )  {
     $table = "
     <h1 class='games__h1'>This is all option 3</h1>
     <a href='game1/game1.html'><img class='games__img' src='img/Apps-Comix-icon.png'></a>
-    <a href='game1/game3.html'><img class='games__img' src='img/Apps-Google-Play-Games-B-icon.png'></a>";
+    <a href='game3.html'><img class='games__img' src='img/Apps-Google-Play-Games-B-icon.png'></a>";
 } elseif ( $profileStrong === "StrongPoint4" && $profileWeak === "WeakPoint4" && $profileLikes === "Likes4" && $profileDislikes === "Dislikes4" )  {
     $table = "
     <h1 class='games__h1'>This is all option 4</h1>

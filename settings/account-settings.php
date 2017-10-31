@@ -22,7 +22,7 @@ include_once ($_SERVER['DOCUMENT_ROOT']."includes/delete-account.php");
                                 <li class="settings__account__li--username" id="settings__li5__cpsw">Confirm Password</li>
                                 <li class="settings__account__li--username" id="settings__li6__sounds">Sounds</li>
                                 <?php while($row = mysqli_fetch_array($result))
-                                echo "<li><a href='/includes/delete-account.php?del=$row[id]'>Deactivate Account</a></li>"?>
+                                echo "<li><a href='includes/delete-account.php?del=$row[id]'>Deactivate Account</a></li>"?>
                             </ul>
                         </div>
                     <li class="settings__li" id="settings__li2">Profiles</li>
@@ -33,7 +33,7 @@ include_once ($_SERVER['DOCUMENT_ROOT']."includes/delete-account.php");
                         <div class="horizontal-line"></div>
                     <li class="settings__li" id="settings__li5">About</li>
                         <div class="horizontal-line"></div>
-                    <form class="logout" action="/includes/logout-form.php" method="POST">
+                    <form class="logout" action="includes/logout-form.php" method="POST">
                         <button type="submit" class="settings__li button--no-btn" name="submit">Logout</button>
                     </form>
                 </ul><!-- settings-ul -->
@@ -45,4 +45,4 @@ include_once ($_SERVER['DOCUMENT_ROOT']."includes/delete-account.php");
   src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   crossorigin="anonymous"></script>
-<script src="/scripts/settings.js"></script>
+<script src="scripts/settings.js"></script>

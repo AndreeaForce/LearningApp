@@ -3,14 +3,9 @@ include 'header.php';
 ?>
 
 <section class="container-col-12">
-	<div class="row"> 
-        <div class="logo-center">
-            <img src="img/element-5.png">
-        </div>
-     </div>
-    
     <div class="row">
-        
+        <?php if (empty($_SESSION['u_id'])) {
+        ?>
         <div class="col-7-sm col__height">
             <div id="left-img">
                 <img src="img/element-4.png">
@@ -24,7 +19,7 @@ include 'header.php';
         <div class="col-5-sm col__height">
             <div class="right-signup">
 		        <h2 class="signup-form__h2">Signup</h2>
-		        <form class="signup-form" action="/signup.php" method="POST">
+		        <form class="signup-form" action="signup.php" method="POST">
 		        	<input type="text" name="first" id="firstName" placeholder="Firstname">
                       <div class="error"></div>
                       <br>
@@ -45,12 +40,12 @@ include 'header.php';
 		        </form>
 	       </div>
         </div>
-    <div class="clear-me" >   
-    </div>
-    
+        <?php } ?>
+
+        <div class="index-avatar--wrapper">
 		<?php
 	    if (isset($_SESSION['u_id'])) {
-              include_once '/includes/database.php';   
+              include_once 'includes/database.php';
             
               $sql = "select * from profile where user_id='" . $_SESSION['u_id'] . "'";
               $result = mysqli_query($conn,$sql);
@@ -73,8 +68,10 @@ include 'header.php';
                 }
             }                                                                          
         }
- 
+
         ?>
+            <div class="clear-me" ></div>
+        </div>
 	
 
 </section>

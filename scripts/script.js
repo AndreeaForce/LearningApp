@@ -2,7 +2,7 @@ $("form").attr('autocomplete', 'off'); // Switching form autocomplete attribute 
 
 // Show/hide password protection
 var settingsBtn = document.getElementsByClassName('nav--settings')[0];
-var passCont = document.getElementsByClassName('settings__form--password')[0];
+var passCont = document.getElementsByClassName('header__form--password')[0];
 
 settingsBtn.addEventListener('click', function(){
     console.log(this);
@@ -10,7 +10,7 @@ settingsBtn.addEventListener('click', function(){
 });
 
 //Verify password
-$(".settings__form--password").submit(function(e){
+$(".header__form--password").submit(function(e){
     e.preventDefault(); //prevent default submit
     var formData = new FormData(this); //data to send
     
@@ -26,16 +26,16 @@ $(".settings__form--password").submit(function(e){
             data: formData, 
             processData: false, 
             contentType:false, 
-			url: "/includes/check-password.php", 
+			url: "includes/check-password.php",
 			success: function(result) {	 
                 console.log(result);
                 if(result.success == 1) {
                     $("#checkPass").val("pass");
-                    $("#error-name").html('<i class="flaticon-mark" aria-hidden="true"></i>' + " Succes");
-                    window.location = "/settings.php";
+                    $("#error-name").html('<i class="flaticon-mark" aria-hidden="true"></i>' + " Success ");
+                    window.location = "settings.php";
                     
                 } else {
-                    $("#error-name").html('<i class="flaticon-shape" aria-hidden="true"></i>');
+                    $("#error-name").html('<i class="flaticon-shape" aria-hidden="true"></i>' + " Wrong Password ");
                 }       
 			},
 			dataType: 'json',
@@ -47,15 +47,16 @@ $(".settings__form--password").submit(function(e){
 
 
 // Show/ hide login/signup btn
-var loginButton = document.getElementById('login');
-var loginContainer = document.getElementsByClassName('form--login')[0];
+if (document.getElementById('login')) {
+    var loginButton = document.getElementById('login');
+    var loginContainer = document.getElementsByClassName('form--login')[0];
 
-loginButton.addEventListener('click', function(){
-    console.log(this);
-     loginContainer.style.display = "block";
-    loginButton.style.display = "none";
-});
-
+    loginButton.addEventListener('click', function(){
+        console.log(this);
+        loginContainer.style.display = "block";
+        loginButton.style.display = "none";
+    });
+}
 
 // Form validation
 // Check if field is empty
@@ -69,16 +70,32 @@ function checkEmpty() {
     }
     
 }
-var elFirstName = document.getElementById('firstName');
-elFirstName.onblur = checkEmpty;
-var elLastName = document.getElementById('lastName');
-elLastName.onblur = checkEmpty;
-var elEmail = document.getElementById('email');
-elEmail.onblur = checkEmail;
-var elUserName = document.getElementById('userName');
-elUserName.onblur = checkUser;
-var elPassword = document.getElementById('password');
-elPassword.onblur = checkEmpty;
+
+if (document.getElementById('firstName')) {
+    var elFirstName = document.getElementById('firstName');
+    elFirstName.onblur = checkEmpty;
+}
+
+if (document.getElementById('lastName')) {
+    var elLastName = document.getElementById('lastName');
+    elLastName.onblur = checkEmpty;
+}
+
+if (document.getElementById('email')) {
+    var elEmail = document.getElementById('email');
+    elEmail.onblur = checkEmail;
+}
+
+if (document.getElementById('userName')) {
+    var elUserName = document.getElementById('userName');
+    elUserName.onblur = checkUser;
+}
+
+if (document.getElementById('password')) {
+    var elPassword = document.getElementById('password');
+    elPassword.onblur = checkEmpty;
+}
+
 
 // Ajax request check username
 function checkUser() {
@@ -101,7 +118,7 @@ function checkUser() {
                 document.getElementsByClassName("error")[3].innerHTML = this.responseText;
             }
         };
-        xmlhttp.open("GET", "/includes/check-user.php?uid=" + elUserName.value, true);
+        xmlhttp.open("GET", "includes/check-user.php?uid=" + elUserName.value, true);
         xmlhttp.send();
     }
 }
@@ -118,7 +135,7 @@ function checkEmail() {
                 document.getElementsByClassName("error")[2].innerHTML = this.responseText;
             }
         };
-        xmlhttp.open("GET", "/includes/check-email.php?email=" + elEmail.value, true);
+        xmlhttp.open("GET", "includes/check-email.php?email=" + elEmail.value, true);
         xmlhttp.send();
     }
 }
@@ -126,6 +143,7 @@ function checkEmail() {
 
 $(".navigation--left").on("click", ".nav--settings", function() {
     console.log(this);
-    $('.settings__form--password').css("display", "block");
+    $('.header__form--password').css("display", "block");
 });
 
+//
