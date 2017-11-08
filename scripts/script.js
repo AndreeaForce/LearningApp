@@ -25,15 +25,24 @@ $(".header__form--password").submit(function(e){
             data: formData, 
             processData: false, 
             contentType:false, 
-			url: "/includes/check-password.php", 
+			url: "includes/check-password.php",
 			success: function(result) {	 
                 console.log(result);
                 if(result.success == 1) {
+<<<<<<< HEAD
                     $("#error-name").html('<i class="flaticon-mark" aria-hidden="true"></i>' + " Success");
                     window.location = "/settings.php";
                     $("#checkPass").val("pass");                
                 } else {
                     $("#error-name").html('<i class="flaticon-shape" aria-hidden="true"></i>' + " Wrong password");
+=======
+                    $("#checkPass").val("pass");
+                    $("#error-name").html('<i class="flaticon-mark" aria-hidden="true"></i>' + " Success ");
+                    window.location = "settings.php";
+                    
+                } else {
+                    $("#error-name").html('<i class="flaticon-shape" aria-hidden="true"></i>' + " Wrong Password ");
+>>>>>>> 2e09a8a3d129d51d5200cdfb3c89fe921a2f129f
                 }       
 			},
 			dataType: 'json',
@@ -42,6 +51,7 @@ $(".header__form--password").submit(function(e){
 });
 
 // Show/ hide login/signup btn
+<<<<<<< HEAD
 var loginButton = document.getElementById('login');
 var loginContainer = document.getElementsByClassName('form--login')[0];
 
@@ -50,7 +60,21 @@ loginButton.addEventListener('click', function(){
      loginContainer.style.display = "block";
     loginButton.style.display = "none";
 });
+=======
 
+
+// Show/ hide login/signup btn
+if (document.getElementById('login')) {
+    var loginButton = document.getElementById('login');
+    var loginContainer = document.getElementsByClassName('form--login')[0];
+>>>>>>> 2e09a8a3d129d51d5200cdfb3c89fe921a2f129f
+
+    loginButton.addEventListener('click', function(){
+        console.log(this);
+        loginContainer.style.display = "block";
+        loginButton.style.display = "none";
+    });
+}
 
 // Form validation
 // Check if field is empty
@@ -64,26 +88,51 @@ function checkEmpty() {
     }
     
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2e09a8a3d129d51d5200cdfb3c89fe921a2f129f
 if (document.getElementById('firstName')) {
     var elFirstName = document.getElementById('firstName');
     elFirstName.onblur = checkEmpty;
 }
+<<<<<<< HEAD
 if (document.getElementById('firstName')) {
     var elLastName = document.getElementById('lastName');
     elLastName.onblur = checkEmpty;
 }
+=======
+
+if (document.getElementById('lastName')) {
+    var elLastName = document.getElementById('lastName');
+    elLastName.onblur = checkEmpty;
+}
+
+>>>>>>> 2e09a8a3d129d51d5200cdfb3c89fe921a2f129f
 if (document.getElementById('email')) {
     var elEmail = document.getElementById('email');
     elEmail.onblur = checkEmail;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2e09a8a3d129d51d5200cdfb3c89fe921a2f129f
 if (document.getElementById('userName')) {
     var elUserName = document.getElementById('userName');
     elUserName.onblur = checkUser;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2e09a8a3d129d51d5200cdfb3c89fe921a2f129f
 if (document.getElementById('password')) {
     var elPassword = document.getElementById('password');
     elPassword.onblur = checkEmpty;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2e09a8a3d129d51d5200cdfb3c89fe921a2f129f
 
 // Ajax request check username
 function checkUser() {
@@ -106,7 +155,7 @@ function checkUser() {
                 document.getElementsByClassName("error")[3].innerHTML = this.responseText;
             }
         };
-        xmlhttp.open("GET", "/includes/check-user.php?uid=" + elUserName.value, true);
+        xmlhttp.open("GET", "includes/check-user.php?uid=" + elUserName.value, true);
         xmlhttp.send();
     }
 }
@@ -123,7 +172,7 @@ function checkEmail() {
                 document.getElementsByClassName("error")[2].innerHTML = this.responseText;
             }
         };
-        xmlhttp.open("GET", "/includes/check-email.php?email=" + elEmail.value, true);
+        xmlhttp.open("GET", "includes/check-email.php?email=" + elEmail.value, true);
         xmlhttp.send();
     }
 }
@@ -134,3 +183,4 @@ $(".navigation--left").on("click", ".nav--settings", function() {
     $('.header__form--password').css("display", "block");
 });
 
+//

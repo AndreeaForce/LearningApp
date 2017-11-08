@@ -14,7 +14,7 @@ $(".settings__form").submit(function(e){
             data: formData, // data to send
             processData: false,  // To send DOMDocument or non processed data file it is set to false
             contentType:false, // The content type used when sending data to the server.
-			url:"/settings/profiles.php", // url to which the request is send
+			url:"settings/profiles.php", // url to which the request is send
 			success: function(result) {	  // A function to be called if request succeeds
                 console.log(result);
                 if(result.success == 1) {
@@ -29,7 +29,7 @@ $(".settings__form").submit(function(e){
                 console.log(userId);
                 
                 $.ajax({
-                    url: "/settings/select-profiles-min.php",
+                    url: "settings/select-profiles-min.php",
                     method: "POST",
                     data:{userId:userId},
                     dataType: "json",
@@ -49,7 +49,7 @@ $(".slide-viewer").on('click', ".button--edit-profile", function(){
     var profileId = $(this).attr("id");
 
     $.ajax({
-        url: "/settings/select-profiles.php",
+        url: "settings/select-profiles.php",
         method: "POST",
         data:{
             profileId:profileId
@@ -77,7 +77,7 @@ $(".slide-viewer").on('click', '.button--delete-profile', function(){
     var table = $('.table-avatar');
     $('[data-id='+profileId+']').hide();
     $.ajax({
-        url: "/settings/delete-profiles.php",
+        url: "settings/delete-profiles.php",
         method: "POST",
         data:{profileId:profileId},
         dataType: "json"
@@ -92,13 +92,30 @@ $(".slide-viewer").on('click', '.button--delete-profile', function(){
     });
 });
 
+<<<<<<< HEAD
 // Load avatar with no refresh - change child avatar
+=======
+// change user avatar
+$('#user-avatar').change(function(){
+    var file = this.files[0];
+    var reader = new FileReader();
+    reader.onload =  function (e) {
+        imageIsLoaded(e, '.account-avatar__img')
+    };
+    reader.readAsDataURL(file);
+});
+
+// change child avatar
+>>>>>>> 2e09a8a3d129d51d5200cdfb3c89fe921a2f129f
 $('#avatar').change(function(){
     var file = this.files[0];
     var reader = new FileReader();
-    reader.onload = imageIsLoaded;
+    reader.onload = function(e) {
+        imageIsLoaded(e, '#profileImg')
+    };
     reader.readAsDataURL(this.files[0]);
 });
+<<<<<<< HEAD
     
 function imageIsLoaded(e) {
     $('.profile-avatar-change').css("display", "block");
@@ -116,6 +133,12 @@ function imageIsLoaded(e) {
 $('.profile-avatar').css("display", "block");
 $('.account-avatar__img').attr('src', e.target.result);
 };
+=======
+
+function imageIsLoaded(e, image) {
+    $(image).attr('src', e.target.result);
+}
+>>>>>>> 2e09a8a3d129d51d5200cdfb3c89fe921a2f129f
 
 // Change form value when user click edit btn
 $(document).on('click', '.button--edit-profile', function(ev){
@@ -128,7 +151,7 @@ $(document).on('click', '.button--edit-profile', function(ev){
 $(".slide-viewer").on('click', '.profiles-add', function(){
     //$('.settings__form').trigger('reset');
     window.location.reload();
-    window.location = "/settings.php#kids";
+    window.location = "settings.php#kids";
     console.log(this);   
 });
 
@@ -136,7 +159,7 @@ $(".slide-viewer").on('click', '.profiles-add', function(){
 function slideAction() {
     
     var imageNumber = $(".slide");
-    var currentImage = 0
+    var currentImage = 0;
     var lastImage = currentImage + 5; 
     
     function slideLeft() {
@@ -180,6 +203,7 @@ slideAction();
 
 /* Button avatar account hide */
 if (document.getElementById('input__avatar--label')) {
+<<<<<<< HEAD
     var labelCont = document.getElementById('input__avatar--label'); 
     var btnCont = document.getElementsByClassName('button__avatar')[0];
     labelCont.addEventListener('click', function(){
@@ -187,3 +211,13 @@ if (document.getElementById('input__avatar--label')) {
     btnCont.style.display = "block";
 });
 }
+=======
+    var labelCont = document.getElementById('input__avatar--label');
+    var btnCont = document.getElementsByClassName('button__avatar')[0];
+
+    labelCont.addEventListener('click', function(){
+        console.log(this);
+        btnCont.style.display = "block";
+    });
+}
+>>>>>>> 2e09a8a3d129d51d5200cdfb3c89fe921a2f129f

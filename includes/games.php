@@ -1,7 +1,12 @@
 
 <?php
 
+<<<<<<< HEAD
 include 'database.php';     
+=======
+include 'database.php';
+
+>>>>>>> 2e09a8a3d129d51d5200cdfb3c89fe921a2f129f
 if($_GET['id']) {
 
 $id = $_GET['id']; 
