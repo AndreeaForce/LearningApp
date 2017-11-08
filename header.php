@@ -19,19 +19,27 @@
 <header>
 	<nav>
 		<div class="header-wrapper">
-		       
-			<div class="navigation--left col__medium-3">
+		<?php
+            if (!isset($_SESSION['u_id'])) {	
+        ?>       
+			<div class="col__header--left">
                 <div class="nav--settings"><i class="fa fa-bars" aria-hidden="true"></i>
-                </div>
+            </div>
+        <?php
+            }
+        ?>
     
         <?php
             if (isset($_SESSION['u_id'])) {	
         ?> 
-                <form class="settings__form--password">
+                <div class="col__header--left-login">
+                    <div class="nav--settings"><i class="fa fa-bars" aria-hidden="true"></i>
+                </div>
+                <form class="header__form--password">
                     <input class="verify-pass" type="password" name="checkpwd" placeholder="password">
                     <input type="hidden" id="uid" name="checkuid" value="<?php echo $_SESSION['u_id']?>">
-                    <input type="hidden" id="checkPass" name="checkuIfPass" value="no-pass">
-                    <button class="header--check-pwd" type="submit" id="checksubmit" name="submit" value="check-pwd">Check</button>
+                    <input type="hidden" id="checkPass" name="checkPass" value="no-pass">
+                    <button class="header--check-pwd button__check-pwd" type="submit" id="checksubmit" name="submit" value="check-pwd">Check</button>
                     <div id="error-name"></div>
                 </form>
         <?php
@@ -39,10 +47,27 @@
         ?> 
    
             </div>
-            <div class="navigation--center col__medium-3">
-                <a href="index.php"><img class="nav--logo" src="images/tour-text.png"></a>
+            <div class="col__header--center">
+                <div class="row"> 
+                    <div class="logo-center">
+                        <a href="index.php"><img src="img/element-5.png"></a>
+                    </div>
+                </div>
             </div>
-            <div class="navigation--right col__medium-6">
+            <?php
+                if (!isset($_SESSION['u_id'])) {	
+            ?> 
+                <div class="col__header--right">
+            <?php
+                }
+            ?> 
+            <?php
+                if (isset($_SESSION['u_id'])) {	
+            ?> 
+                <div class="col__header--right-login">
+            <?php
+                }
+            ?>
                 <div class="nav--log">
                     <?php
 			             if (isset($_SESSION['u_id'])) {
@@ -57,7 +82,7 @@
                         <img class="nav-avatar__img" src='<?php echo $image_src;  ?>' >
                     </div>
                     <?php
-                        echo '<div class="nav-id"><a href="settings.php">' . $_SESSION["u_uid"] . '</a></div>';
+                        echo '<div class="nav-id"><a href="#">' . $_SESSION["u_uid"] . '</a></div>';
                         }
                     ?>
                     
@@ -65,13 +90,13 @@
 					if (isset($_SESSION['u_id'])) {
 						echo '';
 					} else {
-						echo '<button type="button" class="button button__trigger" id="login">Sign In</button>
+						echo '<button type="button" class="button button__green" id="login">Sign In</button>
                             <form class="form--login" action="includes/login-form.php" method="POST">
 							<input type="text" name="uid" placeholder="Username/e-mail">
 							<input type="password" name="pwd" placeholder="password">
-							<button type="submit" class="button button__white" name="submit">Login</button>
+							<button type="submit" class="button button__green" name="submit">Login</button>
 				        </form>
-						<button type="button" class="button button__green"><a href="signup.php">Signup</a></button>';
+						';
 					}
 				?>
                 

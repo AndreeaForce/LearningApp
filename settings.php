@@ -7,14 +7,13 @@ include dirname(__FILE__).'/settings/select-profiles-min.php';
 include dirname(__FILE__).'/settings/change-password.php';
 ?>
 
-
 <?php
 
 if (isset($_SESSION['u_id']) && isset( $_SESSION['u_email']) && isset($_SESSION['u_uid']) && isset($_SESSION['u_last']) && isset($_SESSION['u_first'])) {
     include_once '/includes/database.php';
 }
 
-//if (isset($_POST['checkuIfPass']) && $_POST['checkuIfPass'] = 'no-pass') {
+//if (isset($_POST['checkPass']) && $_POST['checkPass'] = 'pass') {
 ?>
 <div class="settings-wrapper">
     <div class="links__fixed">
@@ -41,12 +40,20 @@ if (isset($_SESSION['u_id']) && isset( $_SESSION['u_email']) && isset($_SESSION[
                        $result = mysqli_query($conn,$sql);
                        $row = mysqli_fetch_array($result);
                      
-                       $imagee = $row['avatar'];
-                       $imagee_src = "images/".$imagee;
+                       $image = $row['avatar'];
+                       $image_src = "images/".$image;
                     ?>
    
                     <div class="account-avatar">
-                        <img class="account-avatar__img" src='<?php echo $imagee_src;  ?>' >
+                        <div class="profile-avatar">
+                            <img class="account-avatar__img" src='<?php echo $image_src;  ?>' >
+                 
+                            <form class="form__avatar" action="includes/saveimage.php" method="post" enctype="multipart/form-data">
+                                <input class="input__avatar" id="user-avatar" type="file" name="avatar" accept="image/*">
+                                <label for="user-avatar" id="input__avatar--label"><i class="fa fa-camera fa-lg" aria-hidden="true"></i></label>
+                                <input class="button button__avatar" type="submit" name="avatarsave" value="Upload">
+                            </form>
+                        </div>
                     </div>
           
                     <div class="account-username">
@@ -62,7 +69,7 @@ if (isset($_SESSION['u_id']) && isset( $_SESSION['u_email']) && isset($_SESSION[
             </div><!-- col__medium-2 -->
 
                 <div class="account--content">
-                    <form class="settings__form" action="/settings/account-settings.php" method="POST">
+                  
                         <div class="settings__form--wrapper">
                             <input type="text" name="first" id="firstName" class="settings__input" placeholder="First name" value="<?php echo $_SESSION['u_first']?>" disabled>
                             <div class="error"></div>
@@ -77,6 +84,7 @@ if (isset($_SESSION['u_id']) && isset( $_SESSION['u_email']) && isset($_SESSION[
                             <div class="error"></div>
                             <br>
                             <br>
+                        </div>
                             <!-----------------------------------------------
                             <button type="submit" name="submit" value="register">Update</button>
                             <br>
@@ -86,9 +94,8 @@ if (isset($_SESSION['u_id']) && isset( $_SESSION['u_email']) && isset($_SESSION[
                                 <input type="submit" name="uid" id="uid">
                             </form>
                             ------------------------------------------------>
-                        </div>
-                    </form>
-                    <form class="settings__form" id="settings__form--password" action="/settings/change-password.php" method="POST">
+      
+                    <form class="account__form" id="settings__form--password" action="/settings/change-password.php" method="POST">
                         <div class="settings__form--wrapper">
                             <input type="text" name="pwd" id="password" class="settings__input" placeholder="Old Password" value="">
                             <div class="error"></div>
@@ -137,7 +144,7 @@ if (isset($_SESSION['u_id']) && isset( $_SESSION['u_email']) && isset($_SESSION[
                             
                             <div class="profile-avatar-change">
                                 <img class="profile-content__img" id="profileImg" src='<?php echo $avatar_src; ?>' >
-                                <label for="avatar" id="profile-avatar__label"><img src="images/002-app-1.png" class="fa fa-camera fa-lg"></label>
+                                <label for="avatar" id="profile-avatar__label"><img src="" class="fa fa-camera fa-lg"></label>
                                 <input class="settings__input" id="avatar" type="file" name="avatar" accept="image/*" value="<?php echo $avatar ?>"><br><br>
                             </div>
                              
@@ -229,7 +236,12 @@ if (isset($_SESSION['u_id']) && isset( $_SESSION['u_email']) && isset($_SESSION[
                 </div>
             </div>
             <div class="about--content">
-                
+                <div class="about--text">
+                    <h3 class="about--h3">Andreea</h3>
+                    <p class="about--p">Text about Andreea me goes here.</p>
+                    <h3 class="about--h3">Alexandru</h3>
+                    <p class="about--p">Text about Alexandru goes here.</p>
+                </div>
             </div>
     
        </div><!-- row -->
@@ -241,9 +253,6 @@ if (isset($_SESSION['u_id']) && isset( $_SESSION['u_email']) && isset($_SESSION[
 <?php
 //}
 ?>
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
-<script src="scripts/settings.js"></script>
-<script src="scripts/profiles.js"></script>
+<?php
+include 'footer.php';
+?>

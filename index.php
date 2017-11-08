@@ -2,15 +2,11 @@
 include 'header.php';
 ?>
 
-<section class="container-col-12">
-	<div class="row"> 
-        <div class="logo-center">
-            <img src="img/element-5.png">
-        </div>
-     </div>
-    
-    <div class="row">
-        
+<section class="container-col-12"> 
+    <div class="row"> 
+        <?php
+        if (empty($_SESSION['u_id'])) { 
+        ?>
         <div class="col-7-sm col__height">
             <div id="left-img">
                 <img src="img/element-4.png">
@@ -45,8 +41,11 @@ include 'header.php';
 		        </form>
 	       </div>
         </div>
-    <div class="clear-me" >   
-    </div>
+        
+        <?php } ?>
+    
+        <div class="index-avatar--wrapper">
+    
     
 		<?php
 	    if (isset($_SESSION['u_id'])) {
@@ -61,7 +60,6 @@ include 'header.php';
                       $image = $row['profile_avatar'];
                       $image_src = "images/".$image;
           ?>
-        
         <div class="index-avatar">
             <div class="index-avatar-outer">
                <a href="games-page.php?id=<?php echo $row["profile_id"]; ?>"><img data-id="<?php echo $row["profile_id"]; ?>" class="profiles-min__img" src="<?php echo $image_src;  ?>" ></a>
@@ -75,8 +73,11 @@ include 'header.php';
         }
  
         ?>
-	
-
+            <div class="clear-me" >
+            </div>
+        </div>
+        
+    </div>
 </section>
 <?php
 include 'footer.php';

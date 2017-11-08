@@ -3,7 +3,7 @@ session_start();
 include_once 'database.php';
 $id = $_SESSION['u_id'];
 
-if (isset($_POST['btnsave'])) {
+if (isset($_POST['avatarsave'])) {
 
 $avatar = $_FILES['avatar']['name'];
     
@@ -25,15 +25,15 @@ $imageFileType = pathinfo($target,PATHINFO_EXTENSION);
         // Upload file
         move_uploaded_file($_FILES['avatar']['tmp_name'], $target); 
         
-        header("Location: /index.php?ok");
+        header("Location: /settings.php");
         exit();
     } else {
-        header("Location: /index.php?avatar=wrong type");
+        header("Location: /settings.php?avatar=wrong type");
         exit();
     }
         
  } else {
-    header("Location: /index.php?avatar=something wrong");
+    header("Location: /settings.php?avatar=something wrong");
     exit();
 }
     

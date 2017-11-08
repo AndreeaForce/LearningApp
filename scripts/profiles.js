@@ -1,4 +1,4 @@
-$(".settings__form--password").submit(function(e){
+$(".settings__form").submit(function(e){
     e.preventDefault(); //prevent default submit
     var formData = new FormData(this); //data to send
     
@@ -19,6 +19,8 @@ $(".settings__form--password").submit(function(e){
                 console.log(result);
                 if(result.success == 1) {
                     $("#result").html('<i class="flaticon-mark" aria-hidden="true"></i>' + " Succes");
+                    //window.location.reload();
+                    //window.location = "/settings.php#kids";
                 } else {
                     $("#result").html('<i class="flaticon-shape" aria-hidden="true"></i>');
                 }
@@ -90,18 +92,29 @@ $(".slide-viewer").on('click', '.button--delete-profile', function(){
     });
 });
 
-// Load avatar with no refresh
+// Load avatar with no refresh - change child avatar
 $('#avatar').change(function(){
     var file = this.files[0];
     var reader = new FileReader();
     reader.onload = imageIsLoaded;
     reader.readAsDataURL(this.files[0]);
 });
-
+    
 function imageIsLoaded(e) {
-$('.profile-avatar-change').css("display", "block");
-$('#profileImg').attr('src', e.target.result);
+    $('.profile-avatar-change').css("display", "block");
+    $('#profileImg').attr('src', e.target.result);
+};
 
+// Load user avatar with no refresh
+$('#user-avatar').change(function(){
+    var file = this.files[0];
+    var reader = new FileReader();
+    reader.onload = imageIsLoaded;
+    reader.readAsDataURL(this.files[0]);
+});
+function imageIsLoaded(e) {
+$('.profile-avatar').css("display", "block");
+$('.account-avatar__img').attr('src', e.target.result);
 };
 
 // Change form value when user click edit btn
@@ -164,3 +177,13 @@ function slideAction() {
     }
 }
 slideAction();
+
+/* Button avatar account hide */
+if (document.getElementById('input__avatar--label')) {
+    var labelCont = document.getElementById('input__avatar--label'); 
+    var btnCont = document.getElementsByClassName('button__avatar')[0];
+    labelCont.addEventListener('click', function(){
+    console.log(this);
+    btnCont.style.display = "block";
+});
+}

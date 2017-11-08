@@ -1,5 +1,4 @@
 <?php
-
 //Error handlers
 //Check if inputs are empty
     
@@ -8,13 +7,12 @@ if (isset($_POST['uid'])) {
     $uid = mysqli_real_escape_string($conn, $_POST['uid']);
     $pwd = mysqli_real_escape_string($conn, $_POST['pwd']);
     echo "ok ";
-
         $sql = "SELECT * FROM users WHERE user_uid='$uid' ";
         $result = mysqli_query($conn, $sql);
         $resultCheck = mysqli_num_rows($result);
     
         if ($resultCheck < 1) {
-            //header("Location: ../index.php?login=error");
+            header("Location: ../settings.php?login=error");
             echo "nothing found ";
             exit();
         } else {
@@ -24,7 +22,7 @@ if (isset($_POST['uid'])) {
                 
                 if ($hashedPwdCheck == false) {
                     echo 'wrong pwd' . $_POST["pwd"];
-                    //header("Location: ../index.php?login=error");
+                    header("Location: ../settings.php?login=error");
                     exit();
                     
                 } elseif ($hashedPwdCheck == true) {
@@ -43,15 +41,12 @@ if (isset($_POST['uid'])) {
                         
                     } else {
                         echo 'Incorect password ';
-                        //header("Location: ../settings.php?login=error");
-
+                        header("Location: ../settings.php?login=error");
                     }
                 }
             }
         }
-
     }
-
 ?>
 <!--Welcome --><?php //echo $_POST["pwd"]; ?><!--<br>-->
 <!--Your email address is: --><?php //echo $_POST["uid"]; ?>

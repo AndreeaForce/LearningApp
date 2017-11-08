@@ -36,3 +36,4 @@ $("#about-arrow--down").click(function(){
     $("#about-arrow--up").show("slow");
     $("#about-arrow--down").hide("slow");
 });
+

@@ -2,7 +2,7 @@ $("form").attr('autocomplete', 'off'); // Switching form autocomplete attribute 
 
 // Show/hide password protection
 var settingsBtn = document.getElementsByClassName('nav--settings')[0];
-var passCont = document.getElementsByClassName('settings__form--password')[0];
+var passCont = document.getElementsByClassName('header__form--password')[0];
 
 settingsBtn.addEventListener('click', function(){
     console.log(this);
@@ -10,11 +10,10 @@ settingsBtn.addEventListener('click', function(){
 });
 
 //Verify password
-$(".settings__form--password").submit(function(e){
+$(".header__form--password").submit(function(e){
     e.preventDefault(); //prevent default submit
     var formData = new FormData(this); //data to send
-    
-    
+      
     if($('.verify-pass').val() == "") {
         $("#error-name").html('<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>' + " Password is required");
         $(".verify-pass").css({"border-bottom": "1px solid red"});
@@ -30,21 +29,17 @@ $(".settings__form--password").submit(function(e){
 			success: function(result) {	 
                 console.log(result);
                 if(result.success == 1) {
-                    $("#checkPass").val("pass");
-                    $("#error-name").html('<i class="flaticon-mark" aria-hidden="true"></i>' + " Succes");
+                    $("#error-name").html('<i class="flaticon-mark" aria-hidden="true"></i>' + " Success");
                     window.location = "/settings.php";
-                    
+                    $("#checkPass").val("pass");                
                 } else {
-                    $("#error-name").html('<i class="flaticon-shape" aria-hidden="true"></i>');
+                    $("#error-name").html('<i class="flaticon-shape" aria-hidden="true"></i>' + " Wrong password");
                 }       
 			},
 			dataType: 'json',
 		  });  
    }
 });
-
-// Show/ hide login/signup btn
-
 
 // Show/ hide login/signup btn
 var loginButton = document.getElementById('login');
@@ -69,16 +64,26 @@ function checkEmpty() {
     }
     
 }
-var elFirstName = document.getElementById('firstName');
-elFirstName.onblur = checkEmpty;
-var elLastName = document.getElementById('lastName');
-elLastName.onblur = checkEmpty;
-var elEmail = document.getElementById('email');
-elEmail.onblur = checkEmail;
-var elUserName = document.getElementById('userName');
-elUserName.onblur = checkUser;
-var elPassword = document.getElementById('password');
-elPassword.onblur = checkEmpty;
+if (document.getElementById('firstName')) {
+    var elFirstName = document.getElementById('firstName');
+    elFirstName.onblur = checkEmpty;
+}
+if (document.getElementById('firstName')) {
+    var elLastName = document.getElementById('lastName');
+    elLastName.onblur = checkEmpty;
+}
+if (document.getElementById('email')) {
+    var elEmail = document.getElementById('email');
+    elEmail.onblur = checkEmail;
+}
+if (document.getElementById('userName')) {
+    var elUserName = document.getElementById('userName');
+    elUserName.onblur = checkUser;
+}
+if (document.getElementById('password')) {
+    var elPassword = document.getElementById('password');
+    elPassword.onblur = checkEmpty;
+}
 
 // Ajax request check username
 function checkUser() {
@@ -126,6 +131,6 @@ function checkEmail() {
 
 $(".navigation--left").on("click", ".nav--settings", function() {
     console.log(this);
-    $('.settings__form--password').css("display", "block");
+    $('.header__form--password').css("display", "block");
 });
 
