@@ -3,7 +3,7 @@
 $avatar = "";
 if (isset($_POST['submit'])) { 
 	
-	include_once 'database.php';
+	include_once 'database.php';  
 
 	$first = mysqli_real_escape_string($conn, $_POST['first']);
 	$last = mysqli_real_escape_string($conn, $_POST['last']);
