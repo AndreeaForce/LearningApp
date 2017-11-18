@@ -271,6 +271,7 @@ nav {
     width: 20px;
     color: #fff;
     padding: 8px;
+    margin: 0;
 }
 
 .button--edit-profile:hover, .button--delete-profile:hover {
