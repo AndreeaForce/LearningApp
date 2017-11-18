@@ -1,7 +1,7 @@
 <?php
 
 $avatar = "";
-if (isset($_POST['submit'])) {
+if (isset($_POST['submit'])) { 
 	
 	include_once 'database.php';
 
