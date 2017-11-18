@@ -19,20 +19,20 @@ if (isset($_POST['submit'])) {
 	//Error handlers
 	//Check for empty fields
 	if (empty($first) || empty($last) || empty($email) || empty($uid) || empty($pwd)) {
-        header("Location: signup.php?signup=empty");
+        header("Location: index.php?signup=empty");
         exit();
 
 	} else {
 		//Check if input characters are valid
 		if (!preg_match("/^[a-zA-Z]*$/", $first) || !preg_match("/^[a-zA-Z]*$/", $last)) {
             $firstErr = $lastErr = "valid characters";
-			header("Location: signup.php?signup=invalid");
+			header("Location: /index.php?signup=invalid");
 			exit();
             
 		} else {
 			//Check if email is valid
 			if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-				header("Location: signup.php?signup=email");
+				header("Location: index.php?signup=email");
 				exit();
                 
 			} else {
@@ -41,7 +41,7 @@ if (isset($_POST['submit'])) {
 				$resultCheck = mysqli_num_rows($result);
 
 				if ($resultCheck > 0) {
-					header("Location: signup.php?signup=usertaken");
+					header("Location: /index.php?signup=usertaken");
 					exit();
                     
 				} else {
@@ -55,7 +55,7 @@ if (isset($_POST['submit'])) {
 					mysqli_query($conn, $sql);
                     
                     }
-					header("Location: signup.php?signup=success");
+					header("Location: /signup.php?signup=success");
 					exit();
 				} 
 			}

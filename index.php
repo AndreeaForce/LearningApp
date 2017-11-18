@@ -2,16 +2,10 @@
 include 'header.php';
 ?>
 
-<<<<<<< HEAD
 <section class="container-col-12"> 
     <div class="row"> 
         <?php
         if (empty($_SESSION['u_id'])) { 
-=======
-<section class="container-col-12">
-    <div class="row">
-        <?php if (empty($_SESSION['u_id'])) {
->>>>>>> 2e09a8a3d129d51d5200cdfb3c89fe921a2f129f
         ?>
         <div class="col-7-sm col__height">
             <div id="left-img">
@@ -26,7 +20,7 @@ include 'header.php';
         <div class="col-5-sm col__height">
             <div class="right-signup">
 		        <h2 class="signup-form__h2">Signup</h2>
-		        <form class="signup-form" action="signup.php" method="POST">
+		        <form class="signup-form" action="/signup.php" method="POST">
 		        	<input type="text" name="first" id="firstName" placeholder="Firstname">
                       <div class="error"></div>
                       <br>
@@ -47,21 +41,15 @@ include 'header.php';
 		        </form>
 	       </div>
         </div>
-<<<<<<< HEAD
         
         <?php } ?>
     
         <div class="index-avatar--wrapper">
     
     
-=======
-        <?php } ?>
-
-        <div class="index-avatar--wrapper">
->>>>>>> 2e09a8a3d129d51d5200cdfb3c89fe921a2f129f
 		<?php
 	    if (isset($_SESSION['u_id'])) {
-              include_once 'includes/database.php';
+              include_once '/includes/database.php';   
             
               $sql = "select * from profile where user_id='" . $_SESSION['u_id'] . "'";
               $result = mysqli_query($conn,$sql);
@@ -74,29 +62,23 @@ include 'header.php';
           ?>
         <div class="index-avatar">
             <div class="index-avatar-outer">
-               <a href="games-page.php?id=<?php echo $row["profile_id"]; ?>"><img data-id="<?php echo $row["profile_id"]; ?>" class="profiles-min__img" src="<?php echo $image_src;  ?>" ></a>
+                
+               <a href="games-page.php?id=<?php echo $row["profile_id"]; ?>">
+                   <img data-id="<?php echo $row["profile_id"]; ?>" class="profiles-min__img" src="<?php echo $image_src;  ?>" >
+               </a>
                 <div class="index-profile-name"><?php echo $row["profile_name"]; ?></div>
             </div>     
-        </div>
-     
+        </div>  
         <?php
                 }
             }                                                                          
         }
-
         ?>
-<<<<<<< HEAD
             <div class="clear-me" >
             </div>
         </div>
         
     </div>
-=======
-            <div class="clear-me" ></div>
-        </div>
-	
-
->>>>>>> 2e09a8a3d129d51d5200cdfb3c89fe921a2f129f
 </section>
 <?php
 include 'footer.php';

@@ -1,8 +1,8 @@
-/*
+/* 
 html5doctor.com Reset Stylesheet
 v1.6.1
 Last Updated: 2010-09-17
-Author: Richard Clark - http://richclarkdesign.com
+Author: Richard Clark - http://richclarkdesign.com 
 Twitter: @rich_clark
 */
 
@@ -15,7 +15,7 @@ b, i,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, figcaption, figure,
+article, aside, canvas, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section, summary,
 time, mark, audio, video {
     margin:0;
@@ -28,12 +28,6 @@ time, mark, audio, video {
 }
 
 [class^="flaticon-"]:before, [class*=" flaticon-"]:before, [class^="flaticon-"]:after, [class*=" flaticon-"]:after {
-<<<<<<< HEAD
-=======
-    font-family: Flaticon;
-    font-size: 20px;
-    font-style: normal;
->>>>>>> 2e09a8a3d129d51d5200cdfb3c89fe921a2f129f
     margin-left: 0 !important;
 }
 
@@ -45,7 +39,7 @@ body {
 }
 
 article,aside,details,figcaption,figure,
-footer,header,hgroup,menu,nav,section {
+footer,header,hgroup,menu,nav,section { 
     display:block;
 }
 
@@ -81,7 +75,7 @@ ins {
 /* change colours to suit your needs */
 mark {
     background-color:#ff9;
-    color:#000;
+    color:#000; 
     font-style:italic;
     font-weight:bold;
 }
@@ -104,7 +98,7 @@ table {
 hr {
     display:block;
     height:1px;
-    border:0;
+    border:0;   
     border-top:1px solid #cccccc;
     margin:1em 0;
     padding:0;
@@ -280,17 +274,7 @@ nav {
 }
 
 .button--edit-profile:hover, .button--delete-profile:hover {
-    color: #545454;
-}
-
-.button__check-pwd {
-    cursor: pointer;
-    height: 30px;
-    width: 80px;
-    border: none;
-    border-radius: 5px;
-    color: #FFF;
-    background-color: #50c1c7;
+    color: #545454;    
 }
 .button__check-pwd {
     cursor: pointer;
@@ -352,21 +336,13 @@ label {
 }
 .nav-id {
     float: right;
-<<<<<<< HEAD
     margin-right: 20px;
     line-height: 50px;
-=======
-    line-height: 50px;
-    margin-right: 20px;
->>>>>>> 2e09a8a3d129d51d5200cdfb3c89fe921a2f129f
 }
 .nav-id a {
     font-family: 'Montserrat', sans-serif;
     color: #50c1c7;
-<<<<<<< HEAD
     
-=======
->>>>>>> 2e09a8a3d129d51d5200cdfb3c89fe921a2f129f
 }
 .profile-user {
     text-align: center;
@@ -389,11 +365,11 @@ label {
 
 .input__avatar {
     width: 0.1px;
-    height: 0.1px;
-    opacity: 0;
-    overflow: hidden;
-    position: absolute;
-    z-index: -1;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
 }
 #input__avatar--label {
     position: relative;
@@ -401,11 +377,8 @@ label {
     text-align: center;
     top: 40%;
     transform: translateY(-60%);
-<<<<<<< HEAD
     opacity: 0.8;
     cursor: pointer;
-=======
->>>>>>> 2e09a8a3d129d51d5200cdfb3c89fe921a2f129f
 }
 .fa-camera {
     color: #FFF;
@@ -414,14 +387,10 @@ label {
     position: absolute;
     width: 100%;
     bottom: 0;
-<<<<<<< HEAD
     height: 30px;
     display: none;
     opacity: 0.6;
     background-color: #50c1c7;
-=======
-    display: none;
->>>>>>> 2e09a8a3d129d51d5200cdfb3c89fe921a2f129f
 }
 
 #profile-name {
@@ -458,13 +427,13 @@ label {
 }
 
 .account--content {
-
+    
 }
 .profiles-content {
-
+   
 }
 .profiles-min-content {
-
+       
 }
 #profiles, #profiles-min, #about {
     margin-top: 2px;
@@ -515,17 +484,17 @@ label {
     z-index: -1;
 }
 .overlay {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    width: 100%;
-    border-radius: 40%;
-    opacity: 0;
-    transition: .5s ease;
-    background-color: #50c1c7;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: 40%;    
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #50c1c7;
 }
 .profiles-min__img {
     width: 100px;
@@ -879,7 +848,7 @@ tr {
 .settings__form--wrapper {
     background: #fff;
     padding: 50px 100px;
-    border-radius: 5px;
+    border-radius: 5px;    
 }
 .just-space {
     height: 40px;
@@ -898,13 +867,13 @@ tr {
 }
 /* Slider */
 .slide-viewer {
-    position: relative;
-    overflow: hidden;
+    position: relative; 
+    overflow: hidden; 
     height: 100px;
     padding: 20px 0;
     margin: 0 auto;
     width: 600px;
-    border-radius: 5px;
+    border-radius: 5px; 
 }
 @media screen and (max-width: 770px) {
     .slide-viewer {
@@ -922,8 +891,8 @@ tr {
     }
 }
 .slide-group {
-    width: 1400px ;
-    height: 100% ;
+    width: 1400px ; 
+    height: 100% ; 
     position: relative;
 }
 
@@ -971,11 +940,7 @@ tr {
     background-color: #f7f1e8;
     font-family: 'Josefin Sans', sans-serif;
     font-weight: 400;
-<<<<<<< HEAD
         border-bottom: 1px solid #50c1c7;
-=======
-    border-bottom: 1px solid #50c1c7;
->>>>>>> 2e09a8a3d129d51d5200cdfb3c89fe921a2f129f
 }
 /* Kids avatar index */
 .index-avatar {
@@ -1087,7 +1052,6 @@ tr {
     height: 720px;
 }
 
-<<<<<<< HEAD
 /* col index header login */
 .col__header--left-login {
     width: 60%;
@@ -1101,33 +1065,11 @@ tr {
 }
 
 /* col index header !login */
-=======
-.index-avatar--wrapper {
-    display: table;
-    margin: 80px auto;
-}
-
->>>>>>> 2e09a8a3d129d51d5200cdfb3c89fe921a2f129f
 .col__header--left {
     width: 10%;
     float: left;
     height: 100%;
 }
-<<<<<<< HEAD
-=======
-/*Col index header login*/
-.col__header--left-login {
-    width: 60%;
-    float: left;
-    height: 100%;
-}
-.col__header--right-login {
-    width: 40%;
-    float: left;
-    height: 100%;
-}
-/*Col index header !login*/
->>>>>>> 2e09a8a3d129d51d5200cdfb3c89fe921a2f129f
 .col__header--center {
     width: 15%;
     float: left;
@@ -1156,13 +1098,8 @@ tr {
         display: block;
     }
     .col-5-sm {
-<<<<<<< HEAD
        width: 50%;
        float: left;
-=======
-        width: 50%;
-        float: left;
->>>>>>> 2e09a8a3d129d51d5200cdfb3c89fe921a2f129f
     }
     .col__header--left-login {
         width: 42.5%;
@@ -1229,13 +1166,8 @@ tr {
         width: 57.5%;
     }
     .col-5-sm {
-<<<<<<< HEAD
        width: 42.5%;
     } 
-=======
-        width: 42.5%;
-    }
->>>>>>> 2e09a8a3d129d51d5200cdfb3c89fe921a2f129f
     #left-img {
         float: left;
         position: relative;
@@ -1276,7 +1208,7 @@ tr {
 .signup-form {
     max-width: 300px;
     margin: 0 auto;
-
+    
 }
 .signup-form input {
     width: 100%;
@@ -1299,7 +1231,7 @@ tr {
 }
 
 .button2 {
-
+    
 }
 
 .signup-form--button {
@@ -1328,7 +1260,6 @@ tr {
     color: #f7f1e8;
     line-height: 2rem;
 }
-<<<<<<< HEAD
 
 .profile-avatar__img {
     width: 100px;
@@ -1339,8 +1270,6 @@ tr {
     margin: 80px auto;
 }
 
-=======
->>>>>>> 2e09a8a3d129d51d5200cdfb3c89fe921a2f129f
 .footer--wrapper {
     padding-left: 18px;
     padding-right: 18px;
@@ -1355,18 +1284,13 @@ tr {
     text-align: center;
     font-family: 'Josefin Sans', sans-serif;
     font-weight: 400;
-<<<<<<< HEAD
     color: darkgrey;
-=======
-    color: darkgray;
->>>>>>> 2e09a8a3d129d51d5200cdfb3c89fe921a2f129f
 }
 
 .footer {
     background-color: #fff;
     margin-top: 40px;
 }
-<<<<<<< HEAD
 
 .about--h3 {
     font-family: 'Josefin Sans', sans-serif;
@@ -1385,5 +1309,3 @@ tr {
 .about--text {
     padding: 80px;
 }
-=======
->>>>>>> 2e09a8a3d129d51d5200cdfb3c89fe921a2f129f

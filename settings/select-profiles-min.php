@@ -6,7 +6,7 @@ if (isset($_SESSION['u_id'])) {
     
     $dbServername = "localhost";
     $dbUsername = "root";
-    $dbPassword = "mysql";
+    $dbPassword = "1234";
     $dbName = "loginsystem";
     
     $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
