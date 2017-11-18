@@ -19,13 +19,13 @@ if (isset($_POST['form_name']) && $_POST['form_name'] === 'add_user') {
     $name = mysqli_real_escape_string($conn, $_POST["profileName"]);
     $gender = mysqli_real_escape_string($conn, $_POST["profileGender"]);
     $age = mysqli_real_escape_string($conn, $_POST["profileAge"]);
+    $tagId = mysqli_real_escape_string($conn, $_POST["tagId"]);
     $extenstion = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
     $avatar = uniqid('', true).".".$extenstion;
     
     //This is the directory where images will be saved 
     $target_dir = "../images/"; 
     $target = $target_dir . $avatar;
-    
     
     move_uploaded_file($_FILES['avatar']['tmp_name'], $target); 
     
@@ -38,6 +38,11 @@ if (isset($_POST['form_name']) && $_POST['form_name'] === 'add_user') {
     if(!$result) {
          echo("Error description: " . mysqli_error($conn));
     }
+    
+     $sql = " INSERT INTO `tag_child` (`child_id`, `tag_id`)  
+        VALUES('$', '$age') 
+        ";
+    
     $msg['success'] = 1;
      echo json_encode($msg);   
     } 

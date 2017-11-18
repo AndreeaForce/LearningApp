@@ -16,4 +16,5 @@ if ($resultCheck > 0) {
     echo "Username is free";
 }
 
+
 ?>

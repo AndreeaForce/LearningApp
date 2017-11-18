@@ -13,7 +13,7 @@ $sql = "INSERT INTO score (profile_id, game_id, score) VALUES ('$childID', '$gam
 
 $result = mysqli_query($conn, $sql);
 
-//Error check query
+//Error check query 
 if(!$result) {
      echo("Error description: " . mysqli_error($conn));
 }

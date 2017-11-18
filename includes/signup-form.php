@@ -8,7 +8,7 @@ if (isset($_POST['submit'])) {
 	$first = mysqli_real_escape_string($conn, $_POST['first']);
 	$last = mysqli_real_escape_string($conn, $_POST['last']);
 	$email = mysqli_real_escape_string($conn, $_POST['email']);
-	$uid = mysqli_real_escape_string($conn, $_POST['uid']);
+	$uid = mysqli_real_escape_string($conn, $_POST['uid']); 
 	$pwd = mysqli_real_escape_string($conn, $_POST['pwd']);
     //$avatar = ($_FILES['avatar']['name']);
       

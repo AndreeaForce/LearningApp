@@ -192,7 +192,7 @@ if (isset($_SESSION['u_id']) && isset( $_SESSION['u_email']) && isset($_SESSION[
                                     $tagId = $row2['id'];
                                     //print_r(json_encode($tagName));
                              ?>   
-                                <option  value="<?php echo $tagId ?>"><?php echo $tagName ?></option>
+                                <option name="tagId"  value="<?php echo $tagId ?>"><?php echo $tagName ?></option>
                             <?php
                                     }
                             ?>    
